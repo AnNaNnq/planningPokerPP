@@ -25,8 +25,10 @@ export class SettingsComponentComponent {
 
   addPlayerName(event: any = 0) {
     if(event.target.value.length > 0){
-      this.Players[event.target.placeholder] = event.target.value
-      console.log(this.Players[event.target.placeholder])
+      const placeholder = event.target.placeholder;
+      const match = placeholder.replace(/[^\d]/g, "");
+      const id = parseInt(match);
+      this.Players[id] = event.target.value;
     }
   }
 }
