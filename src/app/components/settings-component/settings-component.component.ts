@@ -7,7 +7,11 @@ import { Component } from '@angular/core';
 })
 export class SettingsComponentComponent {
 
+  jsonData: any;
+
   playerMax: number = 15;
+
+  mode = "Classique";
 
   playerNumber: number = 2;
   Players: { [key: number]: string} = {
@@ -30,5 +34,15 @@ export class SettingsComponentComponent {
       const id = parseInt(match);
       this.Players[id] = event.target.value;
     }
+  }
+
+  changeMod(event: any = 0){
+    this.mode = event.target.value;
+    console.log(this.mode);
+  }
+
+  onFileSelected(event: any = 0){
+    const selectedFile = event.target.files[0];
+    const reader = new FileReader();
   }
 }

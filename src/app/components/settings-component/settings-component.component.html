@@ -9,6 +9,13 @@
     <label>{{Players[i]}}</label>
   </div>
 
+  <input type="radio" name="mod" value="classique" checked (change)="changeMod($event)"> Classique
+
+  <br />
+
+  <input type="file" (change)="onFileSelected($event)">
+
+  <br />
 
   <button type="submit" name="submit">Start</button>
 </form>
