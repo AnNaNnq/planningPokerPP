@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SettingsComponentComponent {
 
-  jsonData: any;
+  person: any;
 
   playerMax: number = 15;
 
@@ -44,5 +44,18 @@ export class SettingsComponentComponent {
   onFileSelected(event: any = 0){
     const selectedFile = event.target.files[0];
     const reader = new FileReader();
+
+    reader.onload = () => {
+      const fileContent = reader.result as string;
+      const jsonData = JSON.parse(fileContent);
+      this.person = {
+        name: jsonData.name,
+        age: jsonData.age
+      };
+    };
+
+    console.log(this.person);
+
+    reader.readAsText(selectedFile);
   }
 }
