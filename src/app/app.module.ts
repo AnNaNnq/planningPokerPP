@@ -10,6 +10,7 @@ import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import {SettingsComponentComponent} from './components/settings-component/settings-component.component';
+import { TitleComponent } from './title/title.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {SettingsComponentComponent} from './components/settings-component/settin
     InformationButtonComponent,
     MainMenuComponent,
     SettingsComponentComponent,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,

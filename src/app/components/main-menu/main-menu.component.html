@@ -1,5 +1,13 @@
-<start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
-              [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
-              [captionColor]="'white'">
-</start-button>
-<information-button></information-button>
+<div class="container_info-button">
+  <pp-title> </pp-title>
+  <information-button></information-button>
+</div>
+<div class="container_button">
+  <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
+                [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
+                [captionColor]="'white'"
+                [name]="'PLAY'"
+                [link]="'/lobby'">
+  </start-button>
+</div>
+

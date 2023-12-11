@@ -9,4 +9,6 @@ export class StartButtonComponent {
   @Input() pushableBackground: string = '';
   @Input() captionBackground: string = '';
   @Input() captionColor: string = '';
+  @Input() name: string = '';
+  @Input() link: string = '';
 }
