@@ -1,0 +1,19 @@
+<form>
+  <label>Player number :</label><br>
+  <input type="range" min="2" max="{{playerMax}}" value="2"  (change)="getSliderValue($event)">
+  <span>{{playerNumber}}</span><br>
+  <div class="joueurs">
+    <input type="text" placeholder="Joueur {{i}}" (change)="addPlayerName($event)" *ngFor="let i of playersNb" />
+  </div>
+
+  <input type="radio" name="mod" value="classique" checked (change)="changeMod($event)"> Classique
+
+  <br />
+
+  <input type="file" accept=".json" (change)="onFileSelected($event)">
+
+  <br />
+
+  <button type="submit" name="submit">Start</button>
+  <button routerLink="/"> Back </button>
+</form>
