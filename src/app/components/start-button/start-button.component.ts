@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./start-button.component.scss']
 })
 export class StartButtonComponent {
+  onClick(){
 
+  }
 }
