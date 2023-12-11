@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SettingsComponentComponent {
 
-  person: any;
+  BacklogData: string[] = [];
 
   playerMax: number = 15;
 
@@ -48,14 +48,19 @@ export class SettingsComponentComponent {
     reader.onload = () => {
       const fileContent = reader.result as string;
       const jsonData = JSON.parse(fileContent);
-      this.person = {
-        name: jsonData.name,
-        age: jsonData.age
-      };
+
+      // Extract names from JSON using keys
+      const namesArray: string[] = [];
+      for (const key in jsonData) {
+        if (jsonData.hasOwnProperty(key) && jsonData[key]?.name) {
+          namesArray.push(jsonData[key].name);
+        }
+      }
+      this.BacklogData = namesArray;
+      setTimeout(() => {
+        console.log(this.BacklogData);
+      }, 0);
     };
-
-    console.log(this.person);
-
     reader.readAsText(selectedFile);
   }
 }

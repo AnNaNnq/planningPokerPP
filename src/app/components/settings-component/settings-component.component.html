@@ -5,19 +5,12 @@
   <div class="joueurs">
     <input type="text" placeholder="Joueur {{i}}" (change)="addPlayerName($event)" *ngFor="let i of playersNb" />
   </div>
-  <div class="joeurs_nom" *ngFor="let i of playersNb">
-    <label>{{Players[i]}}</label>
-  </div>
 
   <input type="radio" name="mod" value="classique" checked (change)="changeMod($event)"> Classique
 
   <br />
 
   <input type="file" accept=".json" (change)="onFileSelected($event)">
-  <div *ngIf="person">
-    <h2>{{ person.name }}</h2>
-    <p>Age: {{ person.age }}</p>
-  </div>
 
   <br />
 
