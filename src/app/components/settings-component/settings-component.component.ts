@@ -33,6 +33,7 @@ export class SettingsComponentComponent {
       const match = placeholder.replace(/[^\d]/g, "");
       const id = parseInt(match);
       this.Players[id] = event.target.value;
+      console.log(this.Players);
     }
   }
 
