@@ -1,27 +1,26 @@
 .pushable_button {
-  margin: 100px;
-  background: hsl(111, 100%, 35%);
   border-radius: 12px;
   border: none;
   padding: 0;
   cursor: pointer;
   outline-offset: 4px;
 }
+
 .caption_button {
   display: block;
-  padding: 18px 55px;
+  padding: 15px 50px;
   border-radius: 12px;
   border: 3px solid white;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-shadow: 1px 1px 2px #000000;
-  background: linear-gradient(#00ff05, #19b000);  color: white;
   transform: translateY(-6px);
 }
 
 .caption_button:hover {
-  background: linear-gradient(#19b000, #169801);  color: white;
-
+  filter: brightness(90%);
+  color: #c7c7c7 !important;
 }
+
 
 .pushable_button:active .caption_button {
   transform: translateY(-2px);

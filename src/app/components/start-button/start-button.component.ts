@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'start-button',
@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./start-button.component.scss']
 })
 export class StartButtonComponent {
-  onClick(){
-
-  }
+  @Input() pushableBackground: string = '';
+  @Input() captionBackground: string = '';
+  @Input() captionColor: string = '';
+  @Input() name: string = '';
+  @Input() link: string = '';
 }

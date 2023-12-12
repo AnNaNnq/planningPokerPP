@@ -1,0 +1,18 @@
+.container_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55%;
+}
+
+.container_info-button {
+  height: 25%;
+  padding: 80px 15px 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+start-button {
+  transform: scale(2.5);
+}
