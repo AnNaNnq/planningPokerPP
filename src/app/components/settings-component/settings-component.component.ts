@@ -14,7 +14,7 @@ export class SettingsComponentComponent {
 
   playerMax: number = 15;
 
-  mode = "Classique";
+  mode = "strict";
 
   playerNumber: number = 2;
   Players: { [key: number]: string} = {}
