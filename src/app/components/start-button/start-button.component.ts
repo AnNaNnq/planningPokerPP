@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'start-button',
@@ -11,4 +11,10 @@ export class StartButtonComponent {
   @Input() captionColor: string = '';
   @Input() name: string = '';
   @Input() link: string = '';
+
+  @Output() buttonClicked = new EventEmitter<void>();
+
+  onButtonClick() {
+    this.buttonClicked.emit();
+  }
 }

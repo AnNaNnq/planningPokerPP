@@ -60,7 +60,7 @@ export class GameComponentComponent implements  OnInit{
       else{
         this.Players[1] = "A";
         this.Players[2] = "B";
-        this.mode = "classique";
+        this.mode = "strict";
         this.BacklogData["Boutton Start"] = 1;
         this.BacklogData["Boutton Quiter"] = 1;
       }
@@ -69,6 +69,8 @@ export class GameComponentComponent implements  OnInit{
     //Cacher les cartes
     const playerButtons = document.getElementById("PlayerButton") as HTMLDivElement;
     playerButtons.style.display = 'none';
+
+    console.log(this.mode)
 
     //Pour le mode strict
     if(this.mode == "strict"){
