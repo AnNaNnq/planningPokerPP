@@ -1,1 +1,59 @@
+.test {
+  background: linear-gradient(#c00c1e, #810612);
+  color: hsl(354, 91%, 26%);
+}
 
+form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_number-players {
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 10%;
+}
+
+.form_players {
+  display: flex;
+  width: 80%;
+  height: 60%;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form_style-game {
+  height: 5%;
+  font-size: 1.3em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form_input-json {
+  height: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  & input {
+    font-size: 1.2em;
+  }
+}
+
+
+.form_buttons {
+  display: flex;
+  width: 100%;
+  height: 18%;
+  margin-top: 15px;
+  justify-content: space-evenly;
+}

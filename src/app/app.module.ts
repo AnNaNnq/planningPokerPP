@@ -12,6 +12,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {SettingsComponentComponent} from './components/settings-component/settings-component.component';
 import { GameComponentComponent } from './components/game-component/game-component.component';
 import { TitleComponent } from './components/title/title.component';
+import { PlayerCardComponent } from './components/player-card/player-card.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { TitleComponent } from './components/title/title.component';
     SettingsComponentComponent,
     GameComponentComponent,
     TitleComponent,
+    PlayerCardComponent,
   ],
   imports: [
     BrowserModule,

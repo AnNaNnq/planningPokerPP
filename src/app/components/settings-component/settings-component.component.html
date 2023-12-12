@@ -1,19 +1,37 @@
 <form>
-  <label>Player number :</label><br>
-  <input type="range" min="2" max="{{playerMax}}" value="2"  (change)="getSliderValue($event)">
-  <span>{{playerNumber}}</span><br>
-  <div class="joueurs" >
-    <input type="text" placeholder="Joueur {{i}}" (change)="addPlayerName($event)" *ngFor="let i of playersNb" />
+  <div class="form_number-players">
+    <label>Player number </label>
+    <input type="range" min="2" max="{{playerMax}}" value="2" (change)="getSliderValue($event)">
+    <span>{{ playerNumber }}</span>
   </div>
 
-  <input type="radio" name="mod" value="classique" checked (change)="changeMod($event)"> Classique
+  <div class="form_players">
+    <player-card (change)="addPlayerName($event)" [i]="i"
+                 *ngFor="let i of playersNb"></player-card>
+  </div>
 
-  <br />
+  <div class="form_style-game">
+    <input type="radio" name="mod" value="classique" checked (change)="changeMod($event)"> Classique
+  </div>
 
-  <input type="file" accept=".json" (change)="onFileSelected($event)">
+  <div class="form_input-json">
+    <input type="file" accept=".json" (change)="onFileSelected($event)">
+  </div>
 
-  <br />
-
-  <button (click)="sendData()" routerLink="/game">Start</button>
-  <button routerLink="/"> Back </button>
+  <div class="form_buttons">
+    <start-button (click)="sendData()"
+                  [pushableBackground]="'hsl(354, 91%, 26%)'"
+                  [captionBackground]="'linear-gradient(#c00c1e, #810612)'"
+                  [captionColor]="'white'"
+                  [name]="'BACK'"
+                  [link]="'/'">
+    </start-button>
+    <start-button (click)="sendData()"
+                  [pushableBackground]="'hsl(111, 100%, 35%)'"
+                  [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
+                  [captionColor]="'white'"
+                  [name]="'START'"
+                  [link]="'/game'">
+    </start-button>
+  </div>
 </form>
