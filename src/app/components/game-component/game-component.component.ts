@@ -71,7 +71,7 @@ export class GameComponentComponent implements  OnInit{
     playerButtons.style.display = 'none';
 
     //Pour le mode strict
-    if(this.mode == "classique"){
+    if(this.mode == "strict"){
       this.chooseDefaultValue();
     }
   }
