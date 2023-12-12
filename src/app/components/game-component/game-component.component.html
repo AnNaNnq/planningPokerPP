@@ -1,1 +1,18 @@
-<div>Data Received: {{ receivedData | json }}</div>
+<div xmlns="http://www.w3.org/1999/html">
+  <label id="textToShow"></label>
+  <div id="input_text"></div>
+  <div id="PlayerButton">
+    <button (click)="selectButton(i)" *ngFor="let i of listValue">{{i}}</button>
+  </div>
+
+  <!-- Si tu change ce boutton par ton start-button, sa ne marchera plus et je te goume la gueule !!!! OK ? -->
+  <button id="validateButton" (click)="valideStage()">Valide</button>
+
+
+  <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
+                [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
+                [captionColor]="'white'"
+                [name]="'BACk TO MAIN MENU'"
+                [link]="'/'" id="finishButton" style="display: none">
+  </start-button>
+</div>
