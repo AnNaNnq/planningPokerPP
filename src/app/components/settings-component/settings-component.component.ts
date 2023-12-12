@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
 
 @Component({
   selector: 'settings-component',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings-component.component.scss']
 })
 export class SettingsComponentComponent {
+  constructor(private dataService: GameOptionServiceService) {}
+  Data: { [Type: string]: string} = {}
 
   BacklogData: string[] = [];
 
@@ -14,9 +17,7 @@ export class SettingsComponentComponent {
   mode = "Classique";
 
   playerNumber: number = 2;
-  Players: { [key: number]: string} = {
-
-  }
+  Players: { [key: number]: string} = {}
   playersNb: number[] = [1,2]
 
   getSliderValue(event:any=0) {
@@ -63,5 +64,21 @@ export class SettingsComponentComponent {
       }, 0);
     };
     reader.readAsText(selectedFile);
+  }
+
+  sendData(){
+    Object.keys(this.Players).forEach(key => {
+      const playerKey = parseInt(key, 10)
+      const strKey = "Player" + playerKey;
+      this.Data[strKey] = this.Players[playerKey];
+    });
+
+    this.Data["Mode"] = this.mode;
+
+    this.BacklogData.forEach((item: string, index: number) => {
+      this.Data["Backlog" + index] = item;
+    });
+
+    this.dataService.setData(this.Data);
   }
 }

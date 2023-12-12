@@ -10,6 +10,7 @@ import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 import {SettingsComponentComponent} from './components/settings-component/settings-component.component';
+import { GameComponentComponent } from './components/game-component/game-component.component';
 import { TitleComponent } from './components/title/title.component';
 
 
@@ -20,6 +21,7 @@ import { TitleComponent } from './components/title/title.component';
     InformationButtonComponent,
     MainMenuComponent,
     SettingsComponentComponent,
+    GameComponentComponent,
     TitleComponent,
   ],
   imports: [

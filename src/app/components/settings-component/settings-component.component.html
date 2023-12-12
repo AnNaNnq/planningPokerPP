@@ -2,7 +2,7 @@
   <label>Player number :</label><br>
   <input type="range" min="2" max="{{playerMax}}" value="2"  (change)="getSliderValue($event)">
   <span>{{playerNumber}}</span><br>
-  <div class="joueurs">
+  <div class="joueurs" >
     <input type="text" placeholder="Joueur {{i}}" (change)="addPlayerName($event)" *ngFor="let i of playersNb" />
   </div>
 
@@ -14,6 +14,6 @@
 
   <br />
 
-  <button type="submit" name="submit">Start</button>
+  <button (click)="sendData()" routerLink="/game">Start</button>
   <button routerLink="/"> Back </button>
 </form>
