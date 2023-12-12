@@ -44,14 +44,14 @@
       <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
       <label for="fileInput">Chose a json file</label>
     </div>
-    <start-button (click)="sendData()"
+    <start-button
                   [pushableBackground]="'hsl(354, 91%, 26%)'"
                   [captionBackground]="'linear-gradient(#c00c1e, #810612)'"
                   [captionColor]="'white'"
                   [name]="'BACK'"
                   [link]="'/'">
     </start-button>
-    <start-button (click)="sendData()"
+    <start-button (buttonClicked)="sendData()"
                   [pushableBackground]="'hsl(111, 100%, 35%)'"
                   [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
                   [captionColor]="'white'"

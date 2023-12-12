@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
 
 @Component({
@@ -6,8 +6,9 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
   templateUrl: './settings-component.component.html',
   styleUrls: ['./settings-component.component.scss']
 })
-export class SettingsComponentComponent {
+export class SettingsComponentComponent{
   constructor(private dataService: GameOptionServiceService) {}
+
   Data: { [Type: string]: string} = {}
 
   BacklogData: string[] = [];
@@ -67,6 +68,7 @@ export class SettingsComponentComponent {
   }
 
   sendData(){
+    console.log("test");
     Object.keys(this.Players).forEach(key => {
       const playerKey = parseInt(key, 10)
       const strKey = "Player" + playerKey;
@@ -81,4 +83,6 @@ export class SettingsComponentComponent {
 
     this.dataService.setData(this.Data);
   }
+
+  protected readonly console = console;
 }
