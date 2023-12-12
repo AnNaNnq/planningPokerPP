@@ -77,7 +77,7 @@ export class SettingsComponentComponent {
 
     this.BacklogData.forEach((item: string, index: number) => {
       this.Data["Backlog" + index] = item;
-    })
+    });
 
     this.dataService.setData(this.Data);
   }
