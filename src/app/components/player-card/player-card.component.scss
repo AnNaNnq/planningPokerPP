@@ -1,6 +1,7 @@
 .card {
   display: flex;
-  background: #b6b4b4;
+  background-image: url("../../../assets/images/player-card-background.jpg");
+  background-size: 50%;
   flex-direction: column;
   border-radius: 0.3rem;
   justify-content: space-between;
@@ -8,10 +9,37 @@
   padding: 0.8rem;
   border: 1px solid #e0e0e0;
   transition: 0.8s;
+  overflow: hidden;
   transition-duration: 0.3s;
+  width: 160px;
 
   &:hover {
     border: 1px solid #b0b0b0;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.35);
   }
+}
+
+h1 {
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+  font-family: 'Press Start 2P', serif;
+  font-size: 1.2em;
+}
+
+input {
+  background: #001546;
+  color: white;
+  font-family: 'Press Start 2P', serif;
+  font-size: 0.5em;
+  border: 1px solid white;
+  border-radius: 0.3rem;
+  padding: 7px 0 7px 5px;
 }

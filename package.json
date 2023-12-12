@@ -22,6 +22,7 @@
     "@angular/router": "^16.2.12",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "typeface-press-start-2p": "^1.1.13",
     "zone.js": "~0.13.3"
   },
   "devDependencies": {

@@ -1,24 +1,49 @@
 <form>
-  <div class="form_number-players">
-    <label>Player number </label>
-    <input type="range" min="2" max="{{playerMax}}" value="2" (change)="getSliderValue($event)">
-    <span>{{ playerNumber }}</span>
+  <div class="form_top">
+    <div class="top_left">
+      <div class="left_number-players">
+        <label> Numbers of Players </label>
+        <input type="range" min="2" max="{{playerMax}}" value="2" (change)="getSliderValue($event)">
+        <span>{{ playerNumber }}</span>
+      </div>
+
+      <div class="left_players">
+        <player-card (change)="addPlayerName($event)" [i]="i" *ngFor="let i of playersNb"></player-card>
+      </div>
+    </div>
+
+    <div class="top_right">
+      <div class="right_style-game">
+        <h3> Game mode</h3>
+        <ul>
+          <li>
+            <input type="radio" name="mod" value="strict" (change)="changeMod($event)">
+            <label class="style-game_label">Strict</label>
+            <div class="circle">
+            </div>
+          </li>
+          <li>
+            <input type="radio" name="mod" value="majabs" (change)="changeMod($event)">
+            <label class="style-game_label">Absolute Majority </label>
+            <div class="circle">
+            </div>
+          </li>
+          <li>
+            <input type="radio" name="mod" value="moyenne" (change)="changeMod($event)">
+            <label class="style-game_label">Average</label>
+            <div class="circle">
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
-  <div class="form_players">
-    <player-card (change)="addPlayerName($event)" [i]="i"
-                 *ngFor="let i of playersNb"></player-card>
-  </div>
-
-  <div class="form_style-game">
-    <input type="radio" name="mod" value="classique" checked (change)="changeMod($event)"> Classique
-  </div>
-
-  <div class="form_input-json">
-    <input type="file" accept=".json" (change)="onFileSelected($event)">
-  </div>
-
-  <div class="form_buttons">
+  <div class="form_bottom">
+    <div class="bottom_input-json">
+      <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
+      <label for="fileInput">Chose a json file</label>
+    </div>
     <start-button (click)="sendData()"
                   [pushableBackground]="'hsl(354, 91%, 26%)'"
                   [captionBackground]="'linear-gradient(#c00c1e, #810612)'"

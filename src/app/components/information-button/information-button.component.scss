@@ -1,11 +1,12 @@
 .information_button {
   background-color: transparent;
   border: none;
-}
+  color: #ffffff;
 
-.information_button:hover {
-  cursor: pointer;
-  color: #323030;
+  &:hover {
+    cursor: pointer;
+    color: #3146d3;
+  }
 }
 
 .icon-display {
