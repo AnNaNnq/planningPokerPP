@@ -37,7 +37,7 @@ export class GameComponentComponent implements  OnInit{
 
   actualPlayerTurn = 1;
 
-  listValue = ["0.5", "1", "2", "3", "5", "10", "20", "40", "100", "?", "cafe"]
+  listValue = ["0", "1", "2", "3", "5", "8", "20", "40", "100", "?", "cafe"]
 
   constructor(private dataService : GameOptionServiceService) {}
 
@@ -161,7 +161,7 @@ export class GameComponentComponent implements  OnInit{
         //Affichage du nom de la fonctionalité actuelle
         inputText.innerHTML = "<p> Define the value of " + key + "</p><br>";
         const playerButtons = document.getElementById("PlayerButton") as HTMLDivElement;
-        playerButtons.style.display = 'block';
+        playerButtons.style.display = 'flex';
       }
     });
   }
