@@ -1,9 +1,11 @@
 <div xmlns="http://www.w3.org/1999/html">
   <label id="textToShow"></label>
-  <div id="input_text"></div>
+  <div id="overPlayerButton"></div>
   <div id="PlayerButton">
     <button (click)="selectButton(i)" *ngFor="let i of listValue">{{i}}</button>
   </div>
+  <div id="underPlayerButton"></div>
+  <div id="gameModeMessage"></div>
 
   <!-- Si tu change ce boutton par ton start-button, sa ne marchera plus et je te goume la gueule !!!! OK ? -->
   <button id="validateButton" (click)="valideStage()">Valide</button>
