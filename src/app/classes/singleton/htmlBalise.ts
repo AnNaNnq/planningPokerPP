@@ -4,7 +4,7 @@ export class HtmlBalise{
   stValue : HTMLElement
   task : HTMLElement
   endMessage : HTMLElement
-  title : HTMLLabelElement
+  title : HTMLDivElement
   playerButton : HTMLDivElement
   validateButton : HTMLButtonElement
   finishButton : HTMLElement;
@@ -14,7 +14,7 @@ export class HtmlBalise{
     this.stValue = document.getElementById("StandarValue") as HTMLElement
     this.task = document.getElementById("ActualTask") as HTMLElement
     this.endMessage = document.getElementById("endMessage") as HTMLElement
-    this.title = document.getElementById("textToShow") as HTMLLabelElement
+    this.title = document.getElementById("textToShow") as HTMLDivElement
     this.playerButton = document.getElementById("PlayerButton") as HTMLDivElement;
     this.validateButton = document.getElementById("validateButton") as HTMLButtonElement;
     this.finishButton = document.getElementById("finishButton") as HTMLElement;

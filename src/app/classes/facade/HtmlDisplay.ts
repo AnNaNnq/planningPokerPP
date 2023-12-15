@@ -5,7 +5,7 @@ export class HtmlDisplay{
 
   content = "";
 
-  showText(label : HTMLLabelElement, text : string){
+  showText(label : HTMLDivElement, text : string){
     label.innerText = text;
   }
 

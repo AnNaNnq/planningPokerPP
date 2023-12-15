@@ -6,12 +6,55 @@
   align-items: center;
 }
 
-#textToShow {
+.header {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+}
+
+#textToShow, #StandarValue, #ActualTask {
   color: white;
 }
 
-#input_text {
-  color: white;
+#textToShow {
+  grid-column: 1/2;
+  grid-row: 1;
+  text-align: center;
+  font-family: 'Press Start 2P', serif;
+  font-size: 1.5em;
+  padding: 10px 0;
+  border-radius: 2.5em;
+  margin: 0 20% 0 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 0 20px #0fa, 0 0 120px #0fa;
+  color: transparent;
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+#StandarValue {
+  font-family: 'Press Start 2P', serif;
+  font-size: 1.2em;
+}
+
+#ActualTask {
+  grid-column: 3 / 10;
+  grid-row: 1;
+  text-align: center;
+  background-image: url("../../../assets/images/hypnotic.jpg");
+  background-size: 100%;
+  border-radius: 2em;
+  padding: 10px 0;
+  border: 1.2px solid white;
+  box-shadow: 0 0 2px #fff, 0 0 7px #fff, 0 0 10px #d000ff, 0 0 25px #d000ff;
+  font-family: 'Press Start 2P', serif;
+  min-height: 80px;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-stroke: 1px #ffffff;
+
 }
 
 #PlayerButton {
