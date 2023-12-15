@@ -1,8 +1,10 @@
-<div xmlns="http://www.w3.org/1999/html">
+<div class="container" xmlns="http://www.w3.org/1999/html">
   <label id="textToShow"></label>
   <div id="overPlayerButton"></div>
   <div id="PlayerButton">
-    <button (click)="selectButton(i)" *ngFor="let i of listValue">{{i}}</button>
+    <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">
+      <div class="card-button_label"> {{ i }}</div>
+    </div>
   </div>
   <div id="underPlayerButton"></div>
   <div id="gameModeMessage"></div>
