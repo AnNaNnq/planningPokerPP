@@ -29,9 +29,9 @@ export abstract class ModeDecorator implements Game {
     console.log(this.getBacklogData())
     const balise = HtmlBalise.getInstance();
     this.html.showText(balise.title, "Choice of standard value :")
-    this.html.addHtmlElement("input", "stage1", undefined, {"type": "text", "placeholder": "Enter Task"})
+    this.html.addHtmlElement("input", "stage1", {"type": "text", "placeholder": "Enter Task"})
     console.log(this.html.content)
-    this.html.displayHTML(balise.over)
+    this.html.displayHTML(balise.stValue)
   }
 
   setupDefaultValue(): boolean {
@@ -41,8 +41,8 @@ export abstract class ModeDecorator implements Game {
   setDefaultValue(value: string): void {
     this.game.setDefaultValue(value);
     const balise = HtmlBalise.getInstance();
-    this.html.clearHTML(balise.over);
-    this.html.clearHTML(balise.under);
+    this.html.clearHTML(balise.stValue);
+    this.html.clearHTML(balise.endMessage);
     this.nextStage();
   }
 
@@ -52,8 +52,9 @@ export abstract class ModeDecorator implements Game {
     this.retry = false;
     this.downloadJson = false;
 
-    this.html.clearHTML(balise.over);
-    this.html.clearHTML(balise.under);
+    this.html.clearHTML(balise.stValue);
+    this.html.clearHTML(balise.endMessage);
+    this.html.clearHTML(balise.task);
     this.html.clearHTML(balise.gameModeMessage);
 
     let actualStage = this.getActualStage();
@@ -70,29 +71,30 @@ export abstract class ModeDecorator implements Game {
 
     this.html.addHtmlElement("label");
     this.html.addText("Standard value is " + this.getDefaultValue());
-    this.html.addHtmlElement("label", undefined, undefined, undefined, true)
+    this.html.addHtmlElement("label", undefined, undefined, true)
+    this.html.displayHTML(balise.stValue)
 
     let value = 0;
     let backlogData = this.getBacklogData();
     Object.keys(backlogData).forEach(key => {
       value++;
       if (value == actualStage) {
-        this.html.addHtmlElement("br", undefined, undefined, undefined, true);
-        this.html.addHtmlElement("label");
+        this.html.addHtmlElement("div");
         this.html.addText("Define the value of " + key);
-        this.html.addHtmlElement("label", undefined, undefined, undefined, true);
+        this.html.addHtmlElement("div", undefined, undefined, true);
 
-        balise.playerButton.style.display = "block"
+        balise.playerButton.style.display = "flex"
       }
     });
 
-    this.html.displayHTML(balise.over);
+    this.html.displayHTML(balise.task);
   }
 
   reavelNote() {
     const balise = HtmlBalise.getInstance();
-    this.html.clearHTML(balise.over)
-    this.html.clearHTML(balise.under)
+    this.html.clearHTML(balise.stValue)
+    this.html.clearHTML(balise.endMessage)
+    this.html.clearHTML(balise.task)
     this.html.clearHTML(balise.gameModeMessage)
 
     this.html.showText(balise.title, "Reavel of Notation");
@@ -108,7 +110,7 @@ export abstract class ModeDecorator implements Game {
     Object.keys(this.getNotes()).forEach(key => {
       this.html.addHtmlElement("li");
       this.html.addText(key + " : " + this.getNote(key));
-      this.html.addHtmlElement("li", undefined, undefined, undefined, true);
+      this.html.addHtmlElement("li", undefined, undefined, true);
       notes.push(this.getNote(key));
 
       if (this.getNote(key) == "?") {
@@ -130,8 +132,8 @@ export abstract class ModeDecorator implements Game {
     }else if(notes.includes("cafe")){
       return;
     }
-    this.html.addHtmlElement("ul", undefined, undefined, undefined, true);
-    this.html.displayHTML(balise.over);
+    this.html.addHtmlElement("ul", undefined, undefined, true);
+    this.html.displayHTML(balise.stValue);
 
     for (let i = 0; i < notes.length; i++) for (let j = i; j < notes.length; j++) if (notes[i] != notes[j]) evryboddySameMind = false;
 
@@ -144,8 +146,9 @@ export abstract class ModeDecorator implements Game {
 
   QuestionSelected(playerName : string){
     const balise = HtmlBalise.getInstance();
-    this.html.clearHTML(balise.over)
-    this.html.clearHTML(balise.under)
+    this.html.clearHTML(balise.stValue)
+    this.html.clearHTML(balise.endMessage)
+    this.html.clearHTML(balise.task)
     this.html.clearHTML(balise.gameModeMessage)
 
     this.html.addText(playerName + " didn't understand the function, explain it to him")
@@ -159,8 +162,9 @@ export abstract class ModeDecorator implements Game {
 
   CoffeeSelected(playerName : string){
     const balise = HtmlBalise.getInstance();
-    this.html.clearHTML(balise.over)
-    this.html.clearHTML(balise.under)
+    this.html.clearHTML(balise.stValue)
+    this.html.clearHTML(balise.endMessage)
+    this.html.clearHTML(balise.task)
     this.html.clearHTML(balise.gameModeMessage)
 
     this.html.addText(playerName + " says it's too complicated and that we should talk about it over a good cup of coffee.")
@@ -232,8 +236,8 @@ export abstract class ModeDecorator implements Game {
 
     this.html.addHtmlElement("label");
     this.html.addText("Everyone is of the same opinion we can pass to the next function");
-    this.html.addHtmlElement("label", undefined, undefined, undefined, true);
-    this.html.displayHTML(balise.under);
+    this.html.addHtmlElement("label", undefined, undefined, true);
+    this.html.displayHTML(balise.endMessage);
 
     let value = 0;
 
@@ -252,7 +256,7 @@ export abstract class ModeDecorator implements Game {
     const balise = HtmlBalise.getInstance();
 
     this.html.addText("You don't agree with each other. That's all right.")
-    this.html.displayHTML(balise.under);
+    this.html.displayHTML(balise.endMessage);
   }
 
   modifyBacklogData(key: string, value: number): void {
@@ -270,8 +274,8 @@ export abstract class ModeDecorator implements Game {
   end(): void {
     const balise = HtmlBalise.getInstance();
 
-    this.html.clearHTML(balise.over)
-    this.html.clearHTML(balise.under)
+    this.html.clearHTML(balise.stValue)
+    this.html.clearHTML(balise.endMessage)
 
     this.html.showText(balise.title, "Summary");
 
@@ -280,11 +284,11 @@ export abstract class ModeDecorator implements Game {
     Object.keys(this.getBacklogData()).forEach(key => {
       this.html.addHtmlElement("li");
       this.html.addText(key + " : " + this.getBacklogDataNote(key))
-      this.html.addHtmlElement("li", undefined, undefined, undefined, true);
+      this.html.addHtmlElement("li", undefined, undefined, true);
     })
 
-    this.html.addHtmlElement("ul", undefined, undefined, undefined, true);
-    this.html.displayHTML(balise.over);
+    this.html.addHtmlElement("ul", "id", undefined, true);
+    this.html.displayHTML(balise.stValue);
 
     balise.validateButton.style.display = 'none';
     balise.playerButton.style.display = 'none';

@@ -1,10 +1,8 @@
-import * as ts from 'typescript';
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {Game} from "../../classes/decorateur/Game";
 import {GameConcret} from "../../classes/decorateur/GameConcret";
 import {StrictDecorator} from "../../classes/decorateur/StrictDecorator";
 import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
-import {reflectTypeEntityToDeclaration} from "@angular/compiler-cli/src/ngtsc/reflection";
 import {HtmlDisplay} from "../../classes/facade/HtmlDisplay";
 import {HtmlBalise} from "../../classes/singleton/htmlBalise";
 import {Router} from "@angular/router";
@@ -14,17 +12,18 @@ import {Router} from "@angular/router";
   templateUrl: './game-component.component.html',
   styleUrls: ['./game-component.component.scss']
 })
-export class GameComponentComponent implements  AfterViewInit{
+export class GameComponentComponent implements AfterViewInit {
 
-  constructor(private dataService : GameOptionServiceService, private router : Router) {}
+  constructor(private dataService: GameOptionServiceService, private router: Router) {
+  }
 
-  game : Game | undefined;
+  game: Game | undefined;
 
-  htmlDisplay : HtmlDisplay | undefined;
+  htmlDisplay: HtmlDisplay | undefined;
 
-  listValue = ["0.5", "1", "2", "3", "5", "10", "20", "40", "100", "?", "cafe"]
+  listValue = ["0", "1", "2", "3", "5", "8", "20", "40", "100", "?", "cafe"]
 
-  balise : HtmlBalise | undefined;
+  balise: HtmlBalise | undefined;
 
   ngAfterViewInit(): void {
     this.balise = HtmlBalise.getInstance();
@@ -34,27 +33,21 @@ export class GameComponentComponent implements  AfterViewInit{
     this.htmlDisplay = new HtmlDisplay();
 
     this.game = new GameConcret();
-    if(this.getMode() == "strict") this.game = new StrictDecorator(this.game)
+    if (this.getMode() == "strict") this.game = new StrictDecorator(this.game)
     else this.game = new StrictDecorator(this.game)
 
     this.setPlayers()
     this.setBacklog()
 
-
     this.game.chooseDefaultValue();
   }
 
-
-  listValue = ["0", "1", "2", "3", "5", "8", "20", "40", "100", "?", "cafe"]
-
-
-
-  getMode() : string{
+  getMode(): string {
     let mode = "strict"
     this.dataService.data$.subscribe(data => {
       if (data != null) {
         Object.keys(data).forEach(key => {
-          if(key.startsWith('Mode')){
+          if (key.startsWith('Mode')) {
             mode = data[key];
           }
         });
@@ -63,18 +56,17 @@ export class GameComponentComponent implements  AfterViewInit{
     return mode
   }
 
-  setPlayers(){
-    let players : { [key: number]: string} = {}
+  setPlayers() {
+    let players: { [key: number]: string } = {}
     this.dataService.data$.subscribe(data => {
       if (data != null) {
         Object.keys(data).forEach(key => {
-          if(key.startsWith('Player')){
+          if (key.startsWith('Player')) {
             const playerNumber = parseInt(key.replace('Player', ''), 10);
             players[playerNumber] = data[key];
           }
         });
-      }
-      else{
+      } else {
         players[1] = "A";
         players[2] = "B";
       }
@@ -82,17 +74,16 @@ export class GameComponentComponent implements  AfterViewInit{
     this.game?.setPlayers(players)
   }
 
-  setBacklog(){
-    let backlogData: { [key : string]: number } = {};
+  setBacklog() {
+    let backlogData: { [key: string]: number } = {};
     this.dataService.data$.subscribe(data => {
-      if (data != null){
-        Object.keys(data).forEach(key =>{
-          if(key.startsWith('Backlog')){
+      if (data != null) {
+        Object.keys(data).forEach(key => {
+          if (key.startsWith('Backlog')) {
             backlogData[data[key]] = 1
           }
         });
-      }
-      else{
+      } else {
         backlogData["Boutton Start"] = 1;
         backlogData["Boutton Quiter"] = 1;
       }
@@ -100,17 +91,17 @@ export class GameComponentComponent implements  AfterViewInit{
     this.game?.setBacklogData(backlogData)
   }
 
-  selectButton(id:string){
+  selectButton(id: string) {
     this.game?.playerPushButton(id)
   }
 
-  valideStage(){
-    if(this.game?.setupDefaultValue()){
+  valideStage() {
+    if (this.game?.setupDefaultValue()) {
       const valueElement = document.getElementById("stage1") as HTMLInputElement;
-      if(valueElement.value != "") {
+      if (valueElement.value != "") {
         this.game?.setDefaultValue(valueElement.value)
       }
-    }else {
+    } else {
 
       if (this.game?.isDownload()) {
         this.game?.creatAndDownloadJSON();
@@ -132,5 +123,4 @@ export class GameComponentComponent implements  AfterViewInit{
       }
     }
   }
-
 }

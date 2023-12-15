@@ -9,18 +9,11 @@ export class HtmlDisplay{
     label.innerText = text;
   }
 
-  addHtmlElement(type : string = "div", id : string = "", classes : string[] = [], additionalValue : {[key : string] : string} = {}, closeBalise : boolean = false){
+  addHtmlElement(type : string = "div", id : string = "", additionalValue : {[key : string] : string} = {}, closeBalise : boolean = false){
     if(!closeBalise) {
       this.content += "<" + type + " ";
 
       if (id != "") this.content += "id='" + id + "' ";
-      if (classes.length > 0) {
-        this.content += "class='";
-        for (let classe in classes) {
-          this.content += classe + ", ";
-        }
-        this.content += "' "
-      }
 
       if (Object.keys(additionalValue).length > 0) {
         Object.keys(additionalValue).forEach(key => {
@@ -32,6 +25,13 @@ export class HtmlDisplay{
     }else{
       this.content += "</" + type + ">";
     }
+  }
+
+  addClass(id: string, classe: string){
+    const element = document.getElementById(id);
+    if(element == null) return
+    console.log("aa")
+    element.classList.add(classe);
   }
 
   addText(text : string){
