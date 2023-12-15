@@ -4,5 +4,8 @@
   },
   "02": {
     "name": "Boutton quiter"
+  },
+  "03": {
+    "name": "Boutton lancer"
   }
 }

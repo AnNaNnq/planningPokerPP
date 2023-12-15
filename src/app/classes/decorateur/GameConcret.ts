@@ -14,6 +14,7 @@ export class GameConcret implements Game{
 
   setPlayers(players: { [p: number]: string }): void {
     this.Players = players
+    console.log(this.Players);
   }
 
   setBacklogData(BacklogData: { [key : string]: number }){

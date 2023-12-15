@@ -1,12 +1,12 @@
 import * as ts from 'typescript';
-import {Component, OnInit} from '@angular/core';
-import {Game} from "../../decorateur/Game";
-import {GameConcret} from "../../decorateur/GameConcret";
-import {StrictDecorator} from "../../decorateur/StrictDecorator";
+import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Game} from "../../classes/decorateur/Game";
+import {GameConcret} from "../../classes/decorateur/GameConcret";
+import {StrictDecorator} from "../../classes/decorateur/StrictDecorator";
 import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
 import {reflectTypeEntityToDeclaration} from "@angular/compiler-cli/src/ngtsc/reflection";
-import {HtmlDisplay} from "../../facade/HtmlDisplay";
-import {HtmlBalise} from "../../singleton/htmlBalise";
+import {HtmlDisplay} from "../../classes/facade/HtmlDisplay";
+import {HtmlBalise} from "../../classes/singleton/htmlBalise";
 import {Router} from "@angular/router";
 
 @Component({
@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
   templateUrl: './game-component.component.html',
   styleUrls: ['./game-component.component.scss']
 })
-export class GameComponentComponent implements  OnInit{
+export class GameComponentComponent implements  AfterViewInit{
 
   constructor(private dataService : GameOptionServiceService, private router : Router) {}
 
@@ -26,9 +26,7 @@ export class GameComponentComponent implements  OnInit{
 
   balise : HtmlBalise | undefined;
 
-  ngOnInit(): void {
-    //Cacher les cartes
-
+  ngAfterViewInit(): void {
     this.balise = HtmlBalise.getInstance();
 
     this.balise.playerButton.style.display = 'none';
@@ -37,6 +35,7 @@ export class GameComponentComponent implements  OnInit{
 
     this.game = new GameConcret();
     if(this.getMode() == "strict") this.game = new StrictDecorator(this.game)
+    else this.game = new StrictDecorator(this.game)
 
     this.setPlayers()
     this.setBacklog()
@@ -44,6 +43,8 @@ export class GameComponentComponent implements  OnInit{
 
     this.game.chooseDefaultValue();
   }
+
+
 
   getMode() : string{
     let mode = "strict"

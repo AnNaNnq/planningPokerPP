@@ -25,4 +25,8 @@ export class HtmlBalise{
     }
     return HtmlBalise.instance;
   }
+
+  static clearInstance(): void{
+    HtmlBalise.instance = null;
+  }
 }

@@ -26,9 +26,11 @@ export abstract class ModeDecorator implements Game {
   }
 
   chooseDefaultValue(): void {
+    console.log(this.getBacklogData())
     const balise = HtmlBalise.getInstance();
     this.html.showText(balise.title, "Choice of standard value :")
     this.html.addHtmlElement("input", "stage1", undefined, {"type": "text", "placeholder": "Enter Task"})
+    console.log(this.html.content)
     this.html.displayHTML(balise.over)
   }
 
@@ -299,25 +301,29 @@ export abstract class ModeDecorator implements Game {
 
   creatAndDownloadJSON(): void {
     let data = this.getBacklogData();
+    let players = this.getPlayers();
 
-    const jsonOutput: { [key: string]: { [key: string]: any } } = {};
+    const jsonOutput: { [key: string]: any } = {
+      default: this.getDefaultValue(),
+      Backlog: {},
+      Players: {}
+    };
 
     Object.keys(data).forEach((key, index) => {
       const entry: { [key: string]: any} = {};
 
-      entry['Boutton Start'] = data[key];
+      entry[key] = data[key];
       entry['work'] = this.getActualStage() > index + 1;
 
-      jsonOutput[(index + 1).toString().padStart(2, '0')] = entry;
+      jsonOutput['Backlog'][(index + 1).toString().padStart(2, '0')] = entry;
     });
 
-    const jsonWithDefault = {
-      default: this.getDefaultValue(),
-      ...jsonOutput
-    };
+    Object.keys(players).forEach((key, index) => {
+      jsonOutput['Players'][(index + 1).toString().padStart(2, '0')] = players[parseInt(key)];
+    });
 
     const filename = 'output.json';
-    const json = JSON.stringify(jsonWithDefault, null, 2);
+    const json = JSON.stringify(jsonOutput, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);
 
@@ -326,6 +332,8 @@ export abstract class ModeDecorator implements Game {
     a.download = filename;
     a.click();
 
+
+    HtmlBalise.clearInstance();
     window.URL.revokeObjectURL(url);
   }
 }

@@ -6,7 +6,7 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
   templateUrl: './settings-component.component.html',
   styleUrls: ['./settings-component.component.scss']
 })
-export class SettingsComponentComponent{
+export class SettingsComponentComponent {
   constructor(private dataService: GameOptionServiceService) {}
 
   Data: { [Type: string]: string} = {}
