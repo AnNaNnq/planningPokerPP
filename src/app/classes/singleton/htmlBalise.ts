@@ -1,8 +1,9 @@
 export class HtmlBalise{
   private static instance: HtmlBalise | null = null;
 
-  over : HTMLElement
-  under : HTMLElement
+  stValue : HTMLElement
+  task : HTMLElement
+  endMessage : HTMLElement
   title : HTMLLabelElement
   playerButton : HTMLDivElement
   validateButton : HTMLButtonElement
@@ -10,8 +11,9 @@ export class HtmlBalise{
   gameModeMessage : HTMLDivElement;
 
   private constructor() {
-    this.over = document.getElementById("overPlayerButton") as HTMLElement
-    this.under = document.getElementById("underPlayerButton") as HTMLElement
+    this.stValue = document.getElementById("StandarValue") as HTMLElement
+    this.task = document.getElementById("ActualTask") as HTMLElement
+    this.endMessage = document.getElementById("endMessage") as HTMLElement
     this.title = document.getElementById("textToShow") as HTMLLabelElement
     this.playerButton = document.getElementById("PlayerButton") as HTMLDivElement;
     this.validateButton = document.getElementById("validateButton") as HTMLButtonElement;

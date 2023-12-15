@@ -26,11 +26,11 @@ export class StrictDecorator extends ModeDecorator{
 
     this.html.addHtmlElement("b");
     this.html.addText(maxPlayer);
-    this.html.addHtmlElement("b", undefined, undefined, undefined, true);
+    this.html.addHtmlElement("b", undefined, undefined, true);
     this.html.addText(" has the highest rating they will explain his choice then ");
     this.html.addHtmlElement("b");
     this.html.addText(minPlayer);
-    this.html.addHtmlElement("b", undefined, undefined, undefined, true);
+    this.html.addHtmlElement("b", undefined, undefined, true);
     this.html.addText(" with the lowest score will be explained");
 
     this.html.displayHTML(balise.gameModeMessage);
