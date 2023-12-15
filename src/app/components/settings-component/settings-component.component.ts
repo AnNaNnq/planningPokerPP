@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
 
 @Component({
@@ -6,7 +6,7 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
   templateUrl: './settings-component.component.html',
   styleUrls: ['./settings-component.component.scss']
 })
-export class SettingsComponentComponent{
+export class SettingsComponentComponent {
   constructor(private dataService: GameOptionServiceService) {}
 
   Data: { [Type: string]: string} = {}
@@ -32,7 +32,7 @@ export class SettingsComponentComponent{
   addPlayerName(event: any = 0) {
     if(event.target.value.length > 0){
       const placeholder = event.target.placeholder;
-      const match = placeholder.replace(/[^\d]/g, "");
+      const match = placeholder.replace(/\D/g, "");
       const id = parseInt(match);
       this.Players[id] = event.target.value;
       console.log(this.Players);
