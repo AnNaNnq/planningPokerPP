@@ -13,6 +13,7 @@ import {SettingsComponentComponent} from './components/settings-component/settin
 import { GameComponentComponent } from './components/game-component/game-component.component';
 import { TitleComponent } from './components/title/title.component';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
+import {NgIf} from "@angular/common";
 
 
 @NgModule({
@@ -26,12 +27,13 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
     TitleComponent,
     PlayerCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatIconModule,
-    NoopAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatIconModule,
+        NoopAnimationsModule,
+        NgIf
+    ],
   providers:
     [],
   bootstrap:

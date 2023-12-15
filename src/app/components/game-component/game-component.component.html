@@ -13,17 +13,12 @@
 
   <div id="PlayerButton">
     <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">
-      <div class="card-button_label"> {{ i }}</div>
+      <span *ngIf="i == 'cafe'" class="card-button_icon material-icons">local_cafe</span>
+      <div class="card-button_label" *ngIf="i != 'cafe'"> {{ i }}</div>
     </div>
   </div>
 
-  <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
-                [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
-                [captionColor]="'white'"
-                [name]="'Next'"
-                [link]="'/game'" id="validateButton">
-  </start-button>
-  <!-- <button id="validateButton" (click)="valideStage()">Valide</button> -->
+  <button id="validateButton" (click)="valideStage()">Valide</button>
 
 
   <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
