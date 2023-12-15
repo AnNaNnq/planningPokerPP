@@ -67,7 +67,7 @@ export abstract class ModeDecorator implements Game {
       return;
     }
 
-    this.html.showText(balise.title, "Turn of " + this.getPlayer(this.actualPlayerTurn));
+    this.html.showText(balise.title, this.getPlayer(this.actualPlayerTurn));
 
     this.html.addHtmlElement("label");
     this.html.addText("Standard value is " + this.getDefaultValue());
@@ -119,17 +119,17 @@ export abstract class ModeDecorator implements Game {
         nameCoffe = key;
       }
 
-      if(notes.includes("?")){
+      if (notes.includes("?")) {
         this.QuestionSelected(nameQuestion);
         return;
-      }else if (notes.includes("cafe")){
+      } else if (notes.includes("cafe")) {
         this.CoffeeSelected(nameCoffe);
         return;
       }
     });
-    if(notes.includes("?")){
+    if (notes.includes("?")) {
       return;
-    }else if(notes.includes("cafe")){
+    } else if (notes.includes("cafe")) {
       return;
     }
     this.html.addHtmlElement("ul", undefined, undefined, true);
@@ -144,7 +144,7 @@ export abstract class ModeDecorator implements Game {
     }
   }
 
-  QuestionSelected(playerName : string){
+  QuestionSelected(playerName: string) {
     const balise = HtmlBalise.getInstance();
     this.html.clearHTML(balise.stValue)
     this.html.clearHTML(balise.endMessage)
@@ -160,7 +160,7 @@ export abstract class ModeDecorator implements Game {
     balise.validateButton.innerText = "Try again";
   }
 
-  CoffeeSelected(playerName : string){
+  CoffeeSelected(playerName: string) {
     const balise = HtmlBalise.getInstance();
     this.html.clearHTML(balise.stValue)
     this.html.clearHTML(balise.endMessage)
@@ -314,7 +314,7 @@ export abstract class ModeDecorator implements Game {
     };
 
     Object.keys(data).forEach((key, index) => {
-      const entry: { [key: string]: any} = {};
+      const entry: { [key: string]: any } = {};
 
       entry[key] = data[key];
       entry['work'] = this.getActualStage() > index + 1;

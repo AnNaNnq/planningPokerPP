@@ -67,8 +67,8 @@ export class GameComponentComponent implements AfterViewInit {
           }
         });
       } else {
-        players[1] = "A";
-        players[2] = "B";
+        players[1] = "Michel";
+        players[2] = "Patrick";
       }
     });
     this.game?.setPlayers(players)
