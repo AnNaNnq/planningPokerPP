@@ -28,8 +28,8 @@ export abstract class ModeDecorator implements Game {
   chooseDefaultValue(): void {
     console.log(this.getBacklogData())
     const balise = HtmlBalise.getInstance();
-    this.html.showText(balise.title, "Choice of standard value :")
-    this.html.addHtmlElement("input", "stage1", {"type": "text", "placeholder": "Enter Task"})
+    this.html.showText(balise.task, "Choose a standard value")
+    balise.inputValue.style.display = "block"
     console.log(this.html.content)
     this.html.displayHTML(balise.stValue)
   }
@@ -48,7 +48,7 @@ export abstract class ModeDecorator implements Game {
 
   lunchStage() {
     const balise = HtmlBalise.getInstance();
-
+    balise.inputValue.style.display = "none"
     this.retry = false;
     this.downloadJson = false;
 
@@ -96,8 +96,9 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.endMessage)
     this.html.clearHTML(balise.task)
     this.html.clearHTML(balise.gameModeMessage)
+    this.html.clearHTML(balise.title)
 
-    this.html.showText(balise.title, "Reavel of Notation");
+    this.html.showText(balise.task, "Reavel of Notation");
 
     let notes: string[] = [];
     let evryboddySameMind = true;
@@ -157,7 +158,7 @@ export abstract class ModeDecorator implements Game {
     this.retry = true;
 
     balise.validateButton.style.display = 'block';
-    balise.validateButton.innerText = "Try again";
+    balise.validateButton.name = "Try again";
   }
 
   CoffeeSelected(playerName: string) {
@@ -174,7 +175,7 @@ export abstract class ModeDecorator implements Game {
     this.downloadJson = true;
 
     balise.validateButton.style.display = 'block';
-    balise.validateButton.innerText = "Download the JSON of your session to start again later";
+    balise.validateButton.name = "Download the JSON of your session to start again later";
   }
 
   nextStage() {
@@ -249,7 +250,7 @@ export abstract class ModeDecorator implements Game {
     })
 
     balise.validateButton.style.display = 'block';
-    balise.validateButton.innerHTML = "Next";
+    balise.validateButton.name = "block";
   }
 
   notSameMind() {

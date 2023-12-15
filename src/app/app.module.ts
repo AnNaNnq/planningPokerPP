@@ -14,6 +14,7 @@ import { GameComponentComponent } from './components/game-component/game-compone
 import { TitleComponent } from './components/title/title.component';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
 import {NgIf} from "@angular/common";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 
 @NgModule({
@@ -27,13 +28,14 @@ import {NgIf} from "@angular/common";
     TitleComponent,
     PlayerCardComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatIconModule,
-        NoopAnimationsModule,
-        NgIf
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
+    NoopAnimationsModule,
+    NgIf,
+    MatSidenavModule
+  ],
   providers:
     [],
   bootstrap:
