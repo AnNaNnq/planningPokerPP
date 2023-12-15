@@ -40,7 +40,7 @@ export interface Game {
 
   isDownload(): boolean;
 
-  creatAndDownloadJSON() : void;
+  creatAndDownloadJSON() : { [p: string]: any };
 
   setActualPlayerTurn(n : number): void;
 

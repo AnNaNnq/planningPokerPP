@@ -299,7 +299,7 @@ export abstract class ModeDecorator implements Game {
     return this.downloadJson;
   }
 
-  creatAndDownloadJSON(): void {
+  creatAndDownloadJSON(): { [p: string]: any } {
     let data = this.getBacklogData();
     let players = this.getPlayers();
 
@@ -322,18 +322,6 @@ export abstract class ModeDecorator implements Game {
       jsonOutput['Players'][(index + 1).toString().padStart(2, '0')] = players[parseInt(key)];
     });
 
-    const filename = 'output.json';
-    const json = JSON.stringify(jsonOutput, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = window.URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
-
-
-    HtmlBalise.clearInstance();
-    window.URL.revokeObjectURL(url);
+    return jsonOutput;
   }
 }

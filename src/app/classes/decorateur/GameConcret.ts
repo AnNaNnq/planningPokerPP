@@ -101,7 +101,9 @@ export class GameConcret implements Game{
     return false;
   }
 
-  creatAndDownloadJSON(): void {
+  creatAndDownloadJSON(): { [p: string]: any } {
+    const test : { [p: string]: any } = {}
+    return test;
   }
 
 }
