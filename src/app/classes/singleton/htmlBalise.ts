@@ -9,6 +9,7 @@ export class HtmlBalise{
   validateButton : HTMLButtonElement
   finishButton : HTMLElement;
   gameModeMessage : HTMLDivElement;
+  inputValue : HTMLInputElement;
 
   private constructor() {
     this.stValue = document.getElementById("StandarValue") as HTMLElement
@@ -19,6 +20,7 @@ export class HtmlBalise{
     this.validateButton = document.getElementById("validateButton") as HTMLButtonElement;
     this.finishButton = document.getElementById("finishButton") as HTMLElement;
     this.gameModeMessage = document.getElementById("gameModeMessage") as HTMLDivElement;
+    this.inputValue = document.getElementById("stage1") as HTMLInputElement;
   }
 
   static getInstance(): HtmlBalise {

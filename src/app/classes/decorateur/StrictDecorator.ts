@@ -38,7 +38,7 @@ export class StrictDecorator extends ModeDecorator{
     this.retry = true;
 
     balise.validateButton.style.display = 'block';
-    balise.validateButton.innerText = "Try again";
+    balise.validateButton.name = "Try again";
   }
 
   override creatAndDownloadJSON(): { [p: string]: any } {

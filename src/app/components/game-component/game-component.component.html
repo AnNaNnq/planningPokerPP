@@ -11,13 +11,16 @@
 
   <div id="gameModeMessage"></div>
 
+  <input id="stage1" type="text" placeholder="Enter Task">
+
   <div id="PlayerButton">
     <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">
       <div class="card-button_label"> {{ i }}</div>
     </div>
   </div>
 
-  <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
+  <start-button (buttonClicked)="valideStage()"
+                [pushableBackground]="'hsl(111, 100%, 35%)'"
                 [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
                 [captionColor]="'white'"
                 [name]="'Next'"
