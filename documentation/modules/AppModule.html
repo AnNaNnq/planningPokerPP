@@ -128,13 +128,13 @@
 <title>cluster_AppModule_imports</title>
 <polygon fill="none" stroke="black" points="1372,-78 1372,-130 1588,-130 1588,-78 1372,-78"/>
 </g>
-<g id="clust13" class="cluster">
-<title>cluster_AppModule_bootstrap</title>
-<polygon fill="none" stroke="black" points="787,-208 787,-260 911,-260 911,-208 787,-208"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_AppModule_declarations</title>
 <polygon fill="none" stroke="black" points="16,-78 16,-130 1364,-130 1364,-78 16,-78"/>
+</g>
+<g id="clust13" class="cluster">
+<title>cluster_AppModule_bootstrap</title>
+<polygon fill="none" stroke="black" points="787,-208 787,-260 911,-260 911,-208 787,-208"/>
 </g>
 <!-- AppComponent -->
 <g id="node1" class="node">
@@ -396,6 +396,7 @@ import { TitleComponent } from &#x27;./components/title/title.component&#x27;;
 import { PlayerCardComponent } from &#x27;./components/player-card/player-card.component&#x27;;
 import {NgIf} from &quot;@angular/common&quot;;
 import {MatSidenavModule} from &quot;@angular/material/sidenav&quot;;
+import {MatButtonModule} from &quot;@angular/material/button&quot;;
 
 
 @NgModule({
@@ -409,14 +410,15 @@ import {MatSidenavModule} from &quot;@angular/material/sidenav&quot;;
     TitleComponent,
     PlayerCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatIconModule,
-    NoopAnimationsModule,
-    NgIf,
-    MatSidenavModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatIconModule,
+        NoopAnimationsModule,
+        NgIf,
+        MatSidenavModule,
+        MatButtonModule
+    ],
   providers:
     [],
   bootstrap:

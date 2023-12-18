@@ -7,6 +7,7 @@
 }
 
 .header {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
 }
@@ -118,6 +119,36 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  color: #00a1ef;
-  width: 200px;
+  width: 300px;
+  padding: 10px;
 }
+
+.header_sidenav {
+  grid-column: 11;
+  grid-row: 1;
+  transform:scale(1.2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 0 10px 100px 0;
+  width: 90%;
+  text-align: right;
+
+  &:active {
+    color: #797777;
+  }
+}
+
+.cross {
+  background: none;
+  color: red;
+  border: none;
+  cursor: pointer;
+
+  &:active {
+    color: #730505;
+  }
+}
+
+

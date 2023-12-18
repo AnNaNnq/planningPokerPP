@@ -1,15 +1,20 @@
 import {Component} from '@angular/core';
 import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
 
+/**
+ * Component that create the page where the user will choose every option for his game.
+ */
 @Component({
   selector: 'settings-component',
   templateUrl: './settings-component.component.html',
   styleUrls: ['./settings-component.component.scss']
 })
-export class SettingsComponentComponent {
-  constructor(private dataService: GameOptionServiceService) {}
 
-  Data: { [Type: string]: string} = {}
+export class SettingsComponentComponent {
+  constructor(private dataService: GameOptionServiceService) {
+  }
+
+  Data: { [Type: string]: string } = {}
 
   BacklogData: string[] = [];
 
@@ -18,19 +23,19 @@ export class SettingsComponentComponent {
   mode = "strict";
 
   playerNumber: number = 2;
-  Players: { [key: number]: string} = {}
-  playersNb: number[] = [1,2]
+  Players: { [key: number]: string } = {}
+  playersNb: number[] = [1, 2]
 
-  getSliderValue(event:any=0) {
+  getSliderValue(event: any = 0) {
     this.playerNumber = event.target.value;
     this.playersNb = []
-    for(let i = 1; i <= this.playerNumber; i++){
+    for (let i = 1; i <= this.playerNumber; i++) {
       this.playersNb.push(i)
     }
   }
 
   addPlayerName(event: any = 0) {
-    if(event.target.value.length > 0){
+    if (event.target.value.length > 0) {
       const placeholder = event.target.placeholder;
       const match = placeholder.replace(/\D/g, "");
       const id = parseInt(match);
@@ -39,12 +44,12 @@ export class SettingsComponentComponent {
     }
   }
 
-  changeMod(event: any = 0){
+  changeMod(event: any = 0) {
     this.mode = event.target.value;
     console.log(this.mode);
   }
 
-  onFileSelected(event: any = 0){
+  onFileSelected(event: any = 0) {
     const selectedFile = event.target.files[0];
     const reader = new FileReader();
 
@@ -67,7 +72,7 @@ export class SettingsComponentComponent {
     reader.readAsText(selectedFile);
   }
 
-  sendData(){
+  sendData() {
     console.log("test");
     Object.keys(this.Players).forEach(key => {
       const playerKey = parseInt(key, 10)

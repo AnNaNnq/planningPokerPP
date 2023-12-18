@@ -131,6 +131,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that create a card for the player and their name, to have a better display
+in the <settings-component>.</p>
+
+    </p>
 
 
 
@@ -233,9 +241,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/components/player-card/player-card.component.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/player-card/player-card.component.ts:17</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Value of the current player.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -250,13 +264,21 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, Input} from &#x27;@angular/core&#x27;;
 
+/**
+ * Component that create a card for the player and their name, to have a better display
+ * in the &lt;settings-component&gt;.
+ */
 @Component({
   selector: &#x27;player-card&#x27;,
   templateUrl: &#x27;./player-card.component.html&#x27;,
   styleUrls: [&#x27;./player-card.component.scss&#x27;]
 })
+
 export class PlayerCardComponent {
-    @Input() i : number &#x3D; 0;
+  /**
+   * Value of the current player.
+   */
+  @Input() i: number &#x3D; 0;
 }
 </code></pre>
     </div>
