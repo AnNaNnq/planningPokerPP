@@ -6,6 +6,7 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
 import {HtmlDisplay} from "../../classes/facade/HtmlDisplay";
 import {HtmlBalise} from "../../classes/singleton/htmlBalise";
 import {Router} from "@angular/router";
+import {AverageDecorator} from "../../classes/decorateur/AverageDecorator";
 
 @Component({
   selector: 'game-component',
@@ -33,7 +34,8 @@ export class GameComponentComponent implements AfterViewInit {
     this.htmlDisplay = new HtmlDisplay();
 
     this.game = new GameConcret();
-    if (this.getMode() == "strict") this.game = new StrictDecorator(this.game)
+    if (this.getMode() == "strict") this.game = new StrictDecorator(this.game);
+    else if (this.getMode() == "moyenne") this.game = new AverageDecorator(this.game);
     else this.game = new StrictDecorator(this.game)
 
     this.setPlayers()

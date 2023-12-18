@@ -9,6 +9,8 @@ export abstract class ModeDecorator implements Game {
 
   actualPlayerTurn: number = 1;
 
+  notes: string[] = [];
+
   retry = false;
   downloadJson = false;
 
@@ -100,7 +102,6 @@ export abstract class ModeDecorator implements Game {
 
     this.html.showText(balise.task, "Reavel of Notation");
 
-    let notes: string[] = [];
     let evryboddySameMind = true;
 
     let nameQuestion = "";
@@ -112,7 +113,7 @@ export abstract class ModeDecorator implements Game {
       this.html.addHtmlElement("li");
       this.html.addText(key + " : " + this.getNote(key));
       this.html.addHtmlElement("li", undefined, undefined, true);
-      notes.push(this.getNote(key));
+      this.notes.push(this.getNote(key));
 
       if (this.getNote(key) == "?") {
         nameQuestion = key;
@@ -120,26 +121,26 @@ export abstract class ModeDecorator implements Game {
         nameCoffe = key;
       }
 
-      if (notes.includes("?")) {
+      if (this.notes.includes("?")) {
         this.QuestionSelected(nameQuestion);
         return;
-      } else if (notes.includes("cafe")) {
+      } else if (this.notes.includes("cafe")) {
         this.CoffeeSelected(nameCoffe);
         return;
       }
     });
-    if (notes.includes("?")) {
+    if (this.notes.includes("?")) {
       return;
-    } else if (notes.includes("cafe")) {
+    } else if (this.notes.includes("cafe")) {
       return;
     }
     this.html.addHtmlElement("ul", undefined, undefined, true);
     this.html.displayHTML(balise.stValue);
 
-    for (let i = 0; i < notes.length; i++) for (let j = i; j < notes.length; j++) if (notes[i] != notes[j]) evryboddySameMind = false;
+    for (let i = 0; i < this.notes.length; i++) for (let j = i; j < this.notes.length; j++) if (this.notes[i] != this.notes[j]) evryboddySameMind = false;
 
     if (evryboddySameMind) {
-      this.sameMind(notes[0]);
+      this.sameMind(this.notes[0]);
     } else {
       this.notSameMind();
     }

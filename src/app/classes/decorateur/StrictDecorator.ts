@@ -8,7 +8,7 @@ export class StrictDecorator extends ModeDecorator{
     const balise = HtmlBalise.getInstance();
 
     let max = 0;
-    let maxPlayer = ";"
+    let maxPlayer = "";
 
     let min = 1000;
     let minPlayer = "";
@@ -63,5 +63,4 @@ export class StrictDecorator extends ModeDecorator{
 
     return jsonWithMode
   }
-
 }
