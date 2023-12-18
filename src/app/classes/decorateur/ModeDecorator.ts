@@ -30,7 +30,7 @@ export abstract class ModeDecorator implements Game {
   chooseDefaultValue(): void {
     console.log(this.getBacklogData())
     const balise = HtmlBalise.getInstance();
-    this.html.showText(balise.task, "Choice of standard value :")
+    this.html.showText(balise.task, "Choose a standard value")
     balise.inputValue.style.display = "block"
     console.log(this.html.content)
     this.html.displayHTML(balise.stValue)

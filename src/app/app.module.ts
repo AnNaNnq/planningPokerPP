@@ -13,6 +13,8 @@ import {SettingsComponentComponent} from './components/settings-component/settin
 import { GameComponentComponent } from './components/game-component/game-component.component';
 import { TitleComponent } from './components/title/title.component';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
+import {NgIf} from "@angular/common";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    NgIf,
+    MatSidenavModule
   ],
   providers:
     [],

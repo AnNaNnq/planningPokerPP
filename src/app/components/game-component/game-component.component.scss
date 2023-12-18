@@ -34,7 +34,7 @@
 
 #StandarValue {
   font-family: 'Press Start 2P', serif;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 #ActualTask {
@@ -49,9 +49,11 @@
   box-shadow: 0 0 2px #fff, 0 0 7px #fff, 0 0 10px #d000ff, 0 0 25px #d000ff;
   font-family: 'Press Start 2P', serif;
   min-height: 80px;
-  font-size: 1.5em;
+  min-width: 800px;
+  font-size: 1.8em;
   display: flex;
   align-items: center;
+  line-height: 30px;
   justify-content: center;
   -webkit-text-stroke: 1px #ffffff;
 
@@ -98,4 +100,24 @@
   text-shadow: 0 0 7px #0fa, 0 0 120px #0fa;
   font-family: 'Press Start 2P', serif;
   font-size: 2.5em;
+}
+
+.card-button_icon {
+  height: 210px;
+  text-shadow: rgb(0, 255, 170) 0.1px 0.2px 6px;
+  color: rgb(255, 255, 255);
+  font-size: 3.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-sidenav-container {
+  height: 100%;
+  background: none;
+}
+
+mat-sidenav {
+  color: #00a1ef;
+  width: 200px;
 }

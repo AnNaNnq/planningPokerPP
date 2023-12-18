@@ -1,38 +1,49 @@
-<div class="container" xmlns="http://www.w3.org/1999/html">
+<mat-sidenav-container>
+  <mat-sidenav>
+    <a routerLink="/home"> SALUT CA MARCHE </a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container" xmlns="http://www.w3.org/1999/html">
 
-  <div class="header">
-    <div id="textToShow"></div>
-    <div id="ActualTask"></div>
-  </div>
+      <div class="header">
+        <div id="textToShow"></div>
+        <div id="ActualTask"></div>
+      </div>
 
-  <div id="StandarValue"></div>
+      <div id="StandarValue"></div>
 
-  <div id="endMessage"></div>
+      <div id="endMessage"></div>
 
-  <div id="gameModeMessage"></div>
+      <div id="gameModeMessage"></div>
 
-  <input id="stage1" type="text" placeholder="Enter Task">
+      <input id="stage1" type="text" placeholder="Enter Task">
 
-  <div id="PlayerButton">
-    <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">
-      <div class="card-button_label"> {{ i }}</div>
+      <div id="PlayerButton">
+        <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">
+          <span *ngIf="i == 'cafe'" class="card-button_icon material-icons">local_cafe</span>
+          <div class="card-button_label" *ngIf="i != 'cafe'"> {{ i }}</div>
+        </div>
+      </div>
+
+      <start-button (buttonClicked)="valideStage()"
+                    [pushableBackground]="'hsl(111, 100%, 35%)'"
+                    [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
+                    [captionColor]="'white'"
+                    [name]="'Next'"
+                    [link]="'/game'" id="validateButton">
+      </start-button>
+
+
+      <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
+                    [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
+                    [captionColor]="'white'"
+                    [name]="'BACk TO MAIN MENU'"
+                    [link]="'/'" id="finishButton" style="display: none">
+      </start-button>
     </div>
-  </div>
-
-  <start-button (buttonClicked)="valideStage()"
-                [pushableBackground]="'hsl(111, 100%, 35%)'"
-                [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
-                [captionColor]="'white'"
-                [name]="'Next'"
-                [link]="'/game'" id="validateButton">
-  </start-button>
-  <!-- <button id="validateButton" (click)="valideStage()">Valide</button> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 
-  <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
-                [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
-                [captionColor]="'white'"
-                [name]="'BACk TO MAIN MENU'"
-                [link]="'/'" id="finishButton" style="display: none">
-  </start-button>
-</div>
+
+
