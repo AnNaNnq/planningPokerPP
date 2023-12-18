@@ -7,6 +7,7 @@ import {HtmlDisplay} from "../../classes/facade/HtmlDisplay";
 import {HtmlBalise} from "../../classes/singleton/htmlBalise";
 import {Router} from "@angular/router";
 import {AverageDecorator} from "../../classes/decorateur/AverageDecorator";
+import {keyframes} from "@angular/animations";
 
 @Component({
   selector: 'game-component',
@@ -28,20 +29,22 @@ export class GameComponentComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.balise = HtmlBalise.getInstance();
-
     this.balise.playerButton.style.display = 'none';
-
     this.htmlDisplay = new HtmlDisplay();
-
     this.game = new GameConcret();
     if (this.getMode() == "strict") this.game = new StrictDecorator(this.game);
     else if (this.getMode() == "moyenne") this.game = new AverageDecorator(this.game);
     else this.game = new StrictDecorator(this.game)
-
     this.setPlayers()
-    this.setBacklog()
 
-    this.game.chooseDefaultValue();
+    if(this.isContinue()){
+      this.setBacklogNote()
+      this.game.continueGame(this.getDefaultValue(), this.getActuelLog());
+
+    }else {
+      this.setBacklog()
+      this.game.chooseDefaultValue();
+    }
   }
 
   getMode(): string {
@@ -56,6 +59,20 @@ export class GameComponentComponent implements AfterViewInit {
       }
     });
     return mode
+  }
+
+  isContinue(): boolean{
+    let cont = false;
+    this.dataService.data$.subscribe(data => {
+      if (data != null){
+        Object.keys(data).forEach(key => {
+          if(key.startsWith("Default")){
+            cont = true;
+          }
+        })
+      }
+    })
+    return cont;
   }
 
   setPlayers() {
@@ -82,7 +99,64 @@ export class GameComponentComponent implements AfterViewInit {
       if (data != null) {
         Object.keys(data).forEach(key => {
           if (key.startsWith('Backlog')) {
-            backlogData[data[key]] = 1
+            backlogData[data[key]] = 1;
+          }
+        });
+      } else {
+        backlogData["Boutton Start"] = 1;
+        backlogData["Boutton Quiter"] = 1;
+      }
+    });
+    this.game?.setBacklogData(backlogData)
+  }
+
+  getNote(id: number): number{
+    let n = 0
+
+    this.dataService.data$.subscribe(data => {
+      Object.keys(data).forEach(key => {
+        if(key.startsWith('Note' + id)){
+          n = data[key];
+        }
+      })
+    })
+
+    return n
+  }
+
+  getActuelLog(): number{
+    let n = 0;
+    this.dataService.data$.subscribe(data => {
+      Object.keys(data).forEach(key => {
+        if(key.startsWith('actualLog')){
+          n = data[key];
+        }
+      })
+    })
+    console.log(n)
+    return n;
+  }
+
+  getDefaultValue(): string{
+    let n = "";
+    this.dataService.data$.subscribe(data => {
+      Object.keys(data).forEach(key => {
+        if(key.startsWith('Default')){
+          n = data[key];
+        }
+      })
+    })
+    console.log(n)
+    return n;
+  }
+
+  setBacklogNote(){
+    let backlogData: { [key: string]: number } = {};
+    this.dataService.data$.subscribe(data => {
+      if (data != null) {
+        Object.keys(data).forEach(key => {
+          if (key.startsWith('Backlog')) {
+            backlogData[data[key]] = this.getNote(parseInt(key.match(/\d+/)?.[0] || ''));
           }
         });
       } else {

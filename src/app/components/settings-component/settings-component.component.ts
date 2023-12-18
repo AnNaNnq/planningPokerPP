@@ -68,7 +68,6 @@ export class SettingsComponentComponent {
   }
 
   sendData(){
-    console.log("test");
     Object.keys(this.Players).forEach(key => {
       const playerKey = parseInt(key, 10)
       const strKey = "Player" + playerKey;

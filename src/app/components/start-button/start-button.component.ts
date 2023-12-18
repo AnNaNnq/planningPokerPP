@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'start-button',
   templateUrl: './start-button.component.html',
   styleUrls: ['./start-button.component.scss']
 })
-export class StartButtonComponent {
+export class StartButtonComponent{
   /**
    * La variable qui permet de changer la couleur en dessous d'un bouton de type <start-button>
    * lorsqu'on l'appelle dans un autre composant.

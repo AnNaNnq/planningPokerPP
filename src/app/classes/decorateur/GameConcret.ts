@@ -1,6 +1,9 @@
 import {Game} from "./Game";
 
 export class GameConcret implements Game{
+  continueGame(defaultValue: string, actualLog: number): void {
+      throw new Error("Method not implemented.");
+  }
 
   Players: { [key: number]: string} = {};
   PlayersNote: { [key : string]: string } = {};
@@ -19,6 +22,7 @@ export class GameConcret implements Game{
 
   setBacklogData(BacklogData: { [key : string]: number }){
     this.BacklogData = BacklogData
+    console.log(this.BacklogData)
   }
 
   chooseDefaultValue(): void {

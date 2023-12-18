@@ -49,6 +49,7 @@ export abstract class ModeDecorator implements Game {
   }
 
   lunchStage() {
+    this.notes = []
     const balise = HtmlBalise.getInstance();
     balise.inputValue.style.display = "none"
     this.retry = false;
@@ -154,7 +155,10 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.gameModeMessage)
 
     this.html.addText(playerName + " didn't understand the function, explain it to him")
-    this.html.displayHTML(balise.title);
+    this.html.displayHTML(balise.stValue);
+
+    this.html.addText("Questioning")
+    this.html.displayHTML(balise.task)
 
     this.retry = true;
 
@@ -170,7 +174,10 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.gameModeMessage)
 
     this.html.addText(playerName + " says it's too complicated and that we should talk about it over a good cup of coffee.")
-    this.html.displayHTML(balise.title);
+    this.html.displayHTML(balise.stValue);
+
+    this.html.addText("Timeout")
+    this.html.displayHTML(balise.task)
 
     this.retry = false;
     this.downloadJson = true;
@@ -278,6 +285,7 @@ export abstract class ModeDecorator implements Game {
 
     this.html.clearHTML(balise.stValue)
     this.html.clearHTML(balise.endMessage)
+    this.html.clearHTML(balise.gameModeMessage)
 
     this.html.showText(balise.title, "Summary");
 
@@ -329,5 +337,9 @@ export abstract class ModeDecorator implements Game {
     });
 
     return jsonOutput;
+  }
+
+  continueGame(defaultValue: string, actualLog: number): void {
+
   }
 }

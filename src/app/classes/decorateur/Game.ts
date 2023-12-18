@@ -6,6 +6,8 @@ export interface Game {
 
   chooseDefaultValue(): void;
 
+  continueGame(defaultValue: string, actualLog: number): void;
+
   setupDefaultValue(): boolean;
 
   setDefaultValue(value: string): void;

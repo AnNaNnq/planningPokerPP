@@ -13,7 +13,9 @@
                 [captionBackground]="'linear-gradient(#4935b0, #281775)'"
                 [captionColor]="'white'"
                 [name]="'CONTINUE'"
-                [link]="'/game'">
+                [link]="'/game'" id="contniue-button"
+                (buttonClicked)="sendData()">
   </start-button>
 </div>
+<input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
 
