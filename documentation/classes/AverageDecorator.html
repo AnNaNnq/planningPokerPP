@@ -88,7 +88,7 @@
                                     <a href="../components/GameComponentComponent.html" >GameComponentComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/InformationButtonComponent.html"  class="active" >InformationButtonComponent</a>
+                                    <a href="../components/InformationButtonComponent.html" >InformationButtonComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MainMenuComponent.html" >MainMenuComponent</a>
@@ -121,7 +121,7 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AverageDecorator.html" >AverageDecorator</a>
+                                    <a href="../classes/AverageDecorator.html"  class="active" >AverageDecorator</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/GameConcret.html" >GameConcret</a>
@@ -270,7 +270,7 @@
                                            <a href="../components/GameComponentComponent.html" >GameComponentComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/InformationButtonComponent.html"  class="active" >InformationButtonComponent</a>
+                                           <a href="../components/InformationButtonComponent.html" >InformationButtonComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MainMenuComponent.html" >MainMenuComponent</a>
@@ -303,7 +303,7 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AverageDecorator.html" >AverageDecorator</a>
+                                           <a href="../classes/AverageDecorator.html"  class="active" >AverageDecorator</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/GameConcret.html" >GameConcret</a>
@@ -378,108 +378,152 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content class">
                    <div class="content-data">
 
 
+
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>InformationButtonComponent</li>
+  <li>Classes</li>
+  <li>AverageDecorator</li>
 </ol>
 
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
+    </li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
+    </li>
+</ul>
 
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-        </li>
-        <li>
-            <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="infos"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/components/information-button/information-button.component.ts</code>
-</p>
-
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Component that create an information button to explain the rules and the goal of this website.</p>
-
-    </p>
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/classes/decorateur/AverageDecorator.ts</code>
+        </p>
 
 
 
 
 
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> notesList</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>notesList:     <code>number[]</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> override</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>override:     <code>any</code>
+            </bcode>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre><code class="hljs javascript">import {ModeDecorator} from &quot;./ModeDecorator&quot;;
+import {HtmlBalise} from &quot;../singleton/htmlBalise&quot;;
+
+export class AverageDecorator extends ModeDecorator{
+
+  notesList &#x3D; [0, 1, 2, 3, 5, 8, 20, 40, 100];
+
+  override notSameMind() {
+    super.notSameMind();
+
+    const balise &#x3D; HtmlBalise.getInstance();
+
+    let n &#x3D; 0
+
+    for(let i &#x3D; 0; i &lt; this.notes.length; i++){
+      n +&#x3D; parseInt(this.notes[i]);
+      console.log(&quot;n&quot;, n)
+    }
+
+    n /&#x3D; this.notes.length
+    console.log(&quot;total&quot;, n)
+
+    let value &#x3D; 0;
+
+    let distance &#x3D; 1000;
+    for(let i &#x3D; this.notesList.length; i &gt;&#x3D; 0; i--){
+      if (distance &gt; Math.abs(this.notesList[i] - n)){
+        distance &#x3D;  Math.abs(n - this.notesList[i]);
+        value &#x3D; this.notesList[i]
+        console.log(&quot;distance&quot;,  distance, &quot;n&quot;, n, &quot;value&quot;, value)
+      }
+    }
+
+    let nb &#x3D;0;
+
+    this.html.addText(&quot;We can use the average of all your notation for the final notation : &quot;);
+    Object.keys(this.getBacklogData()).forEach(key &#x3D;&gt; {
+      nb++;
+      if (nb &#x3D;&#x3D; this.getActualStage()) {
+        this.modifyBacklogData(key, value)
+        this.html.addText(value + &quot;&quot;)
+      }
+    })
 
 
+    this.html.displayHTML(balise.gameModeMessage);
 
+    balise.validateButton.style.display &#x3D; &quot;block&quot;
+  }
 
+  override creatAndDownloadJSON(): { [p: string]: any } {
+    let jsonOutput &#x3D; super.creatAndDownloadJSON();
 
+    const jsonWithMode &#x3D; {
+      mode: &quot;moyenne&quot;,
+      ...jsonOutput
+    };
 
+    const filename &#x3D; &#x27;output.json&#x27;;
+    const json &#x3D; JSON.stringify(jsonWithMode, null, 2);
+    const blob &#x3D; new Blob([json], { type: &#x27;application/json&#x27; });
+    const url &#x3D; window.URL.createObjectURL(blob);
 
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>information-button</code></td>
-            </tr>
+    const a &#x3D; document.createElement(&#x27;a&#x27;);
+    a.href &#x3D; url;
+    a.download &#x3D; filename;
+    a.click();
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>information-button.component.scss</code></td>
-            </tr>
+    window.URL.revokeObjectURL(url);
 
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>information-button.component.html</code></td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
-
-
-
-
-</div>
-        <div class="tab-pane fade tab-source-code" id="source">
-            <pre><code class="hljs javascript">import {Component} from &#x27;@angular/core&#x27;;
-
-/**
- * Component that create an information button to explain the rules and the goal of this website.
- */
-@Component({
-  selector: &#x27;information-button&#x27;,
-  templateUrl: &#x27;./information-button.component.html&#x27;,
-  styleUrls: [&#x27;./information-button.component.scss&#x27;]
-})
-
-export class InformationButtonComponent {
-
+    return jsonWithMode
+  }
 }
 </code></pre>
-        </div>
     </div>
-
-
-
-
-
+</div>
 
 
 

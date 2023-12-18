@@ -1,5 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
+/**
+ * Component that create a configurable button with some specific style, the only change possible
+ * is the link, the color of the background and the text.
+ */
 @Component({
   selector: 'start-button',
   templateUrl: './start-button.component.html',
@@ -7,43 +11,38 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class StartButtonComponent{
   /**
-   * La variable qui permet de changer la couleur en dessous d'un bouton de type <start-button>
-   * lorsqu'on l'appelle dans un autre composant.
+   * Variable to change the color under a button when it's called in another component.
    */
   @Input() pushableBackground: string = '';
 
   /**
-   * La variable qui permet de changer la couleur de fond d'un bouton de type <start-button>
-   * lorsqu'on l'appelle dans un autre composant.
+   * Variable to change the background color of a button when it's called in another component.
    */
   @Input() captionBackground: string = '';
 
   /**
-   * La variable qui permet de changer la couleur du texte d'un bouton de type <start-button>
-   * lorsqu'on l'appelle dans un autre composant.
+   * Variable to change the text color of a button when it's called in another component.
    */
   @Input() captionColor: string = '';
 
   /**
-   * La variable qui permet de changer le nom d'un bouton de type <start-button>
-   * lorsqu'on l'appelle dans un autre composant.
+   * Variable to change the text on a button when it's called in another component.
    */
   @Input() name: string = '';
 
   /**
-   * La variable qui permet de changer le lien vers lequel redirige un bouton de type <start-button>
-   * lorsqu'on l'appelle dans un autre composant.
+   * Variable to change the link of a button when it's called in another component.
    */
   @Input() link: string = '';
 
   /**
-   * La variable qui permet d'envoyer un message lorsque le bouton est cliqué.
+   * Variable who send a message when the button's clicked.
    */
   @Output() buttonClicked = new EventEmitter<void>();
 
 
   /**
-   * La fonction qui envoie un message qui s'appelle buttonClicked.
+   * Send a message with the variable buttonClicked.
    */
   onButtonClick() {
     this.buttonClicked.emit();

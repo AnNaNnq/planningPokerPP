@@ -1,4 +1,4 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Game} from "../../classes/decorateur/Game";
 import {GameConcret} from "../../classes/decorateur/GameConcret";
 import {StrictDecorator} from "../../classes/decorateur/StrictDecorator";
@@ -14,7 +14,7 @@ import {keyframes} from "@angular/animations";
   templateUrl: './game-component.component.html',
   styleUrls: ['./game-component.component.scss']
 })
-export class GameComponentComponent implements AfterViewInit {
+export class GameComponentComponent implements AfterViewInit, OnInit {
 
   constructor(private dataService: GameOptionServiceService, private router: Router) {
   }
@@ -26,6 +26,10 @@ export class GameComponentComponent implements AfterViewInit {
   listValue = ["0", "1", "2", "3", "5", "8", "20", "40", "100", "?", "cafe"]
 
   balise: HtmlBalise | undefined;
+
+  opened = false;
+
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.balise = HtmlBalise.getInstance();

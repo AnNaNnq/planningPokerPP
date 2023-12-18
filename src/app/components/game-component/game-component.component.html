@@ -1,6 +1,6 @@
 <mat-sidenav-container>
-  <mat-sidenav>
-    <a routerLink="/home"> SALUT CA MARCHE </a>
+  <mat-sidenav [(opened)]="opened" position="end">
+    <button class="cross" (click)="opened=false"> <mat-icon>clear</mat-icon> </button>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -8,6 +8,10 @@
       <div class="header">
         <div id="textToShow"></div>
         <div id="ActualTask"></div>
+
+        <button class="header_sidenav" (click)="opened=!opened">
+          <mat-icon> menu</mat-icon>
+        </button>
       </div>
 
       <div id="StandarValue"></div>
