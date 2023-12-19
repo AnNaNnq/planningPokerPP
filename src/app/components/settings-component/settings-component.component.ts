@@ -11,21 +11,44 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
 })
 
 export class SettingsComponentComponent {
+  /** @ignore */
   constructor(private dataService: GameOptionServiceService) {
   }
 
+  /**
+   * Data that will be passed to the game
+   */
   Data: { [Type: string]: string } = {}
 
+  /**
+   * Backlog list retrieve JSON file
+   */
   BacklogData: string[] = [];
 
+  /**
+   * Maximum number of players per game
+   */
   playerMax: number = 15;
 
+  /**
+   * Select game mode
+   */
   mode = "strict";
 
+  /**
+   * Current number of players
+   */
   playerNumber: number = 2;
+  /**
+   * List of players
+   */
   Players: { [key: number]: string } = {}
-  playersNb: number[] = [1, 2]
+  /** @ignore */playersNb: number[] = [1, 2]
 
+  /**
+   * Modifies the number of players by the slider value
+   * @param event slider value
+   */
   getSliderValue(event: any = 0) {
     this.playerNumber = event.target.value;
     this.playersNb = []
@@ -34,6 +57,10 @@ export class SettingsComponentComponent {
     }
   }
 
+  /**
+   * Changes the name of the player whose name has just been entered
+   * @param event input text value
+   */
   addPlayerName(event: any = 0) {
     if (event.target.value.length > 0) {
       const placeholder = event.target.placeholder;
@@ -44,11 +71,19 @@ export class SettingsComponentComponent {
     }
   }
 
+  /**
+   * Change game mode
+   * @param event value of check box
+   */
   changeMod(event: any = 0) {
     this.mode = event.target.value;
     console.log(this.mode);
   }
 
+  /**
+   * Changes backlog values based on imported JSON file
+   * @param event JSON file
+   */
   onFileSelected(event: any = 0) {
     const selectedFile = event.target.files[0];
     const reader = new FileReader();
@@ -72,6 +107,9 @@ export class SettingsComponentComponent {
     reader.readAsText(selectedFile);
   }
 
+  /**
+   * Sends data to the game
+   */
   sendData(){
     console.log("test");
     Object.keys(this.Players).forEach(key => {

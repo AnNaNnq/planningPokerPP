@@ -8,376 +8,84 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-	    <link rel="stylesheet" href="../styles/style.css">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="../" class="navbar-brand">planning-poker-pp documentation</a>
-            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <div id="book-search-input" role="search">
-                <input type="text" placeholder="Type to search">
-            </div>
-            <nav>
-            
-                <ul class="list">
-            
-                    <li class="title">
-                        <a href="../">planning-poker-pp documentation</a>
-                    </li>
-            
-                    <li class="divider"></li>
-            
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
-                        <ul class="links">
-                                <li class="link">
-                                    <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
-                                </li>
-                                <li class="link">
-                                    <a 
-                                        
-                                         href="../overview.html" 
-                                         href="../overview.html" 
-                                        >
-                                        <span class="fa fa-th"></span>Overview
-                                    </a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-modules-links"
-                            ></span>
-                        </a>
-                        <ul class="links collapse in"
-                                id="xs-modules-links"
-                            >
-                                <li class="link">
-                                    <a href="../modules/AppModule.html" >AppModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../modules/AppRoutingModule.html" >AppRoutingModule</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-cogs"></span>
-                            <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-components-links"
-                            >
-                                <li class="link">
-                                    <a href="../components/AppComponent.html" >AppComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/GameComponentComponent.html" >GameComponentComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/InformationButtonComponent.html" >InformationButtonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/MainMenuComponent.html" >MainMenuComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/PlayerCardComponent.html" >PlayerCardComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/SettingsComponentComponent.html" >SettingsComponentComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/StartButtonComponent.html" >StartButtonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/TitleComponent.html" >TitleComponent</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-file-code-o"></span>
-                            <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-classes-links"
-                            >
-                                <li class="link">
-                                    <a href="../classes/AverageDecorator.html" >AverageDecorator</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/GameConcret.html" >GameConcret</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/HtmlBalise.html" >HtmlBalise</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/HtmlDisplay.html" >HtmlDisplay</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/ModeDecorator.html" >ModeDecorator</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/StrictDecorator.html" >StrictDecorator</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-long-arrow-down"></span>
-                            <span>Injectables</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-injectables-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-injectables-links"
-                            >
-                                <li class="link">
-                                    <a href="../injectables/GameOptionServiceService.html" >GameOptionServiceService</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/Game.html"  class="active" >Game</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
-                    </li>
-            
-                    <li class="divider"></li>
-                    <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
-                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
-                            </a>
-                    </li>
-            
-                </ul>
-            
-            </nav>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <nav>
-                   
-                       <ul class="list">
-                   
-                           <li class="title">
-                               <a href="../">planning-poker-pp documentation</a>
-                           </li>
-                   
-                           <li class="divider"></li>
-                   
-                               <div id="book-search-input" role="search">
-                                   <input type="text" placeholder="Type to search">
-                               </div>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="../"><span class="fa fa-home"></span>Getting started</a>
-                               <ul class="links">
-                                       <li class="link">
-                                           <a href="../" ><span class="fa fa-file-text-o"></span>README</a>
-                                       </li>
-                                       <li class="link">
-                                           <a 
-                                               
-                                                href="../overview.html" 
-                                                href="../overview.html" 
-                                               >
-                                               <span class="fa fa-th"></span>Overview
-                                           </a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#modules-links"
-                                   ></span>
-                               </a>
-                               <ul class="links collapse in"
-                                       id="modules-links"
-                   >
-                                       <li class="link">
-                                           <a href="../modules/AppModule.html" >AppModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../modules/AppRoutingModule.html" >AppRoutingModule</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-cogs"></span>
-                                   <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="components-links"
-                   >
-                                       <li class="link">
-                                           <a href="../components/AppComponent.html" >AppComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/GameComponentComponent.html" >GameComponentComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/InformationButtonComponent.html" >InformationButtonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/MainMenuComponent.html" >MainMenuComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/PlayerCardComponent.html" >PlayerCardComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/SettingsComponentComponent.html" >SettingsComponentComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/StartButtonComponent.html" >StartButtonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/TitleComponent.html" >TitleComponent</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-file-code-o"></span>
-                                   <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="classes-links"
-                   >
-                                       <li class="link">
-                                           <a href="../classes/AverageDecorator.html" >AverageDecorator</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/GameConcret.html" >GameConcret</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/HtmlBalise.html" >HtmlBalise</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/HtmlDisplay.html" >HtmlDisplay</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/ModeDecorator.html" >ModeDecorator</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/StrictDecorator.html" >StrictDecorator</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="../routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-long-arrow-down"></span>
-                                   <span>Injectables</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#injectables-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="injectables-links"
-                   >
-                                       <li class="link">
-                                           <a href="../injectables/GameOptionServiceService.html" >GameOptionServiceService</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/Game.html"  class="active" >Game</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
-                           </li>
-                   
-                           <li class="divider"></li>
-                           <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
-                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
-                                   </a>
-                           </li>
-                   
-                       </ul>
-                   
-                   </nav>
+                   <compodoc-menu mode="normal"></compodoc-menu>
                </div>
+               <!-- START CONTENT -->
                <div class="content interface">
                    <div class="content-data">
 
@@ -387,22 +95,36 @@
 
 
 
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Interfaces</li>
-  <li>Game</li>
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  Game</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
-    <li class="active">
-        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab">Infos</a>
-    </li>
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab">Source</a>
-    </li>
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="infos">
+    <div class="tab-pane fade active in" id="info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -411,614 +133,1553 @@
         </p>
 
 
-            <section>
-                <h3 id="methods">Methods</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> setPlayers</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>setPlayers(players: { [key: number]: string; })</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> setBacklogData</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>setBacklogData(BacklogData: { [key: string]: number; })</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> chooseDefaultValue</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>chooseDefaultValue()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> continueGame</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>continueGame(defaultValue: string, actualLog: number)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> setupDefaultValue</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>setupDefaultValue()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>boolean</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> setDefaultValue</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>setDefaultValue(value: string)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> nextStage</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>nextStage()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> lunchStage</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>lunchStage()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getActualStage</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getActualStage()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>number</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPlayerNumber</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPlayerNumber()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>number</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPlayer</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPlayer(key: number)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getDefaultValue</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getDefaultValue()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getBacklogData</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getBacklogData()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>{ [key: string]: number; }</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> playerPushButton</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>playerPushButton(id: string)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPlayers</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPlayers()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>{ [key: number]: string; }</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> addNote</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>addNote(value: string, key: string)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getNotes</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getNotes()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>{ [key: string]: string; }</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getNote</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getNote(key: string)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>string</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> modifyBacklogData</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>modifyBacklogData(key: string, value: number)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> isRetry</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>isRetry()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>boolean</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> isDownload</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>isDownload()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>boolean</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> creatAndDownloadJSON</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>creatAndDownloadJSON()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>{ [p: string]: any; }</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> setActualPlayerTurn</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>setActualPlayerTurn(n: number)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> end</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>end()</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getBacklogDataNote</b>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-            <code>getBacklogDataNote(key: string)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description">
-                                            <b>Returns: </b>    <code>number</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
 
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Methods</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#addNote" 
+>
+                                        addNote
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#chooseDefaultValue" 
+>
+                                        chooseDefaultValue
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#continueGame" 
+>
+                                        continueGame
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#creatAndDownloadJSON" 
+>
+                                        creatAndDownloadJSON
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#end" 
+>
+                                        end
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getActualStage" 
+>
+                                        getActualStage
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getBacklogData" 
+>
+                                        getBacklogData
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getBacklogDataNote" 
+>
+                                        getBacklogDataNote
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getDefaultValue" 
+>
+                                        getDefaultValue
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getNote" 
+>
+                                        getNote
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getNotes" 
+>
+                                        getNotes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getPlayer" 
+>
+                                        getPlayer
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getPlayerNumber" 
+>
+                                        getPlayerNumber
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#getPlayers" 
+>
+                                        getPlayers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#isDownload" 
+>
+                                        isDownload
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#isRetry" 
+>
+                                        isRetry
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#lunchStage" 
+>
+                                        lunchStage
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#modifyBacklogData" 
+>
+                                        modifyBacklogData
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#nextStage" 
+>
+                                        nextStage
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#playerPushButton" 
+>
+                                        playerPushButton
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#setActualPlayerTurn" 
+>
+                                        setActualPlayerTurn
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#setBacklogData" 
+>
+                                        setBacklogData
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#setDefaultValue" 
+>
+                                        setDefaultValue
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#setPlayers" 
+>
+                                        setPlayers
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#setStage" 
+>
+                                        setStage
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#setupDefaultValue" 
+>
+                                        setupDefaultValue
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addNote"></a>
+                    <span class="name">
+                        <span ><b>addNote</b></span>
+                        <a href="#addNote"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addNote(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chooseDefaultValue"></a>
+                    <span class="name">
+                        <span ><b>chooseDefaultValue</b></span>
+                        <a href="#chooseDefaultValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>chooseDefaultValue()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="7"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:7</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="continueGame"></a>
+                    <span class="name">
+                        <span ><b>continueGame</b></span>
+                        <a href="#continueGame"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>continueGame(defaultValue: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, actualLog: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="9"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:9</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>defaultValue</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>actualLog</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="creatAndDownloadJSON"></a>
+                    <span class="name">
+                        <span ><b>creatAndDownloadJSON</b></span>
+                        <a href="#creatAndDownloadJSON"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>creatAndDownloadJSON()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="end"></a>
+                    <span class="name">
+                        <span ><b>end</b></span>
+                        <a href="#end"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>end()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getActualStage"></a>
+                    <span class="name">
+                        <span ><b>getActualStage</b></span>
+                        <a href="#getActualStage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getActualStage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="21"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBacklogData"></a>
+                    <span class="name">
+                        <span ><b>getBacklogData</b></span>
+                        <a href="#getBacklogData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBacklogData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBacklogDataNote"></a>
+                    <span class="name">
+                        <span ><b>getBacklogDataNote</b></span>
+                        <a href="#getBacklogDataNote"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBacklogDataNote(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDefaultValue"></a>
+                    <span class="name">
+                        <span ><b>getDefaultValue</b></span>
+                        <a href="#getDefaultValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDefaultValue()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNote"></a>
+                    <span class="name">
+                        <span ><b>getNote</b></span>
+                        <a href="#getNote"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNote(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNotes"></a>
+                    <span class="name">
+                        <span ><b>getNotes</b></span>
+                        <a href="#getNotes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNotes()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="37"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPlayer"></a>
+                    <span class="name">
+                        <span ><b>getPlayer</b></span>
+                        <a href="#getPlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPlayer(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="25"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPlayerNumber"></a>
+                    <span class="name">
+                        <span ><b>getPlayerNumber</b></span>
+                        <a href="#getPlayerNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPlayerNumber()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPlayers"></a>
+                    <span class="name">
+                        <span ><b>getPlayers</b></span>
+                        <a href="#getPlayers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPlayers()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>literal type</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDownload"></a>
+                    <span class="name">
+                        <span ><b>isDownload</b></span>
+                        <a href="#isDownload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isDownload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isRetry"></a>
+                    <span class="name">
+                        <span ><b>isRetry</b></span>
+                        <a href="#isRetry"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isRetry()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lunchStage"></a>
+                    <span class="name">
+                        <span ><b>lunchStage</b></span>
+                        <a href="#lunchStage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>lunchStage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="19"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modifyBacklogData"></a>
+                    <span class="name">
+                        <span ><b>modifyBacklogData</b></span>
+                        <a href="#modifyBacklogData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>modifyBacklogData(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>key</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextStage"></a>
+                    <span class="name">
+                        <span ><b>nextStage</b></span>
+                        <a href="#nextStage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>nextStage()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="playerPushButton"></a>
+                    <span class="name">
+                        <span ><b>playerPushButton</b></span>
+                        <a href="#playerPushButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>playerPushButton(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setActualPlayerTurn"></a>
+                    <span class="name">
+                        <span ><b>setActualPlayerTurn</b></span>
+                        <a href="#setActualPlayerTurn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setActualPlayerTurn(n: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>n</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setBacklogData"></a>
+                    <span class="name">
+                        <span ><b>setBacklogData</b></span>
+                        <a href="#setBacklogData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setBacklogData(BacklogData: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="5"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:5</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>BacklogData</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setDefaultValue"></a>
+                    <span class="name">
+                        <span ><b>setDefaultValue</b></span>
+                        <a href="#setDefaultValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setDefaultValue(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="13"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPlayers"></a>
+                    <span class="name">
+                        <span ><b>setPlayers</b></span>
+                        <a href="#setPlayers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPlayers(players: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="3"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:3</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>players</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setStage"></a>
+                    <span class="name">
+                        <span ><b>setStage</b></span>
+                        <a href="#setStage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setStage(nb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nb</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setupDefaultValue"></a>
+                    <span class="name">
+                        <span ><b>setupDefaultValue</b></span>
+                        <a href="#setupDefaultValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setupDefaultValue()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="11"
+                                    class="link-to-prism">src/app/classes/decorateur/Game.ts:11</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
     </div>
-    <div class="tab-pane fade tab-source-code" id="source">
-        <pre><code class="hljs javascript">export interface Game {
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Game {
 
   setPlayers(players: { [key: number]: string }): void;
 
@@ -1033,6 +1694,8 @@
   setDefaultValue(value: string): void;
 
   nextStage(): void;
+
+  setStage(nb: number): void;
 
   lunchStage(): void;
 
@@ -1077,6 +1740,10 @@
 
 
 
+
+
+
+
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
@@ -1087,8 +1754,31 @@
     </div>
 </div>
 </div>
+               <!-- END CONTENT -->
            </div>
        </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'Game.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
@@ -1099,20 +1789,17 @@
 
        <script src="../js/compodoc.js"></script>
 
-       <script src="../js/search/search.js"></script>
-       <script src="../js/search/lunr.min.js"></script>
-       <script src="../js/search/search-lunr.js"></script>
-
+       <script src="../js/tabs.js"></script>
        <script src="../js/menu.js"></script>
-       <script src="../js/libs/highlight.pack.js"></script>
-       <script src="../js/libs/highlightjs-line-numbers.min.js"></script>
-       <script src="../js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
 
     </body>
 </html>

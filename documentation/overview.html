@@ -8,447 +8,347 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-	    <link rel="stylesheet" href="./styles/style.css">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
             <a href="./" class="navbar-brand">planning-poker-pp documentation</a>
-            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-            <div id="book-search-input" role="search">
-                <input type="text" placeholder="Type to search">
-            </div>
-            <nav>
-            
-                <ul class="list">
-            
-                    <li class="title">
-                        <a href="./">planning-poker-pp documentation</a>
-                    </li>
-            
-                    <li class="divider"></li>
-            
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="./"><span class="fa fa-home"></span>Getting started</a>
-                        <ul class="links">
-                                <li class="link">
-                                    <a href="./" ><span class="fa fa-file-text-o"></span>README</a>
-                                </li>
-                                <li class="link">
-                                    <a 
-                                         href="./overview.html" 
-                                        
-                                         href="./overview.html" 
-                                         class="active" >
-                                        <span class="fa fa-th"></span>Overview
-                                    </a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-modules-links"
-                            ></span>
-                        </a>
-                        <ul class="links collapse in"
-                                id="xs-modules-links"
-                            >
-                                <li class="link">
-                                    <a href="modules/AppModule.html" >AppModule</a>
-                                </li>
-                                <li class="link">
-                                    <a href="modules/AppRoutingModule.html" >AppRoutingModule</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-cogs"></span>
-                            <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-components-links"
-                            >
-                                <li class="link">
-                                    <a href="components/AppComponent.html" >AppComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/GameComponentComponent.html" >GameComponentComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/InformationButtonComponent.html" >InformationButtonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/MainMenuComponent.html" >MainMenuComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/PlayerCardComponent.html" >PlayerCardComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/SettingsComponentComponent.html" >SettingsComponentComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/StartButtonComponent.html" >StartButtonComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="components/TitleComponent.html" >TitleComponent</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-file-code-o"></span>
-                            <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-classes-links"
-                            >
-                                <li class="link">
-                                    <a href="classes/AverageDecorator.html" >AverageDecorator</a>
-                                </li>
-                                <li class="link">
-                                    <a href="classes/GameConcret.html" >GameConcret</a>
-                                </li>
-                                <li class="link">
-                                    <a href="classes/HtmlBalise.html" >HtmlBalise</a>
-                                </li>
-                                <li class="link">
-                                    <a href="classes/HtmlDisplay.html" >HtmlDisplay</a>
-                                </li>
-                                <li class="link">
-                                    <a href="classes/ModeDecorator.html" >ModeDecorator</a>
-                                </li>
-                                <li class="link">
-                                    <a href="classes/StrictDecorator.html" >StrictDecorator</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="./routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-long-arrow-down"></span>
-                            <span>Injectables</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-injectables-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-injectables-links"
-                            >
-                                <li class="link">
-                                    <a href="injectables/GameOptionServiceService.html" >GameOptionServiceService</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="interfaces/Game.html" >Game</a>
-                                </li>
-                        </ul>
-                    </li>
-            
-            
-            
-                    <li class="chapter">
-                        <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
-                    </li>
-            
-                    <li class="divider"></li>
-                    <li class="copyright">
-                            Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
-                                        <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
-                            </a>
-                    </li>
-            
-                </ul>
-            
-            </nav>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
            <div class="row main">
                <div class="hidden-xs menu">
-                   <nav>
-                   
-                       <ul class="list">
-                   
-                           <li class="title">
-                               <a href="./">planning-poker-pp documentation</a>
-                           </li>
-                   
-                           <li class="divider"></li>
-                   
-                               <div id="book-search-input" role="search">
-                                   <input type="text" placeholder="Type to search">
-                               </div>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="./"><span class="fa fa-home"></span>Getting started</a>
-                               <ul class="links">
-                                       <li class="link">
-                                           <a href="./" ><span class="fa fa-file-text-o"></span>README</a>
-                                       </li>
-                                       <li class="link">
-                                           <a 
-                                                href="./overview.html" 
-                                               
-                                                href="./overview.html" 
-                                                class="active" >
-                                               <span class="fa fa-th"></span>Overview
-                                           </a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#modules-links"
-                                   ></span>
-                               </a>
-                               <ul class="links collapse in"
-                                       id="modules-links"
-                   >
-                                       <li class="link">
-                                           <a href="modules/AppModule.html" >AppModule</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="modules/AppRoutingModule.html" >AppRoutingModule</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-cogs"></span>
-                                   <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="components-links"
-                   >
-                                       <li class="link">
-                                           <a href="components/AppComponent.html" >AppComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/GameComponentComponent.html" >GameComponentComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/InformationButtonComponent.html" >InformationButtonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/MainMenuComponent.html" >MainMenuComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/PlayerCardComponent.html" >PlayerCardComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/SettingsComponentComponent.html" >SettingsComponentComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/StartButtonComponent.html" >StartButtonComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="components/TitleComponent.html" >TitleComponent</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-file-code-o"></span>
-                                   <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="classes-links"
-                   >
-                                       <li class="link">
-                                           <a href="classes/AverageDecorator.html" >AverageDecorator</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="classes/GameConcret.html" >GameConcret</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="classes/HtmlBalise.html" >HtmlBalise</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="classes/HtmlDisplay.html" >HtmlDisplay</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="classes/ModeDecorator.html" >ModeDecorator</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="classes/StrictDecorator.html" >StrictDecorator</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="./routes.html" ><span class="fa fa-code-fork"></span>Routes</a>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-long-arrow-down"></span>
-                                   <span>Injectables</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#injectables-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="injectables-links"
-                   >
-                                       <li class="link">
-                                           <a href="injectables/GameOptionServiceService.html" >GameOptionServiceService</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="interfaces/Game.html" >Game</a>
-                                       </li>
-                               </ul>
-                           </li>
-                   
-                   
-                   
-                           <li class="chapter">
-                               <a data-type="chapter-link" href="./coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
-                           </li>
-                   
-                           <li class="divider"></li>
-                           <li class="copyright">
-                                   Documentation generated using <a href="https://compodoc.github.io/compodoc/" target="_blank">
-                                               <img src=".//images/compodoc-vectorise.svg" class="img-responsive">
-                                   </a>
-                           </li>
-                   
-                       </ul>
-                   
-                   </nav>
+                   <compodoc-menu mode="normal"></compodoc-menu>
                </div>
+               <!-- START CONTENT -->
                <div class="content overview">
                    <div class="content-data">
-<h3>Overview</h3>
-<div class="text-center">
-    <object id="demo-svg" type="image/svg+xml" data="graph/dependencies.svg" style="width: 100%; height: 250px;">
-            Your browser does not support SVG
-    </object>
-    <div class="btn-group">
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Overview</li>
+</ol>
+  
+<div class="text-center module-graph-container">
+    <div id="module-graph-svg">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.47.0 (20210316.0004)
+ -->
+<!-- Title: dependencies Pages: 1 -->
+<svg width="1612pt" height="284pt"
+ viewBox="0.00 0.00 1612.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>dependencies</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 1608,-280 1608,4 -4,4"/>
+<text text-anchor="start" x="781.01" y="-42.4" font-family="Times-12" font-weight="bold" font-size="14.00">Legend</text>
+<polygon fill="#ffffb3" stroke="transparent" points="568,-10 568,-30 588,-30 588,-10 568,-10"/>
+<text text-anchor="start" x="591.63" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Declarations</text>
+<polygon fill="#8dd3c7" stroke="transparent" points="681,-10 681,-30 701,-30 701,-10 681,-10"/>
+<text text-anchor="start" x="704.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Module</text>
+<polygon fill="#80b1d3" stroke="transparent" points="767,-10 767,-30 787,-30 787,-10 767,-10"/>
+<text text-anchor="start" x="790.78" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Bootstrap</text>
+<polygon fill="#fdb462" stroke="transparent" points="864,-10 864,-30 884,-30 884,-10 864,-10"/>
+<text text-anchor="start" x="887.67" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Providers</text>
+<polygon fill="#fb8072" stroke="transparent" points="960,-10 960,-30 980,-30 980,-10 960,-10"/>
+<text text-anchor="start" x="983.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
+<g id="clust1" class="cluster">
+<title>cluster_AppModule</title>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 1596,-268 1596,-70 8,-70"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_AppModule_declarations</title>
+<polygon fill="none" stroke="black" points="240,-78 240,-130 1588,-130 1588,-78 240,-78"/>
+</g>
+<g id="clust11" class="cluster">
+<title>cluster_AppModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-78 16,-130 232,-130 232,-78 16,-78"/>
+</g>
+<g id="clust13" class="cluster">
+<title>cluster_AppModule_bootstrap</title>
+<polygon fill="none" stroke="black" points="665,-208 665,-260 789,-260 789,-208 665,-208"/>
+</g>
+<!-- AppComponent -->
+<g id="node1" class="node">
+<title>AppComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="1579.94,-122 1474.06,-122 1474.06,-86 1579.94,-86 1579.94,-122"/>
+<text text-anchor="middle" x="1527" y="-99.8" font-family="Times,serif" font-size="14.00">AppComponent</text>
+</g>
+<!-- AppModule -->
+<g id="node9" class="node">
+<title>AppModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="768.66,-187 765.66,-191 744.66,-191 741.66,-187 685.34,-187 685.34,-151 768.66,-151 768.66,-187"/>
+<text text-anchor="middle" x="727" y="-164.8" font-family="Times,serif" font-size="14.00">AppModule</text>
+</g>
+<!-- AppComponent&#45;&gt;AppModule -->
+<g id="edge1" class="edge">
+<title>AppComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M1527,-122.01C1527,-144.49 1527,-180 1527,-180 1527,-180 778.89,-180 778.89,-180"/>
+<polygon fill="black" stroke="black" points="778.89,-176.5 768.89,-180 778.89,-183.5 778.89,-176.5"/>
+</g>
+<!-- GameComponentComponent -->
+<g id="node2" class="node">
+<title>GameComponentComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="1456.09,-122 1275.91,-122 1275.91,-86 1456.09,-86 1456.09,-122"/>
+<text text-anchor="middle" x="1366" y="-99.8" font-family="Times,serif" font-size="14.00">GameComponentComponent</text>
+</g>
+<!-- GameComponentComponent&#45;&gt;AppModule -->
+<g id="edge2" class="edge">
+<title>GameComponentComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M1366,-122.13C1366,-142.57 1366,-173 1366,-173 1366,-173 778.93,-173 778.93,-173"/>
+<polygon fill="black" stroke="black" points="778.93,-169.5 768.93,-173 778.93,-176.5 778.93,-169.5"/>
+</g>
+<!-- InformationButtonComponent -->
+<g id="node3" class="node">
+<title>InformationButtonComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="1258.32,-122 1071.68,-122 1071.68,-86 1258.32,-86 1258.32,-122"/>
+<text text-anchor="middle" x="1165" y="-99.8" font-family="Times,serif" font-size="14.00">InformationButtonComponent</text>
+</g>
+<!-- InformationButtonComponent&#45;&gt;AppModule -->
+<g id="edge3" class="edge">
+<title>InformationButtonComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M1165,-122.27C1165,-140.56 1165,-166 1165,-166 1165,-166 779,-166 779,-166"/>
+<polygon fill="black" stroke="black" points="779,-162.5 769,-166 779,-169.5 779,-162.5"/>
+</g>
+<!-- MainMenuComponent -->
+<g id="node4" class="node">
+<title>MainMenuComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="1053.54,-122 910.46,-122 910.46,-86 1053.54,-86 1053.54,-122"/>
+<text text-anchor="middle" x="982" y="-99.8" font-family="Times,serif" font-size="14.00">MainMenuComponent</text>
+</g>
+<!-- MainMenuComponent&#45;&gt;AppModule -->
+<g id="edge4" class="edge">
+<title>MainMenuComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M982,-122.01C982,-138.05 982,-159 982,-159 982,-159 778.82,-159 778.82,-159"/>
+<polygon fill="black" stroke="black" points="778.82,-155.5 768.82,-159 778.82,-162.5 778.82,-155.5"/>
+</g>
+<!-- PlayerCardComponent -->
+<g id="node5" class="node">
+<title>PlayerCardComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="892.31,-122 747.69,-122 747.69,-86 892.31,-86 892.31,-122"/>
+<text text-anchor="middle" x="820" y="-99.8" font-family="Times,serif" font-size="14.00">PlayerCardComponent</text>
+</g>
+<!-- PlayerCardComponent&#45;&gt;AppModule -->
+<g id="edge5" class="edge">
+<title>PlayerCardComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M758.34,-122.11C758.34,-122.11 758.34,-140.99 758.34,-140.99"/>
+<polygon fill="black" stroke="black" points="754.84,-140.99 758.34,-150.99 761.84,-140.99 754.84,-140.99"/>
+</g>
+<!-- SettingsComponentComponent -->
+<g id="node6" class="node">
+<title>SettingsComponentComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="729.78,-122 538.22,-122 538.22,-86 729.78,-86 729.78,-122"/>
+<text text-anchor="middle" x="634" y="-99.8" font-family="Times,serif" font-size="14.00">SettingsComponentComponent</text>
+</g>
+<!-- SettingsComponentComponent&#45;&gt;AppModule -->
+<g id="edge6" class="edge">
+<title>SettingsComponentComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M707.53,-122.11C707.53,-122.11 707.53,-140.99 707.53,-140.99"/>
+<polygon fill="black" stroke="black" points="704.03,-140.99 707.53,-150.99 711.03,-140.99 704.03,-140.99"/>
+</g>
+<!-- StartButtonComponent -->
+<g id="node7" class="node">
+<title>StartButtonComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="519.89,-122 374.11,-122 374.11,-86 519.89,-86 519.89,-122"/>
+<text text-anchor="middle" x="447" y="-99.8" font-family="Times,serif" font-size="14.00">StartButtonComponent</text>
+</g>
+<!-- StartButtonComponent&#45;&gt;AppModule -->
+<g id="edge7" class="edge">
+<title>StartButtonComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M447,-122.01C447,-138.05 447,-159 447,-159 447,-159 675.08,-159 675.08,-159"/>
+<polygon fill="black" stroke="black" points="675.08,-162.5 685.08,-159 675.08,-155.5 675.08,-162.5"/>
+</g>
+<!-- TitleComponent -->
+<g id="node8" class="node">
+<title>TitleComponent</title>
+<polygon fill="#ffffb3" stroke="black" points="355.77,-122 248.23,-122 248.23,-86 355.77,-86 355.77,-122"/>
+<text text-anchor="middle" x="302" y="-99.8" font-family="Times,serif" font-size="14.00">TitleComponent</text>
+</g>
+<!-- TitleComponent&#45;&gt;AppModule -->
+<g id="edge8" class="edge">
+<title>TitleComponent&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M302,-122.27C302,-140.56 302,-166 302,-166 302,-166 675.09,-166 675.09,-166"/>
+<polygon fill="black" stroke="black" points="675.09,-169.5 685.09,-166 675.09,-162.5 675.09,-169.5"/>
+</g>
+<!-- AppComponent  -->
+<g id="node12" class="node">
+<title>AppComponent </title>
+<polygon fill="#80b1d3" stroke="black" points="781.44,-252 672.56,-252 672.56,-216 781.44,-216 781.44,-252"/>
+<text text-anchor="middle" x="727" y="-229.8" font-family="Times,serif" font-size="14.00">AppComponent </text>
+</g>
+<!-- AppModule&#45;&gt;AppComponent  -->
+<g id="edge11" class="edge">
+<title>AppModule&#45;&gt;AppComponent </title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M727,-187.11C727,-187.11 727,-205.99 727,-205.99"/>
+<polygon fill="black" stroke="black" points="723.5,-205.99 727,-215.99 730.5,-205.99 723.5,-205.99"/>
+</g>
+<!-- AppRoutingModule -->
+<g id="node10" class="node">
+<title>AppRoutingModule</title>
+<polygon fill="#8dd3c7" stroke="black" points="224.27,-122 221.27,-126 200.27,-126 197.27,-122 95.73,-122 95.73,-86 224.27,-86 224.27,-122"/>
+<text text-anchor="middle" x="160" y="-99.8" font-family="Times,serif" font-size="14.00">AppRoutingModule</text>
+</g>
+<!-- AppRoutingModule&#45;&gt;AppModule -->
+<g id="edge9" class="edge">
+<title>AppRoutingModule&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M160,-122.13C160,-142.57 160,-173 160,-173 160,-173 675.31,-173 675.31,-173"/>
+<polygon fill="black" stroke="black" points="675.31,-176.5 685.31,-173 675.31,-169.5 675.31,-176.5"/>
+</g>
+<!-- NgIf -->
+<g id="node11" class="node">
+<title>NgIf</title>
+<polygon fill="#8dd3c7" stroke="black" points="78,-122 75,-126 54,-126 51,-122 24,-122 24,-86 78,-86 78,-122"/>
+<text text-anchor="middle" x="51" y="-99.8" font-family="Times,serif" font-size="14.00">NgIf</text>
+</g>
+<!-- NgIf&#45;&gt;AppModule -->
+<g id="edge10" class="edge">
+<title>NgIf&#45;&gt;AppModule</title>
+<path fill="none" stroke="black" d="M51,-122.01C51,-144.49 51,-180 51,-180 51,-180 675.22,-180 675.22,-180"/>
+<polygon fill="black" stroke="black" points="675.22,-183.5 685.22,-180 675.22,-176.5 675.22,-183.5"/>
+</g>
+</g>
+</svg>
+
+    </div>
+    <i id="fullscreen" class="icon ion-ios-resize module-graph-fullscreen-btn" aria-hidden="true"></i>
+    <div class="btn-group size-buttons">
         <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
         <button id="reset" class="btn btn-default btn-sm">Reset</button>
         <button id="zoom-out" class="btn btn-default btn-sm">Zoom out</button>
     </div>
 </div>
-<div class="container-fluid overview">
+  
+<div class="tab-content overview">
     <div class="row">
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-block">
-                        <h4 class="card-title"><span class="fa fa-archive"></span></h4>
-                        <p class="card-text">
-                            <a href="./modules.html">2 modules</a>
-                        </p>
-                    </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-block">
+                    <h4 class="card-title"><span class="icon ion-ios-archive"></span></h4>
+                    <p class="card-text">
+                        <a href="./modules.html">2 Modules</a>
+                    </p>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-block">
-                        <h4 class="card-title"><span class="fa fa-cogs"></span></h4>
-                        <p class="card-text">8 components</p>
-                    </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-block">
+                    <h4 class="card-title"><span class="icon ion-md-cog"></span></h4>
+                    <p class="card-text">8 Components</p>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-block">
-                        <h4 class="card-title"><span class="fa fa-code-fork"></span></h4>
-                        <p class="card-text">1 injectable</p>
-                    </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-block">
+                    <h4 class="card-title"><span class="icon ion-md-arrow-round-down"></span></h4>
+                    <p class="card-text">1 Injectable</p>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-block">
-                        <h4 class="card-title"><span class="fa fa-file-code-o"></span></h4>
-                        <p class="card-text">6 classes</p>
-                    </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-block">
+                    <h4 class="card-title"><span class="icon ion-ios-paper"></span></h4>
+                    <p class="card-text">6 Classes</p>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-block">
-                        <h4 class="card-title"><span class="fa fa-info"></span></h4>
-                        <p class="card-text">1 interface</p>
-                    </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-block">
+                    <h4 class="card-title"><span class="icon ion-md-information-circle-outline"></span></h4>
+                    <p class="card-text">1 Interface</p>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="card text-center">
-                    <div class="card-block">
-                        <h4 class="card-title"><span class="fa fa-code-fork"></span></h4>
-                        <p class="card-text">
-                            <a href="./routes.html">4 routes</a>
-                        </p>
-                    </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card text-center">
+                <div class="card-block">
+                    <h4 class="card-title"><span class="icon ion-ios-git-branch"></span></h4>
+                    <p class="card-text">
+                        <a href="./routes.html">4 Routes</a>
+                    </p>
                 </div>
             </div>
+        </div>
     </div>
 </div>
 <script src="js/libs/svg-pan-zoom.min.js"></script>
-<script src="js/svg-pan-zoom.controls.js"></script>
+<script src="js/svg-pan-zoom.controls.js"></script> 
+
+
+
+
+
+
+
 
 
 
@@ -470,8 +370,31 @@
     </div>
 </div>
 </div>
+               <!-- END CONTENT -->
            </div>
        </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'overview';
+            var COMPODOC_CURRENT_PAGE_URL = 'overview.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 
@@ -482,20 +405,17 @@
 
        <script src="./js/compodoc.js"></script>
 
-       <script src="./js/search/search.js"></script>
-       <script src="./js/search/lunr.min.js"></script>
-       <script src="./js/search/search-lunr.js"></script>
-
+       <script src="./js/tabs.js"></script>
        <script src="./js/menu.js"></script>
-       <script src="./js/libs/highlight.pack.js"></script>
-       <script src="./js/libs/highlightjs-line-numbers.min.js"></script>
-       <script src="./js/search/search_index.js"></script>
-       <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                hljs.initHighlightingOnLoad();
-                hljs.initLineNumbersOnLoad();
-            });
-       </script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
 
     </body>
 </html>

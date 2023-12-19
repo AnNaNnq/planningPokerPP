@@ -1,16 +1,22 @@
 export class HtmlBalise{
+  /**
+   * variable containing singleton class instance
+   * @private
+   */
   private static instance: HtmlBalise | null = null;
 
-  stValue : HTMLElement
-  task : HTMLElement
-  endMessage : HTMLElement
-  title : HTMLDivElement
-  playerButton : HTMLDivElement
-  validateButton : HTMLButtonElement
-  finishButton : HTMLElement;
-  gameModeMessage : HTMLDivElement;
-  inputValue : HTMLInputElement;
 
+  /** @ignore */ stValue : HTMLElement
+  /** @ignore */ task : HTMLElement
+  /** @ignore */ endMessage : HTMLElement
+  /** @ignore */ title : HTMLDivElement
+  /** @ignore */ playerButton : HTMLDivElement
+  /** @ignore */ validateButton : HTMLButtonElement
+  /** @ignore */ finishButton : HTMLElement;
+  /** @ignore */ gameModeMessage : HTMLDivElement;
+  /** @ignore */ inputValue : HTMLInputElement;
+
+  /** @ignore */
   private constructor() {
     this.stValue = document.getElementById("StandarValue") as HTMLElement
     this.task = document.getElementById("ActualTask") as HTMLElement
@@ -23,6 +29,10 @@ export class HtmlBalise{
     this.inputValue = document.getElementById("stage1") as HTMLInputElement;
   }
 
+  /**
+   * Function to retrieve class instance
+   * @return {HtmlBalise}
+   */
   static getInstance(): HtmlBalise {
     if (!HtmlBalise.instance){
       HtmlBalise.instance = new HtmlBalise();
@@ -30,6 +40,9 @@ export class HtmlBalise{
     return HtmlBalise.instance;
   }
 
+  /**
+   * Function to empty the instance to create a new one
+   */
   static clearInstance(): void{
     HtmlBalise.instance = null;
   }

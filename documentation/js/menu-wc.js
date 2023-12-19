@@ -107,6 +107,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
+                                <a href="classes/AverageDecorator.html" data-type="entity-link" >AverageDecorator</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/GameConcret.html" data-type="entity-link" >GameConcret</a>
                             </li>
                             <li class="link">

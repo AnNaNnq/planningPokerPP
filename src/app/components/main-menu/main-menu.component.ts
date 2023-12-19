@@ -12,19 +12,48 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
 })
 export class MainMenuComponent implements OnInit{
 
+  /**
+   * @ignore
+   */
   constructor(private dataService: GameOptionServiceService) {}
 
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
       const button = document.getElementById("contniue-button") as HTMLButtonElement
       button.style.display = "none"
   }
+
+  /**
+   * Data sent to the game in JSON format
+   */
   Data: { [Type: string]: string} = {}
+  /**
+   * Backlog list retrieve JSON file
+   */
   BacklogData: { [key : string]: number } = {};
+  /**
+   * Select game mode
+   */
   mode = ""
+  /**
+   * Standard value used
+   */
   defaultValue = ""
+  /**
+   * List of players in the game
+   */
   players : string[] = []
+  /**
+   * First Backlog not yet graded
+   */
   actualLog = 0;
 
+  /**
+   * Function to save data from the input JSON file as a variable for use in the game
+   * @param event {event} con contains the JSON file
+   */
   onFileSelected(event: any = 0){
     this.players = [];
     const selectedFile = event.target.files[0];
@@ -76,6 +105,9 @@ export class MainMenuComponent implements OnInit{
     reader.readAsText(selectedFile);
   }
 
+  /**
+   * Function to send previously recorded data to game-option-service for in-game use
+   */
   sendData(){
     Object.keys(this.players).forEach(key => {
       const playerKey = parseInt(key, 10)

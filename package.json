@@ -7,9 +7,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "compodoc": "npx compodoc -p tsconfig.doc.json -s",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -w -s",
     "compodoc:build": "compodoc -p tsconfig.doc.json",
-    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s -w",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
     "compodoc:serve": "compodoc -s"
   },
   "private": true,
@@ -30,7 +30,7 @@
     "zone.js": "~0.13.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^16.2.9",
+    "@angular-devkit/build-angular": "^17.0.7",
     "@angular/cli": "~16.2.9",
     "@angular/compiler-cli": "^16.2.12",
     "@compodoc/compodoc": "^1.1.23",
