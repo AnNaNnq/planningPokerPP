@@ -137,7 +137,6 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
         }
       })
     })
-    console.log(n)
     return n;
   }
 
@@ -150,7 +149,6 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
         }
       })
     })
-    console.log(n)
     return n;
   }
 

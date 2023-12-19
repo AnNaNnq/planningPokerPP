@@ -79,13 +79,13 @@ export class MainMenuComponent implements OnInit{
   sendData(){
     Object.keys(this.players).forEach(key => {
       const playerKey = parseInt(key, 10)
-      const strKey = "Player" + playerKey;
+      const strKey = "Player" + (playerKey + 1);
       this.Data[strKey] = this.players[playerKey];
     });
 
     this.Data["Mode"] = this.mode;
     this.Data["Default"] = this.defaultValue;
-    this.Data["actualLog"] = this.actualLog + "";
+    this.Data["actualLog"] = (this.actualLog + 1) + "";
 
     Object.keys(this.BacklogData).forEach((item: string, index: number) => {
       this.Data["Backlog" + index] = item;

@@ -22,7 +22,6 @@ export class GameConcret implements Game{
 
   setBacklogData(BacklogData: { [key : string]: number }){
     this.BacklogData = BacklogData
-    console.log(this.BacklogData)
   }
 
   chooseDefaultValue(): void {
@@ -108,6 +107,10 @@ export class GameConcret implements Game{
   creatAndDownloadJSON(): { [p: string]: any } {
     const test : { [p: string]: any } = {}
     return test;
+  }
+
+  setStage(nb: number): void {
+    this.actualFunctionInBacklog = nb;
   }
 
 }
