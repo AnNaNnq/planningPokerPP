@@ -1,19 +1,27 @@
+/* This is a div that contain everything and takes all the page. */
 .container {
   height: 100%;
+  width: 100%;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
+
+/* The div that contains the title, teh actual task and the button to open the sidenav. */
 .header {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(11, 1fr);
 }
 
-#textToShow, #StandarValue, #ActualTask {
+
+/* Here we choose the style for the display of the actual task, the title and the standard value. */
+#textToShow, #StandardValue, #ActualTask {
   color: white;
+  text-align: center;
 }
 
 #textToShow {
@@ -33,9 +41,15 @@
   -webkit-text-stroke: 1px #ffffff;
 }
 
-#StandarValue {
+#StandardValue {
   font-family: 'Press Start 2P', serif;
   font-size: 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 #ActualTask {
@@ -57,9 +71,56 @@
   line-height: 30px;
   justify-content: center;
   -webkit-text-stroke: 1px #ffffff;
-
 }
 
+#endMessage, #gameModeMessage{
+  font-family: 'Press Start 2P', serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+
+/* It's here that we style all things about the sidenav. */
+mat-sidenav-container {
+  height: 100%;
+  background: none;
+}
+
+mat-sidenav {
+  width: 300px;
+  padding: 10px;
+}
+
+.header_sidenav {
+  grid-column: 11;
+  grid-row: 1;
+  transform: scale(1.2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 0 10px 100px 0;
+  width: 90%;
+  text-align: right;
+
+  &:active {
+    color: #797777;
+  }
+}
+
+.cross {
+  background: none;
+  color: red;
+  border: none;
+  cursor: pointer;
+
+  &:active {
+    color: #730505;
+  }
+}
+
+
+/* It's the div that contains every card the player can choose. With all the style that came with his children. */
 #PlayerButton {
   flex-direction: row;
   justify-content: center;
@@ -113,42 +174,41 @@
   align-items: center;
 }
 
-mat-sidenav-container {
-  height: 100%;
-  background: none;
-}
 
-mat-sidenav {
-  width: 300px;
-  padding: 10px;
-}
+/* Here is the style of the div that contains the input and the input itself. */
+.input-group {
+  width: 35em;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
 
-.header_sidenav {
-  grid-column: 11;
-  grid-row: 1;
-  transform:scale(1.2);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: white;
-  padding: 0 10px 100px 0;
-  width: 90%;
-  text-align: right;
+  &__input {
+    height: calc(1em + 1.6em + 0.5em);
+    width: 100%;
 
-  &:active {
-    color: #797777;
+    background-image: linear-gradient(#e3e3e3, #e3e3e3),
+    linear-gradient(120deg, #1beabd 0%, #0ff 50%, #20125f 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: 200% 100%;
+    color: #000000;
+
+    line-height: 1;
+    outline: none;
+    padding: 0 1em;
+    font-family: 'Press Start 2P', serif;
+
+    border: 0.25em solid transparent;
+    border-radius: 1.8em;
+
+    &:focus {
+      box-shadow: 0 0 0 0 #fff,
+      3px -3px 30px #1beabd,
+      -3px 3px 30px #10abff;
+    }
   }
 }
 
-.cross {
-  background: none;
-  color: red;
-  border: none;
-  cursor: pointer;
-
-  &:active {
-    color: #730505;
-  }
+::placeholder {
+  color: #8d8d8d;
 }
-
-

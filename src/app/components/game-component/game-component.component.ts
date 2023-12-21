@@ -29,7 +29,8 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
 
   opened = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   ngAfterViewInit(): void {
     this.balise = HtmlBalise.getInstance();
@@ -42,11 +43,11 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     else this.game = new StrictDecorator(this.game)
     this.setPlayers()
 
-    if(this.isContinue()){
+    if (this.isContinue()) {
       this.setBacklogNote()
       this.game.continueGame(this.getDefaultValue(), this.getActuelLog());
 
-    }else {
+    } else {
       this.setBacklog()
       this.game.chooseDefaultValue();
     }
@@ -66,12 +67,12 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return mode
   }
 
-  isContinue(): boolean{
+  isContinue(): boolean {
     let cont = false;
     this.dataService.data$.subscribe(data => {
-      if (data != null){
+      if (data != null) {
         Object.keys(data).forEach(key => {
-          if(key.startsWith("Default")){
+          if (key.startsWith("Default")) {
             cont = true;
           }
         })
@@ -115,12 +116,12 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     this.game?.setBacklogData(backlogData)
   }
 
-  getNote(id: number): number{
+  getNote(id: number): number {
     let n = 0
 
     this.dataService.data$.subscribe(data => {
       Object.keys(data).forEach(key => {
-        if(key.startsWith('Note' + id)){
+        if (key.startsWith('Note' + id)) {
           n = data[key];
         }
       })
@@ -129,11 +130,11 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return n
   }
 
-  getActuelLog(): number{
+  getActuelLog(): number {
     let n = 0;
     this.dataService.data$.subscribe(data => {
       Object.keys(data).forEach(key => {
-        if(key.startsWith('actualLog')){
+        if (key.startsWith('actualLog')) {
           n = data[key];
         }
       })
@@ -141,11 +142,11 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return n;
   }
 
-  getDefaultValue(): string{
+  getDefaultValue(): string {
     let n = "";
     this.dataService.data$.subscribe(data => {
       Object.keys(data).forEach(key => {
-        if(key.startsWith('Default')){
+        if (key.startsWith('Default')) {
           n = data[key];
         }
       })
@@ -153,7 +154,7 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return n;
   }
 
-  setBacklogNote(){
+  setBacklogNote() {
     let backlogData: { [key: string]: number } = {};
     this.dataService.data$.subscribe(data => {
       if (data != null) {

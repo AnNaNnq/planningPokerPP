@@ -66,7 +66,7 @@ export class SettingsComponentComponent {
       const placeholder = event.target.placeholder;
       const match = placeholder.replace(/\D/g, "");
       const id = parseInt(match);
-      this.Players[id] = event.target.value;
+      this.Players[id] = event.target.value.substring(0, 7);
       console.log(this.Players);
     }
   }
