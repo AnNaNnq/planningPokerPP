@@ -106,15 +106,10 @@ export class SettingsComponentComponent {
     };
     reader.readAsText(selectedFile);
   }
-
-<<<<<<< HEAD
   /**
    * Sends data to the game
    */
   sendData(){
-=======
-  sendData() {
->>>>>>> origin/dev-anna
     console.log("test");
     Object.keys(this.Players).forEach(key => {
       const playerKey = parseInt(key, 10)
