@@ -272,6 +272,9 @@
                                 <a href="#setPlayers" >setPlayers</a>
                             </li>
                             <li>
+                                <a href="#setStage" >setStage</a>
+                            </li>
+                            <li>
                                 <a href="#setupDefaultValue" >setupDefaultValue</a>
                             </li>
                         </ul>
@@ -2046,6 +2049,73 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="setStage"></a>
+                    <span class="name">
+                        <span ><b>setStage</b></span>
+                        <a href="#setStage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setStage(nb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="346"
+                                    class="link-to-prism">src/app/classes/decorateur/ModeDecorator.ts:346</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nb</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="setupDefaultValue"></a>
                     <span class="name">
                         <span ><b>setupDefaultValue</b></span>
@@ -2119,11 +2189,9 @@ export abstract class ModeDecorator implements Game {
   }
 
   chooseDefaultValue(): void {
-    console.log(this.getBacklogData())
     const balise &#x3D; HtmlBalise.getInstance();
     this.html.showText(balise.task, &quot;Choose a standard value&quot;)
     balise.inputValue.style.display &#x3D; &quot;block&quot;
-    console.log(this.html.content)
     this.html.displayHTML(balise.stValue)
   }
 
@@ -2378,7 +2446,7 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.endMessage)
     this.html.clearHTML(balise.gameModeMessage)
 
-    this.html.showText(balise.title, &quot;Summary&quot;);
+    this.html.showText(balise.task, &quot;Summary&quot;);
 
     this.html.addHtmlElement(&quot;ul&quot;);
 
@@ -2431,7 +2499,13 @@ export abstract class ModeDecorator implements Game {
   }
 
   continueGame(defaultValue: string, actualLog: number): void {
+    this.setStage(actualLog);
+    this.game.setDefaultValue(defaultValue);
+    this.lunchStage();
+  }
 
+  setStage(nb: number): void {
+    this.game.setStage(nb);
   }
 }
 </code></pre>

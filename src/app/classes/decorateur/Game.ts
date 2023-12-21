@@ -14,6 +14,8 @@ export interface Game {
 
   nextStage(): void;
 
+  setStage(nb: number): void;
+
   lunchStage(): void;
 
   getActualStage(): number;

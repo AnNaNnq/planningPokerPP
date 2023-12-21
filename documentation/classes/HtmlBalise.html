@@ -499,6 +499,16 @@
                         </td>
                     </tr>
 
+                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/app/classes/singleton/htmlBalise.ts:6</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>variable containing singleton class instance</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -538,7 +548,9 @@
 
 
             <tr>
-                <td class="col-md-4">
+                <td class="col-md-4"
+                        <div class="io-description"><p>Function to empty the instance to create a new one</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -578,11 +590,16 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Function to retrieve class instance</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../classes/HtmlBalise.html" target="_self" >HtmlBalise</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -598,18 +615,24 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class HtmlBalise{
+  /**
+   * variable containing singleton class instance
+   * @private
+   */
   private static instance: HtmlBalise | null &#x3D; null;
 
-  stValue : HTMLElement
-  task : HTMLElement
-  endMessage : HTMLElement
-  title : HTMLDivElement
-  playerButton : HTMLDivElement
-  validateButton : HTMLButtonElement
-  finishButton : HTMLElement;
-  gameModeMessage : HTMLDivElement;
-  inputValue : HTMLInputElement;
 
+  /** @ignore */ stValue : HTMLElement
+  /** @ignore */ task : HTMLElement
+  /** @ignore */ endMessage : HTMLElement
+  /** @ignore */ title : HTMLDivElement
+  /** @ignore */ playerButton : HTMLDivElement
+  /** @ignore */ validateButton : HTMLButtonElement
+  /** @ignore */ finishButton : HTMLElement;
+  /** @ignore */ gameModeMessage : HTMLDivElement;
+  /** @ignore */ inputValue : HTMLInputElement;
+
+  /** @ignore */
   private constructor() {
     this.stValue &#x3D; document.getElementById(&quot;StandarValue&quot;) as HTMLElement
     this.task &#x3D; document.getElementById(&quot;ActualTask&quot;) as HTMLElement
@@ -622,6 +645,10 @@
     this.inputValue &#x3D; document.getElementById(&quot;stage1&quot;) as HTMLInputElement;
   }
 
+  /**
+   * Function to retrieve class instance
+   * @return {HtmlBalise}
+   */
   static getInstance(): HtmlBalise {
     if (!HtmlBalise.instance){
       HtmlBalise.instance &#x3D; new HtmlBalise();
@@ -629,6 +656,9 @@
     return HtmlBalise.instance;
   }
 
+  /**
+   * Function to empty the instance to create a new one
+   */
   static clearInstance(): void{
     HtmlBalise.instance &#x3D; null;
   }

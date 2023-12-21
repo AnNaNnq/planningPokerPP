@@ -28,11 +28,9 @@ export abstract class ModeDecorator implements Game {
   }
 
   chooseDefaultValue(): void {
-    console.log(this.getBacklogData())
     const balise = HtmlBalise.getInstance();
     this.html.showText(balise.task, "Choose a standard value")
     balise.inputValue.style.display = "block"
-    console.log(this.html.content)
     this.html.displayHTML(balise.stValue)
   }
 
@@ -296,7 +294,7 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.endMessage)
     this.html.clearHTML(balise.gameModeMessage)
 
-    this.html.showText(balise.title, "Summary");
+    this.html.showText(balise.task, "Summary");
 
     this.html.addHtmlElement("ul");
 
@@ -349,6 +347,12 @@ export abstract class ModeDecorator implements Game {
   }
 
   continueGame(defaultValue: string, actualLog: number): void {
+    this.setStage(actualLog);
+    this.game.setDefaultValue(defaultValue);
+    this.lunchStage();
+  }
 
+  setStage(nb: number): void {
+    this.game.setStage(nb);
   }
 }

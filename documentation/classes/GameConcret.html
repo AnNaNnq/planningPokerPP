@@ -255,6 +255,9 @@
                                 <a href="#setPlayers" >setPlayers</a>
                             </li>
                             <li>
+                                <a href="#setStage" >setStage</a>
+                            </li>
+                            <li>
                                 <a href="#setupDefaultValue" >setupDefaultValue</a>
                             </li>
                         </ul>
@@ -1720,6 +1723,73 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="setStage"></a>
+                    <span class="name">
+                        <span ><b>setStage</b></span>
+                        <a href="#setStage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setStage(nb: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="112"
+                                    class="link-to-prism">src/app/classes/decorateur/GameConcret.ts:112</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nb</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="setupDefaultValue"></a>
                     <span class="name">
                         <span ><b>setupDefaultValue</b></span>
@@ -1787,7 +1857,6 @@ export class GameConcret implements Game{
 
   setBacklogData(BacklogData: { [key : string]: number }){
     this.BacklogData &#x3D; BacklogData
-    console.log(this.BacklogData)
   }
 
   chooseDefaultValue(): void {
@@ -1873,6 +1942,10 @@ export class GameConcret implements Game{
   creatAndDownloadJSON(): { [p: string]: any } {
     const test : { [p: string]: any } &#x3D; {}
     return test;
+  }
+
+  setStage(nb: number): void {
+    this.actualFunctionInBacklog &#x3D; nb;
   }
 
 }
