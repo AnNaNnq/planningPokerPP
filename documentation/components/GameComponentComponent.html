@@ -305,6 +305,7 @@
                                         <tbody>
                                                 <tr>
                                                         <td>dataService</td>
+<<<<<<< HEAD
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/GameOptionServiceService.html" target="_self" >GameOptionServiceService</a></code>
@@ -326,6 +327,29 @@
                                                             No
                                                     </td>
                                                     
+=======
+
+                                                        <td>
+                                                                        <code><a href="../injectables/GameOptionServiceService.html" target="_self" >GameOptionServiceService</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+>>>>>>> origin/dev-anna
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -341,7 +365,11 @@
 
 
     <section data-compodoc="block-methods">
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/dev-anna
     <h3 id="methods">
         Methods
     </h3>
@@ -402,8 +430,13 @@
 
                     <tr>
                         <td class="col-md-4">
+<<<<<<< HEAD
                             <div class="io-line">Defined in <a href="" data-line="143"
                                     class="link-to-prism">src/app/components/game-component/game-component.component.ts:143</a></div>
+=======
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/components/game-component/game-component.component.ts:144</a></div>
+>>>>>>> origin/dev-anna
                         </td>
                     </tr>
 
@@ -487,7 +520,11 @@
 
                             <div class="io-description">
                                 <b>Parameters :</b>
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> origin/dev-anna
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -517,7 +554,11 @@
 
                         </div>
                             <div class="io-description">
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> origin/dev-anna
                             </div>
                 </td>
             </tr>
@@ -654,8 +695,13 @@
 
                     <tr>
                         <td class="col-md-4">
+<<<<<<< HEAD
                             <div class="io-line">Defined in <a href="" data-line="172"
                                     class="link-to-prism">src/app/components/game-component/game-component.component.ts:172</a></div>
+=======
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/app/components/game-component/game-component.component.ts:174</a></div>
+>>>>>>> origin/dev-anna
                         </td>
                     </tr>
 
@@ -665,7 +711,11 @@
 
                             <div class="io-description">
                                 <b>Parameters :</b>
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> origin/dev-anna
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -695,7 +745,11 @@
 
                         </div>
                             <div class="io-description">
+<<<<<<< HEAD
                                 
+=======
+
+>>>>>>> origin/dev-anna
                             </div>
                 </td>
             </tr>
@@ -758,8 +812,13 @@
 
                     <tr>
                         <td class="col-md-4">
+<<<<<<< HEAD
                             <div class="io-line">Defined in <a href="" data-line="155"
                                     class="link-to-prism">src/app/components/game-component/game-component.component.ts:155</a></div>
+=======
+                            <div class="io-line">Defined in <a href="" data-line="157"
+                                    class="link-to-prism">src/app/components/game-component/game-component.component.ts:157</a></div>
+>>>>>>> origin/dev-anna
                         </td>
                     </tr>
 
@@ -832,8 +891,13 @@
 
                     <tr>
                         <td class="col-md-4">
+<<<<<<< HEAD
                             <div class="io-line">Defined in <a href="" data-line="176"
                                     class="link-to-prism">src/app/components/game-component/game-component.component.ts:176</a></div>
+=======
+                            <div class="io-line">Defined in <a href="" data-line="178"
+                                    class="link-to-prism">src/app/components/game-component/game-component.component.ts:178</a></div>
+>>>>>>> origin/dev-anna
                         </td>
                     </tr>
 
@@ -851,7 +915,11 @@
     </table>
 </section>
     <section data-compodoc="block-properties">
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/dev-anna
     <h3 id="inputs">
         Properties
     </h3>
@@ -1446,6 +1514,27 @@ mat-sidenav {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><mat-sidenav-container>  <mat-sidenav [(opened)]="opened" position="end">    <button class="cross" (click)="opened=false"> <mat-icon>clear</mat-icon> </button>  </mat-sidenav>  <mat-sidenav-content>    <div class="container" xmlns="http://www.w3.org/1999/html">      <div class="header">        <div id="textToShow"></div>        <div id="ActualTask"></div>        <button class="header_sidenav" (click)="opened=!opened">          <mat-icon> menu</mat-icon>        </button>      </div>      <div id="StandarValue"></div>      <div id="endMessage"></div>      <div id="gameModeMessage"></div>      <input id="stage1" type="text" placeholder="Enter Task">      <div id="PlayerButton">        <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">          <span *ngIf="i == \'cafe\'" class="card-button_icon material-icons">local_cafe</span>          <div class="card-button_label" *ngIf="i != \'cafe\'"> {{ i }}</div>        </div>      </div>      <start-button (buttonClicked)="valideStage()"                    [pushableBackground]="\'hsl(111, 100%, 35%)\'"                    [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                    [captionColor]="\'white\'"                    [name]="\'Next\'"                    [link]="\'/game\'" id="validateButton">      </start-button>      <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                    [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                    [captionColor]="\'white\'"                    [name]="\'BACk TO MAIN MENU\'"                    [link]="\'/\'" id="finishButton" style="display: none">      </start-button>    </div>  </mat-sidenav-content></mat-sidenav-container></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'GameComponentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-sidenav-container>  <mat-sidenav [(opened)]="opened" position="end">    <button class="cross" (click)="opened=false"> <mat-icon>clear</mat-icon> </button>  </mat-sidenav>  <mat-sidenav-content>    <div class="container" xmlns="http://www.w3.org/1999/html">      <div class="header">        <div id="textToShow"></div>        <div id="ActualTask"></div>        <button class="header_sidenav" (click)="opened=!opened">          <mat-icon> menu</mat-icon>        </button>      </div>      <div id="StandardValue"></div>      <div id="endMessage"></div>      <div id="gameModeMessage"></div>      <input id="stage1" type="text" placeholder="Enter Task">      <div id="PlayerButton">        <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">          <span *ngIf="i == \'cafe\'" class="card-button_icon material-icons">local_cafe</span>          <div class="card-button_label" *ngIf="i != \'cafe\'"> {{ i }}</div>        </div>      </div>      <start-button (buttonClicked)="valideStage()"                    [pushableBackground]="\'hsl(111, 100%, 35%)\'"                    [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                    [captionColor]="\'white\'"                    [name]="\'Next\'"                    [link]="\'/game\'" id="validateButton">      </start-button>      <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                    [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                    [captionColor]="\'white\'"                    [name]="\'BACk TO MAIN MENU\'"                    [link]="\'/\'" id="finishButton" style="display: none">      </start-button>    </div>  </mat-sidenav-content></mat-sidenav-container></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'GameComponentComponent'};

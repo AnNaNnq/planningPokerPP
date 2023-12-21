@@ -1,5 +1,5 @@
 <div class="container_info-button">
-  <pp-title> </pp-title>
+  <pp-title></pp-title>
   <information-button></information-button>
 </div>
 <div class="container_button">
@@ -17,5 +17,9 @@
                 (buttonClicked)="sendData()">
   </start-button>
 </div>
-<input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
-
+<div class="container_bottom">
+  <div class="bottom_input-json">
+    <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
+    <label for="fileInput">Chose a json file</label>
+  </div>
+</div>

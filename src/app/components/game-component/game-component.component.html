@@ -1,6 +1,12 @@
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="opened" position="end">
-    <button class="cross" (click)="opened=false"> <mat-icon>clear</mat-icon> </button>
+    <button class="cross" (click)="opened=false">
+      <mat-icon>clear</mat-icon>
+    </button>
+    <div>
+      <h2> Résumé </h2>
+
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -14,13 +20,16 @@
         </button>
       </div>
 
-      <div id="StandarValue"></div>
+      <div id="StandardValue"></div>
 
       <div id="endMessage"></div>
 
       <div id="gameModeMessage"></div>
 
-      <input id="stage1" type="text" placeholder="Enter Task">
+      <div class="input-group">
+        <input id="stage1" type="text" class="input-group__input" placeholder="your task">
+      </div>
+
 
       <div id="PlayerButton">
         <div class="card-button" (click)="selectButton(i)" *ngFor="let i of listValue">
