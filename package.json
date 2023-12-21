@@ -6,18 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "test": "ng test",
     "compodoc": "npx compodoc -p tsconfig.doc.json -w -s",
-=======
-    "test": "jasmine",
-    "compodoc": "compodoc -p tsconfig.doc.json -w -s",
->>>>>>> origin/dev-anna
-=======
-    "test": "jasmine",
-    "compodoc": "compodoc -p tsconfig.doc.json -w -s",
->>>>>>> c76cb0ee529011ffb8db979af35ea563645a3293
     "compodoc:build": "compodoc -p tsconfig.doc.json",
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
     "compodoc:serve": "compodoc -s"

@@ -119,6 +119,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/HtmlDisplay.html" data-type="entity-link" >HtmlDisplay</a>
                             </li>
                             <li class="link">
+                                <a href="classes/MajabsDecorator.html" data-type="entity-link" >MajabsDecorator</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/ModeDecorator.html" data-type="entity-link" >ModeDecorator</a>
                             </li>
                             <li class="link">

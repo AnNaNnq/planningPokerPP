@@ -1,0 +1,955 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>planning-poker-pp documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">planning-poker-pp documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MainMenuComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/main-menu/main-menu.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Component that create page for the main menu of the website. We can choose here if we want to start a
+new game or load a game from a json file.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-main-menu</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./main-menu.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./main-menu.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#actualLog" >actualLog</a>
+                            </li>
+                            <li>
+                                <a href="#BacklogData" >BacklogData</a>
+                            </li>
+                            <li>
+                                <a href="#Data" >Data</a>
+                            </li>
+                            <li>
+                                <a href="#defaultValue" >defaultValue</a>
+                            </li>
+                            <li>
+                                <a href="#mode" >mode</a>
+                            </li>
+                            <li>
+                                <a href="#players" >players</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onFileSelected" >onFileSelected</a>
+                            </li>
+                            <li>
+                                <a href="#sendData" >sendData</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileSelected"></a>
+                    <span class="name">
+                        <span ><b>onFileSelected</b></span>
+                        <a href="#onFileSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileSelected(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Function to save data from the input JSON file as a variable for use in the game</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>0</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>con contains the JSON file</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendData"></a>
+                    <span class="name">
+                        <span ><b>sendData</b></span>
+                        <a href="#sendData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:111</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Function to send previously recorded data to game-option-service for in-game use</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualLog"></a>
+                    <span class="name">
+                        <span ><b>actualLog</b></span>
+                        <a href="#actualLog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>First Backlog not yet graded</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="BacklogData"></a>
+                    <span class="name">
+                        <span ><b>BacklogData</b></span>
+                        <a href="#BacklogData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Backlog list retrieve JSON file</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Data"></a>
+                    <span class="name">
+                        <span ><b>Data</b></span>
+                        <a href="#Data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Data sent to the game in JSON format</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="defaultValue"></a>
+                    <span class="name">
+                        <span ><b>defaultValue</b></span>
+                        <a href="#defaultValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Standard value used</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mode"></a>
+                    <span class="name">
+                        <span ><b>mode</b></span>
+                        <a href="#mode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Select game mode</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="players"></a>
+                    <span class="name">
+                        <span ><b>players</b></span>
+                        <a href="#players"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:47</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>List of players in the game</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Component, OnInit} from &#x27;@angular/core&#x27;;
+import {GameOptionServiceService} from &quot;../../services/gameOptionService/game-option-service.service&quot;;
+
+/**
+ * Component that create page for the main menu of the website. We can choose here if we want to start a
+ * new game or load a game from a json file.
+ */
+@Component({
+  selector: &#x27;app-main-menu&#x27;,
+  templateUrl: &#x27;./main-menu.component.html&#x27;,
+  styleUrls: [&#x27;./main-menu.component.scss&#x27;]
+})
+export class MainMenuComponent implements OnInit{
+
+  /**
+   * @ignore
+   */
+  constructor(private dataService: GameOptionServiceService) {}
+
+  /**
+   * @ignore
+   */
+  ngOnInit(): void {
+      const button &#x3D; document.getElementById(&quot;contniue-button&quot;) as HTMLButtonElement
+      button.style.display &#x3D; &quot;none&quot;
+  }
+
+  /**
+   * Data sent to the game in JSON format
+   */
+  Data: { [Type: string]: string} &#x3D; {}
+  /**
+   * Backlog list retrieve JSON file
+   */
+  BacklogData: { [key : string]: number } &#x3D; {};
+  /**
+   * Select game mode
+   */
+  mode &#x3D; &quot;&quot;
+  /**
+   * Standard value used
+   */
+  defaultValue &#x3D; &quot;&quot;
+  /**
+   * List of players in the game
+   */
+  players : string[] &#x3D; []
+  /**
+   * First Backlog not yet graded
+   */
+  actualLog &#x3D; 0;
+
+  /**
+   * Function to save data from the input JSON file as a variable for use in the game
+   * @param event {event} con contains the JSON file
+   */
+  onFileSelected(event: any &#x3D; 0){
+    this.players &#x3D; [];
+    const selectedFile &#x3D; event.target.files[0];
+    const reader &#x3D; new FileReader();
+
+    reader.onload &#x3D; () &#x3D;&gt; {
+      const fileContent &#x3D; reader.result as string;
+      const jsonData &#x3D; JSON.parse(fileContent);
+      // Extract names from JSON using keys
+
+      this.mode &#x3D; jsonData.mode
+      this.defaultValue &#x3D; jsonData.default
+
+      for (const key in jsonData.Backlog) {
+        if (jsonData.Backlog.hasOwnProperty(key)) {
+          const item &#x3D; jsonData.Backlog[key];
+          for (const itemName in item) {
+            if (item.hasOwnProperty(itemName) &amp;&amp; itemName !&#x3D;&#x3D; &#x27;work&#x27;) {
+              this.BacklogData[itemName] &#x3D; item[itemName] as number
+            }
+          }
+        }
+      }
+
+      for(const key in jsonData.Players){
+        if (jsonData.Players.hasOwnProperty(key)) {
+          const item : string &#x3D; jsonData.Players[key];
+          this.players.push(item);
+        }
+      }
+
+      for (const key in jsonData.Backlog) {
+        if (jsonData.Backlog.hasOwnProperty(key)) {
+          const item &#x3D; jsonData.Backlog[key];
+          if (!item.work) {
+            this.actualLog &#x3D; parseInt(key) - 1;
+            break;
+          }
+        }
+      }
+
+      console.log(this.mode, this.defaultValue, this.BacklogData, this.players, this.actualLog)
+
+      setTimeout(() &#x3D;&gt; {
+        const button &#x3D; document.getElementById(&quot;contniue-button&quot;) as HTMLButtonElement
+        button.style.display &#x3D; &quot;flex&quot;
+      }, 0);
+    };
+    reader.readAsText(selectedFile);
+  }
+
+  /**
+   * Function to send previously recorded data to game-option-service for in-game use
+   */
+  sendData(){
+    Object.keys(this.players).forEach(key &#x3D;&gt; {
+      const playerKey &#x3D; parseInt(key, 10)
+      const strKey &#x3D; &quot;Player&quot; + (playerKey + 1);
+      this.Data[strKey] &#x3D; this.players[playerKey];
+    });
+
+    this.Data[&quot;Mode&quot;] &#x3D; this.mode;
+    this.Data[&quot;Default&quot;] &#x3D; this.defaultValue;
+    this.Data[&quot;actualLog&quot;] &#x3D; (this.actualLog + 1) + &quot;&quot;;
+
+    Object.keys(this.BacklogData).forEach((item: string, index: number) &#x3D;&gt; {
+      this.Data[&quot;Backlog&quot; + index] &#x3D; item;
+      this.Data[&quot;Note&quot; + index] &#x3D; this.BacklogData[item] + &quot;&quot;
+    });
+
+    console.log(&quot;data&quot;, this.Data);
+    this.dataService.setData(this.Data);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container_info-button&quot;&gt;
+  &lt;pp-title&gt;&lt;/pp-title&gt;
+  &lt;information-button&gt;&lt;/information-button&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;container_button&quot;&gt;
+  &lt;start-button [pushableBackground]&#x3D;&quot;&#x27;hsl(111, 100%, 35%)&#x27;&quot;
+                [captionBackground]&#x3D;&quot;&#x27;linear-gradient(#00ff05, #19b000)&#x27;&quot;
+                [captionColor]&#x3D;&quot;&#x27;white&#x27;&quot;
+                [name]&#x3D;&quot;&#x27;PLAY&#x27;&quot;
+                [link]&#x3D;&quot;&#x27;/lobby&#x27;&quot;&gt;
+  &lt;/start-button&gt;
+  &lt;start-button [pushableBackground]&#x3D;&quot;&#x27;hsl(251, 67%, 27%)&#x27;&quot;
+                [captionBackground]&#x3D;&quot;&#x27;linear-gradient(#4935b0, #281775)&#x27;&quot;
+                [captionColor]&#x3D;&quot;&#x27;white&#x27;&quot;
+                [name]&#x3D;&quot;&#x27;CONTINUE&#x27;&quot;
+                [link]&#x3D;&quot;&#x27;/game&#x27;&quot; id&#x3D;&quot;contniue-button&quot;
+                (buttonClicked)&#x3D;&quot;sendData()&quot;&gt;
+  &lt;/start-button&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;container_bottom&quot;&gt;
+  &lt;div class&#x3D;&quot;bottom_input-json&quot;&gt;
+    &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;fileInput&quot; accept&#x3D;&quot;.json&quot; (change)&#x3D;&quot;onFileSelected($event)&quot;&gt;
+    &lt;label for&#x3D;&quot;fileInput&quot;&gt;Chose a json file&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./main-menu.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.container_button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40%;
+}
+
+.container_info-button {
+  height: 25%;
+  padding: 80px 15px 0 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+start-button {
+  transform: scale(1.5);
+}
+
+
+.bottom_input-json {
+  position: relative;
+  display: inline-block;
+
+  &amp; label {
+    display: inline-block;
+    font-family: &#x27;Press Start 2P&#x27;, serif;
+    background-color: #1b35d3;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 0.5px solid #e9e9ea;
+
+    &amp;:hover {
+      background-color: #1125a4;
+    }
+
+    &amp;:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+input[type&#x3D;&quot;file&quot;] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.container_bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  height: 20%;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container_info-button">  <pp-title></pp-title>  <information-button></information-button></div><div class="container_button">  <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                [captionColor]="\'white\'"                [name]="\'PLAY\'"                [link]="\'/lobby\'">  </start-button>  <start-button [pushableBackground]="\'hsl(251, 67%, 27%)\'"                [captionBackground]="\'linear-gradient(#4935b0, #281775)\'"                [captionColor]="\'white\'"                [name]="\'CONTINUE\'"                [link]="\'/game\'" id="contniue-button"                (buttonClicked)="sendData()">  </start-button></div><div class="container_bottom">  <div class="bottom_input-json">    <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">    <label for="fileInput">Chose a json file</label>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'MainMenuComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MainMenuComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
