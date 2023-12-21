@@ -73,7 +73,7 @@ export abstract class ModeDecorator implements Game {
     this.html.showText(balise.title, this.getPlayer(this.actualPlayerTurn));
 
     this.html.addHtmlElement("label");
-    this.html.addText("Standard value is " + this.getDefaultValue());
+    this.html.addText("Standard value is <label style='color: #10ABFFFF;'> " + this.getDefaultValue() + "</label>");
     this.html.addHtmlElement("label", undefined, undefined, true)
     this.html.displayHTML(balise.stValue)
 
@@ -108,12 +108,22 @@ export abstract class ModeDecorator implements Game {
     let nameQuestion = "";
     let nameCoffe = "";
 
-    this.html.addHtmlElement("ul");
-
     Object.keys(this.getNotes()).forEach(key => {
-      this.html.addHtmlElement("li");
-      this.html.addText(key + " : " + this.getNote(key));
-      this.html.addHtmlElement("li", undefined, undefined, true);
+      this.html.addHtmlElement("div", undefined, {
+        ["style"]:
+        "border: 1.2px solid white; " +
+        "min-width: 110px;" +
+        "transition: 0.3s; " +
+        "border-radius: 5px; " +
+        "padding: 8px 15px 15px 15px;" +
+        "margin-top: 30px;" +
+        "color: white;" +
+        "background-image: url(\"../../../assets/images/retrosoleil.jpg\");" +
+        "background-size: 100%;" +
+        "box-shadow: 0 0 2px #fff, 0 0 7px #fff, 0 0 10px #1beabd, 0 0 25px #10abff;"
+      });
+      this.html.addText("<div style=' padding: 5px 0;'>" + key + " </div> <div style='padding-top: 12px; text-align: center'>" + this.getNote(key) + "</div>");
+      this.html.addHtmlElement("div", undefined, undefined, true);
       this.notes.push(this.getNote(key));
 
       if (this.getNote(key) == "?") {
@@ -135,7 +145,6 @@ export abstract class ModeDecorator implements Game {
     } else if (this.notes.includes("cafe")) {
       return;
     }
-    this.html.addHtmlElement("ul", undefined, undefined, true);
     this.html.displayHTML(balise.stValue);
 
     for (let i = 0; i < this.notes.length; i++) for (let j = i; j < this.notes.length; j++) if (this.notes[i] != this.notes[j]) evryboddySameMind = false;

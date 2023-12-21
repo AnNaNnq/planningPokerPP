@@ -12,7 +12,7 @@ export class HtmlBalise{
   inputValue : HTMLInputElement;
 
   private constructor() {
-    this.stValue = document.getElementById("StandarValue") as HTMLElement
+    this.stValue = document.getElementById("StandardValue") as HTMLElement
     this.task = document.getElementById("ActualTask") as HTMLElement
     this.endMessage = document.getElementById("endMessage") as HTMLElement
     this.title = document.getElementById("textToShow") as HTMLDivElement
