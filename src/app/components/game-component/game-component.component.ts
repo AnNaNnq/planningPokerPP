@@ -7,7 +7,7 @@ import {HtmlDisplay} from "../../classes/facade/HtmlDisplay";
 import {HtmlBalise} from "../../classes/singleton/htmlBalise";
 import {Router} from "@angular/router";
 import {AverageDecorator} from "../../classes/decorateur/AverageDecorator";
-import {keyframes} from "@angular/animations";
+import {MajabsDecorator} from "../../classes/decorateur/MajabsDecorator";
 
 @Component({
   selector: 'game-component',
@@ -38,6 +38,7 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     this.game = new GameConcret();
     if (this.getMode() == "strict") this.game = new StrictDecorator(this.game);
     else if (this.getMode() == "moyenne") this.game = new AverageDecorator(this.game);
+    else if (this.getMode() == "majabs") this.game = new MajabsDecorator(this.game);
     else this.game = new StrictDecorator(this.game)
     this.setPlayers()
 
