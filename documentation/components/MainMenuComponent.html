@@ -225,6 +225,9 @@ new game or load a game from a json file.</p>
                             <li>
                                 <a href="#players" >players</a>
                             </li>
+                            <li>
+                                <a href="#popupIsOpen" >popupIsOpen</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -238,7 +241,13 @@ new game or load a game from a json file.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
                                 <a href="#onFileSelected" >onFileSelected</a>
+                            </li>
+                            <li>
+                                <a href="#openInformation" >openInformation</a>
                             </li>
                             <li>
                                 <a href="#sendData" >sendData</a>
@@ -255,6 +264,57 @@ new game or load a game from a json file.</p>
     </table>
 </section>
 
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dataService: <a href="../injectables/GameOptionServiceService.html" target="_self">GameOptionServiceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:13</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Component that create page for the main menu of the website. We can choose here if we want to start a
+new game or load a game from a json file.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dataService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GameOptionServiceService.html" target="_self" >GameOptionServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
 
 
@@ -265,6 +325,45 @@ new game or load a game from a json file.</p>
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A callback method that is invoked immediately after the default change detector has checked the directive&#39;s data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -285,8 +384,8 @@ new game or load a game from a json file.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -347,6 +446,45 @@ new game or load a game from a json file.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="openInformation"></a>
+                    <span class="name">
+                        <span ><b>openInformation</b></span>
+                        <a href="#openInformation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openInformation()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Opens or closes popup window when information button is clicked</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="sendData"></a>
                     <span class="name">
                         <span ><b>sendData</b></span>
@@ -363,8 +501,8 @@ new game or load a game from a json file.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="111"
-                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:111</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:119</a></div>
                         </td>
                     </tr>
 
@@ -412,7 +550,7 @@ new game or load a game from a json file.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -449,7 +587,7 @@ new game or load a game from a json file.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:43</a></div>
                         </td>
                     </tr>
 
@@ -486,7 +624,7 @@ new game or load a game from a json file.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -523,7 +661,7 @@ new game or load a game from a json file.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:51</a></div>
                         </td>
                     </tr>
 
@@ -560,7 +698,7 @@ new game or load a game from a json file.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -597,13 +735,44 @@ new game or load a game from a json file.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:55</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>List of players in the game</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popupIsOpen"></a>
+                    <span class="name">
+                        <span ><b>popupIsOpen</b></span>
+                        <a href="#popupIsOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/main-menu/main-menu.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Defines whether the popup is already displayed or not</p>
 </div>
                 </td>
             </tr>
@@ -631,16 +800,24 @@ import {GameOptionServiceService} from &quot;../../services/gameOptionService/ga
 export class MainMenuComponent implements OnInit{
 
   /**
-   * @ignore
+   * Component that create page for the main menu of the website. We can choose here if we want to start a
+   * new game or load a game from a json file.
    */
   constructor(private dataService: GameOptionServiceService) {}
 
   /**
-   * @ignore
+   * Defines whether the popup is already displayed or not
+   */
+  popupIsOpen &#x3D; false
+
+  /**
+   * A callback method that is invoked immediately after the default change detector has checked the directive&#x27;s data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.
    */
   ngOnInit(): void {
       const button &#x3D; document.getElementById(&quot;contniue-button&quot;) as HTMLButtonElement
-      button.style.display &#x3D; &quot;none&quot;
+      button.style.display &#x3D; &quot;none&quot;;
+      const popup &#x3D; document.getElementById(&quot;popup&quot;) as HTMLDivElement;
+      popup.style.display &#x3D; &quot;none&quot;;
   }
 
   /**
@@ -745,6 +922,16 @@ export class MainMenuComponent implements OnInit{
     console.log(&quot;data&quot;, this.Data);
     this.dataService.setData(this.Data);
   }
+
+  /**
+   * Opens or closes popup window when information button is clicked
+   */
+  openInformation(){
+    const popup &#x3D; document.getElementById(&quot;popup&quot;) as HTMLDivElement;
+    if(this.popupIsOpen) popup.style.display &#x3D; &quot;none&quot;;
+    else popup.style.display &#x3D; &quot;block&quot;;
+    this.popupIsOpen &#x3D; !this.popupIsOpen;
+  }
 }
 </code></pre>
     </div>
@@ -752,7 +939,7 @@ export class MainMenuComponent implements OnInit{
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container_info-button&quot;&gt;
   &lt;pp-title&gt;&lt;/pp-title&gt;
-  &lt;information-button&gt;&lt;/information-button&gt;
+  &lt;information-button (buttonClicked)&#x3D;&quot;openInformation()&quot;&gt;&lt;/information-button&gt;
 &lt;/div&gt;
 &lt;div class&#x3D;&quot;container_button&quot;&gt;
   &lt;start-button [pushableBackground]&#x3D;&quot;&#x27;hsl(111, 100%, 35%)&#x27;&quot;
@@ -774,6 +961,23 @@ export class MainMenuComponent implements OnInit{
     &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;fileInput&quot; accept&#x3D;&quot;.json&quot; (change)&#x3D;&quot;onFileSelected($event)&quot;&gt;
     &lt;label for&#x3D;&quot;fileInput&quot;&gt;Chose a json file&lt;/label&gt;
   &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id&#x3D;&quot;popup&quot;&gt;
+  &lt;h2&gt;Game rules&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;First choose the default value, this task will have the weight of 1 and you will use it to define the other
+      tasks in the backlog.
+    &lt;/li&gt;
+    &lt;li&gt;Each time it&#x27;s your turn, you&#x27;ll choose a grade (a weight) for the task you need to grade.&lt;/li&gt;
+    &lt;li&gt;If everyone agrees, the score will be awarded, otherwise the rules of the mode you&#x27;ve chosen will apply.&lt;/li&gt;
+    &lt;li&gt;If one of you chooses the interogation point, the game will pause and you will have to explain the task to the
+      player who set the interogation point. Then you&#x27;ll have to go around again.
+    &lt;/li&gt;
+    &lt;li&gt;If one of you puts down the coffee card, then the game stops, downloads a save game that you can use to resume
+      the game. And you can discuss this over a cup of coffee.
+    &lt;/li&gt;
+    &lt;li&gt;Once all the notes have been entered, you will download a JSON containing the notes you have assigned.&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -843,6 +1047,16 @@ input[type&#x3D;&quot;file&quot;] {
   justify-content: center;
   height: 20%;
 }
+
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
 </code></pre>
     </div>
 
@@ -871,7 +1085,7 @@ input[type&#x3D;&quot;file&quot;] {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container_info-button">  <pp-title></pp-title>  <information-button></information-button></div><div class="container_button">  <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                [captionColor]="\'white\'"                [name]="\'PLAY\'"                [link]="\'/lobby\'">  </start-button>  <start-button [pushableBackground]="\'hsl(251, 67%, 27%)\'"                [captionBackground]="\'linear-gradient(#4935b0, #281775)\'"                [captionColor]="\'white\'"                [name]="\'CONTINUE\'"                [link]="\'/game\'" id="contniue-button"                (buttonClicked)="sendData()">  </start-button></div><div class="container_bottom">  <div class="bottom_input-json">    <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">    <label for="fileInput">Chose a json file</label>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container_info-button">  <pp-title></pp-title>  <information-button (buttonClicked)="openInformation()"></information-button></div><div class="container_button">  <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                [captionColor]="\'white\'"                [name]="\'PLAY\'"                [link]="\'/lobby\'">  </start-button>  <start-button [pushableBackground]="\'hsl(251, 67%, 27%)\'"                [captionBackground]="\'linear-gradient(#4935b0, #281775)\'"                [captionColor]="\'white\'"                [name]="\'CONTINUE\'"                [link]="\'/game\'" id="contniue-button"                (buttonClicked)="sendData()">  </start-button></div><div class="container_bottom">  <div class="bottom_input-json">    <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">    <label for="fileInput">Chose a json file</label>  </div></div><div id="popup">  <h2>Game rules</h2>  <ul>    <li>First choose the default value, this task will have the weight of 1 and you will use it to define the other      tasks in the backlog.    </li>    <li>Each time it\'s your turn, you\'ll choose a grade (a weight) for the task you need to grade.</li>    <li>If everyone agrees, the score will be awarded, otherwise the rules of the mode you\'ve chosen will apply.</li>    <li>If one of you chooses the interogation point, the game will pause and you will have to explain the task to the      player who set the interogation point. Then you\'ll have to go around again.    </li>    <li>If one of you puts down the coffee card, then the game stops, downloads a save game that you can use to resume      the game. And you can discuss this over a cup of coffee.    </li>    <li>Once all the notes have been entered, you will download a JSON containing the notes you have assigned.</li>  </ul></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'MainMenuComponent'};

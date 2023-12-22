@@ -204,11 +204,6 @@
                                 <a href="#BacklogData" >BacklogData</a>
                             </li>
                             <li>
-                                    <span class="modifier">Protected</span>
-                                    <span class="modifier">Readonly</span>
-                                <a href="#console" >console</a>
-                            </li>
-                            <li>
                                 <a href="#Data" >Data</a>
                             </li>
                             <li>
@@ -670,33 +665,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="console"></a>
-                    <span class="name">
-                            <span class="modifier">Protected</span>
-                            <span class="modifier">Readonly</span>
-                        <span ><b>console</b></span>
-                        <a href="#console"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>console</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/components/settings-component/settings-component.component.ts:129</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="Data"></a>
                     <span class="name">
                         <span ><b>Data</b></span>
@@ -1012,6 +980,10 @@ export class SettingsComponentComponent {
     this.dataService.setData(this.Data);
   }
 
+  /**
+   * @ignore
+   * @protected
+   */
   protected readonly console &#x3D; console;
 }
 </code></pre>

@@ -130,6 +130,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Class containing the specific features of the absolute majority mode</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -576,7 +583,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:85</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:100</a></code>
 </div>
                         </td>
                     </tr>
@@ -584,11 +591,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Function that saves a save JSON to resume the game, adds the game mode to the JSON</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>literal type</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>JSON backup</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -621,7 +634,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:6</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:17</a></code>
 </div>
                         </td>
                     </tr>
@@ -629,6 +642,12 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Function which, if not all players choose the same note, checks whether the absoul majority is present <br></p>
+<ul>
+  <li><b>if yes</b>: note down the majority and move on.</ul>
+  <li><b>else</b>: ask the two extremes to give their point of view and repeat the question.</ul>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -885,7 +904,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:491</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:517</a></code>
 </div>
                         </td>
                     </tr>
@@ -1116,7 +1135,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:446</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:472</a></code>
 </div>
                         </td>
                     </tr>
@@ -1536,7 +1555,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:453</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:479</a></code>
 </div>
                         </td>
                     </tr>
@@ -2418,7 +2437,7 @@ using the <b>Planing Poker</b> card.</p>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:501</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:527</a></code>
 </div>
                         </td>
                     </tr>
@@ -2533,8 +2552,19 @@ using the <b>Planing Poker</b> card.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ModeDecorator} from &quot;./ModeDecorator&quot;;
 import {HtmlBalise} from &quot;../singleton/htmlBalise&quot;;
 
+/**
+ * Class containing the specific features of the absolute majority mode
+ * @extends ModeDecorator
+ */
 export class MajabsDecorator extends ModeDecorator{
 
+  /**
+   * Function which, if not all players choose the same note, checks whether the absoul majority is present &lt;br&gt;
+   * &lt;ul&gt;
+   *   &lt;li&gt;&lt;b&gt;if yes&lt;/b&gt;: note down the majority and move on.&lt;/ul&gt;
+   *   &lt;li&gt;&lt;b&gt;else&lt;/b&gt;: ask the two extremes to give their point of view and repeat the question.&lt;/ul&gt;
+   * &lt;/ul&gt;
+   */
   override notSameMind() {
     super.notSameMind();
 
@@ -2614,6 +2644,10 @@ export class MajabsDecorator extends ModeDecorator{
     balise.validateButton.name &#x3D; &quot;Try again&quot;;
   }
 
+  /**
+   * Function that saves a save JSON to resume the game, adds the game mode to the JSON
+   * @return {{ [p: string]: any }} JSON backup
+   */
   override creatAndDownloadJSON(): { [p: string]: any } {
     let jsonOutput &#x3D; super.creatAndDownloadJSON();
 
@@ -2622,7 +2656,7 @@ export class MajabsDecorator extends ModeDecorator{
       ...jsonOutput
     };
 
-    const filename &#x3D; &#x27;output.json&#x27;;
+    const filename &#x3D; &#x27;save.json&#x27;;
     const json &#x3D; JSON.stringify(jsonWithMode, null, 2);
     const blob &#x3D; new Blob([json], { type: &#x27;application/json&#x27; });
     const url &#x3D; window.URL.createObjectURL(blob);

@@ -130,6 +130,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Class containing the specific features of the strict mode</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -576,7 +583,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:44</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:56</a></code>
 </div>
                         </td>
                     </tr>
@@ -584,11 +591,17 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Function that saves a save JSON to resume the game, adds the game mode to the JSON</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>    <code>literal type</code>
 
                         </div>
+                            <div class="io-description">
+                                <p>JSON backup</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -621,7 +634,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:6</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:14</a></code>
 </div>
                         </td>
                     </tr>
@@ -629,6 +642,9 @@
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Function which, if all players fail to select the same note, asks the two extremes to provide their
+justification, and recomment the round</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -885,7 +901,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:491</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:517</a></code>
 </div>
                         </td>
                     </tr>
@@ -1116,7 +1132,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:446</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:472</a></code>
 </div>
                         </td>
                     </tr>
@@ -1536,7 +1552,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:453</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:479</a></code>
 </div>
                         </td>
                     </tr>
@@ -2418,7 +2434,7 @@ using the <b>Planing Poker</b> card.</p>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:501</a></code>
+                                <div class="io-line">Defined in         <code><a href="../classes/ModeDecorator.html#source" target="_self" >ModeDecorator:527</a></code>
 </div>
                         </td>
                     </tr>
@@ -2533,8 +2549,16 @@ using the <b>Planing Poker</b> card.</p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {ModeDecorator} from &quot;./ModeDecorator&quot;;
 import {HtmlBalise} from &quot;../singleton/htmlBalise&quot;;
 
-export class StrictDecorator extends ModeDecorator{
+/**
+ * Class containing the specific features of the strict mode
+ * @extends ModeDecorator
+ */
+export class StrictDecorator extends ModeDecorator {
 
+  /**
+   * Function which, if all players fail to select the same note, asks the two extremes to provide their
+   * justification, and recomment the round
+   */
   override notSameMind() {
     super.notSameMind();
     const balise &#x3D; HtmlBalise.getInstance();
@@ -2546,11 +2570,11 @@ export class StrictDecorator extends ModeDecorator{
     let minPlayer &#x3D; &quot;&quot;;
 
     Object.keys(this.getNotes()).forEach(key &#x3D;&gt; {
-      if(parseInt(this.getNote(key)) &gt; max){
+      if (parseInt(this.getNote(key)) &gt; max) {
         max &#x3D; parseInt(this.getNote(key));
         maxPlayer &#x3D; key;
       }
-      if(parseInt(this.getNote(key)) &lt; min){
+      if (parseInt(this.getNote(key)) &lt; min) {
         min &#x3D; parseInt(this.getNote(key));
         minPlayer &#x3D; key;
       }
@@ -2573,6 +2597,10 @@ export class StrictDecorator extends ModeDecorator{
     balise.validateButton.name &#x3D; &quot;Try again&quot;;
   }
 
+  /**
+   * Function that saves a save JSON to resume the game, adds the game mode to the JSON
+   * @return {{ [p: string]: any }} JSON backup
+   */
   override creatAndDownloadJSON(): { [p: string]: any } {
     let jsonOutput &#x3D; super.creatAndDownloadJSON();
 
@@ -2581,9 +2609,9 @@ export class StrictDecorator extends ModeDecorator{
       ...jsonOutput
     };
 
-    const filename &#x3D; &#x27;output.json&#x27;;
+    const filename &#x3D; &#x27;save.json&#x27;;
     const json &#x3D; JSON.stringify(jsonWithMode, null, 2);
-    const blob &#x3D; new Blob([json], { type: &#x27;application/json&#x27; });
+    const blob &#x3D; new Blob([json], {type: &#x27;application/json&#x27;});
     const url &#x3D; window.URL.createObjectURL(blob);
 
     const a &#x3D; document.createElement(&#x27;a&#x27;);

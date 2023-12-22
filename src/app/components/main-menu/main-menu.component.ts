@@ -18,6 +18,9 @@ export class MainMenuComponent implements OnInit{
    */
   constructor(private dataService: GameOptionServiceService) {}
 
+  /**
+   * Defines whether the popup is already displayed or not
+   */
   popupIsOpen = false
 
   /**
@@ -133,6 +136,9 @@ export class MainMenuComponent implements OnInit{
     this.dataService.setData(this.Data);
   }
 
+  /**
+   * Opens or closes popup window when information button is clicked
+   */
   openInformation(){
     const popup = document.getElementById("popup") as HTMLDivElement;
     if(this.popupIsOpen) popup.style.display = "none";

@@ -126,5 +126,9 @@ export class SettingsComponentComponent {
     this.dataService.setData(this.Data);
   }
 
+  /**
+   * @ignore
+   * @protected
+   */
   protected readonly console = console;
 }

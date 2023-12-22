@@ -1,8 +1,19 @@
 import {ModeDecorator} from "./ModeDecorator";
 import {HtmlBalise} from "../singleton/htmlBalise";
 
+/**
+ * Class containing the specific features of the absolute majority mode
+ * @extends ModeDecorator
+ */
 export class MajabsDecorator extends ModeDecorator{
 
+  /**
+   * Function which, if not all players choose the same note, checks whether the absoul majority is present <br>
+   * <ul>
+   *   <li><b>if yes</b>: note down the majority and move on.</ul>
+   *   <li><b>else</b>: ask the two extremes to give their point of view and repeat the question.</ul>
+   * </ul>
+   */
   override notSameMind() {
     super.notSameMind();
 
@@ -82,6 +93,10 @@ export class MajabsDecorator extends ModeDecorator{
     balise.validateButton.name = "Try again";
   }
 
+  /**
+   * Function that saves a save JSON to resume the game, adds the game mode to the JSON
+   * @return {{ [p: string]: any }} JSON backup
+   */
   override creatAndDownloadJSON(): { [p: string]: any } {
     let jsonOutput = super.creatAndDownloadJSON();
 
