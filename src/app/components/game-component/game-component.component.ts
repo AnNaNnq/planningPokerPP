@@ -29,6 +29,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
 
   opened = false;
 
+  stadarValue: string = ""
+  backlogValue: string = ""
+
   ngOnInit(): void {
   }
 
@@ -109,8 +112,8 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
           }
         });
       } else {
-        backlogData["Boutton Start"] = 1;
-        backlogData["Boutton Quiter"] = 1;
+        backlogData["Boutton Start"] = -1;
+        backlogData["Boutton Quiter"] = -1;
       }
     });
     this.game?.setBacklogData(backlogData)
@@ -202,5 +205,21 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
         }
       }
     }
+
+    if (this.game != null) {
+      this.backlogValue = ""
+      this.stadarValue = this.game.getDefaultValue()
+      console.log(this.game.getDefaultValue())
+      const max = this.game.getActualStage();
+      let n = 0
+      Object.keys(this.game.getBacklogData()).forEach(key => {
+        if(n < max && this.game?.getBacklogData()[key] != -1){
+          this.backlogValue += key + " : ";
+          this.backlogValue += this.game?.getBacklogData()[key] + "\n";
+        }
+        n++
+      })
+    }
+
   }
 }
