@@ -9,7 +9,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   templateUrl: './start-button.component.html',
   styleUrls: ['./start-button.component.scss']
 })
-export class StartButtonComponent{
+export class StartButtonComponent implements OnInit{
   /**
    * Variable to change the color under a button when it's called in another component.
    */
@@ -46,5 +46,9 @@ export class StartButtonComponent{
    */
   onButtonClick() {
     this.buttonClicked.emit();
+  }
+
+  ngOnInit(): void {
+
   }
 }

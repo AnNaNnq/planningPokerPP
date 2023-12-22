@@ -13,16 +13,21 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
 export class MainMenuComponent implements OnInit{
 
   /**
-   * @ignore
+   * Component that create page for the main menu of the website. We can choose here if we want to start a
+   * new game or load a game from a json file.
    */
   constructor(private dataService: GameOptionServiceService) {}
 
+  popupIsOpen = false
+
   /**
-   * @ignore
+   * A callback method that is invoked immediately after the default change detector has checked the directive's data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.
    */
   ngOnInit(): void {
       const button = document.getElementById("contniue-button") as HTMLButtonElement
-      button.style.display = "none"
+      button.style.display = "none";
+      const popup = document.getElementById("popup") as HTMLDivElement;
+      popup.style.display = "none";
   }
 
   /**
@@ -126,5 +131,12 @@ export class MainMenuComponent implements OnInit{
 
     console.log("data", this.Data);
     this.dataService.setData(this.Data);
+  }
+
+  openInformation(){
+    const popup = document.getElementById("popup") as HTMLDivElement;
+    if(this.popupIsOpen) popup.style.display = "none";
+    else popup.style.display = "block";
+    this.popupIsOpen = !this.popupIsOpen;
   }
 }
