@@ -90,7 +90,7 @@ export class MajabsDecorator extends ModeDecorator{
       ...jsonOutput
     };
 
-    const filename = 'output.json';
+    const filename = 'save.json';
     const json = JSON.stringify(jsonWithMode, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);
