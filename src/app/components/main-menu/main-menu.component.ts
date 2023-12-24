@@ -24,6 +24,11 @@ export class MainMenuComponent implements OnInit{
   popupIsOpen = false
 
   /**
+   * Site language
+   */
+  lang = ""
+
+  /**
    * A callback method that is invoked immediately after the default change detector has checked the directive's data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.
    */
   ngOnInit(): void {
@@ -31,6 +36,8 @@ export class MainMenuComponent implements OnInit{
       button.style.display = "none";
       const popup = document.getElementById("popup") as HTMLDivElement;
       popup.style.display = "none";
+
+      this.lang = localStorage.getItem('lang') || 'en';
   }
 
   /**
@@ -144,5 +151,11 @@ export class MainMenuComponent implements OnInit{
     if(this.popupIsOpen) popup.style.display = "none";
     else popup.style.display = "block";
     this.popupIsOpen = !this.popupIsOpen;
+  }
+
+  changLang(lang:any){
+    const selectedLanguage = lang.target.value;
+
+    localStorage.setItem('lang', selectedLanguage);
   }
 }

@@ -1,6 +1,10 @@
 <div class="container_info-button">
   <pp-title></pp-title>
   <information-button (buttonClicked)="openInformation()"></information-button>
+  <select class="form-select" (change)="changLang($event)">
+    <option [selected]="lang==='en'" value="en">English</option>
+    <option [selected]="lang==='fr'" value="fr">Français</option>
+  </select>
 </div>
 <div class="container_button">
   <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
