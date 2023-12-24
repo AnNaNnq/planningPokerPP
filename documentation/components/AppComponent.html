@@ -251,7 +251,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/app.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/app.component.ts:27</a></div>
                         </td>
                     </tr>
 
@@ -271,6 +271,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import {TranslateService} from &quot;@ngx-translate/core&quot;;
 
 /**
  * Main component that display everything.
@@ -282,6 +283,16 @@
 })
 
 export class AppComponent {
+
+  /**
+   * @ignore
+   * @param translateService
+   */
+  constructor(private translateService:TranslateService) {
+    this.translateService.setDefaultLang(&#x27;en&#x27;);
+    this.translateService.use(localStorage.getItem(&#x27;lang&#x27;) || &#x27;en&#x27;)
+  }
+
   /**
    * Variable that contains the name of the website.
    */

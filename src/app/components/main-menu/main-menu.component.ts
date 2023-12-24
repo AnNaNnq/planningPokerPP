@@ -157,6 +157,10 @@ export class MainMenuComponent implements OnInit{
     this.popupIsOpen = !this.popupIsOpen;
   }
 
+  /**
+   * Language change function
+   * @param lang translation language
+   */
   changLang(lang:any){
     const selectedLanguage = lang.target.value;
 
