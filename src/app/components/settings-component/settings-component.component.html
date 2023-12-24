@@ -2,7 +2,7 @@
   <div class="form_top">
     <div class="top_left">
       <div class="left_number-players">
-        <label> Numbers of Players </label>
+        <label> {{'NbPlayer' | translate}}</label>
         <input type="range" min="2" max="{{playerMax}}" value="2" (change)="getSliderValue($event)">
         <span>{{ playerNumber }}</span>
       </div>
