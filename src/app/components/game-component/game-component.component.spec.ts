@@ -84,4 +84,3 @@ describe('GameComponentComponent', () => {
     expect(game.getBacklogDataNote('button')).toEqual(5);
   });
 });
-
