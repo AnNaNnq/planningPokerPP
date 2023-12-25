@@ -231,3 +231,5 @@ export class GameConcret implements Game{
   }
 
 }
+
+

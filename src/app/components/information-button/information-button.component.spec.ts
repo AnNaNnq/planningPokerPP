@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { InformationButtonComponent } from './information-button.component';
+import {MatIconModule} from "@angular/material/icon";
 
 describe('InformationButtonComponent', () => {
   let component: InformationButtonComponent;
@@ -8,7 +9,8 @@ describe('InformationButtonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InformationButtonComponent]
+      declarations: [InformationButtonComponent],
+      imports: [MatIconModule]
     });
     fixture = TestBed.createComponent(InformationButtonComponent);
     component = fixture.componentInstance;
