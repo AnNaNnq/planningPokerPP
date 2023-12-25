@@ -1,10 +1,21 @@
 import {ModeDecorator} from "./ModeDecorator";
 import {HtmlBalise} from "../singleton/htmlBalise";
 
+/**
+ * Class containing the specific features of the Average mode
+ * @extends ModeDecorator
+ */
 export class AverageDecorator extends ModeDecorator{
 
+  /**
+   * List of notes used
+   */
   notesList = [0, 1, 2, 3, 5, 8, 20, 40, 100];
 
+  /**
+   * Function that calculates the average of all scores if the players don't all agree with each other
+   * and selects the card closest to the average
+   */
   override notSameMind() {
     super.notSameMind();
 
@@ -48,6 +59,10 @@ export class AverageDecorator extends ModeDecorator{
     balise.validateButton.style.display = "block"
   }
 
+  /**
+   * Function that saves a save JSON to resume the game, adds the game mode to the JSON
+   * @return {{ [p: string]: any }} JSON backup
+   */
   override creatAndDownloadJSON(): { [p: string]: any } {
     let jsonOutput = super.creatAndDownloadJSON();
 
@@ -56,7 +71,7 @@ export class AverageDecorator extends ModeDecorator{
       ...jsonOutput
     };
 
-    const filename = 'output.json';
+    const filename = 'save.json';
     const json = JSON.stringify(jsonWithMode, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const url = window.URL.createObjectURL(blob);

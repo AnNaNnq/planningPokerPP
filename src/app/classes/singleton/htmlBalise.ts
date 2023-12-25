@@ -1,3 +1,6 @@
+/**
+ * class singleton which contains the html tags to be modified
+ */
 export class HtmlBalise{
   /**
    * variable containing singleton class instance

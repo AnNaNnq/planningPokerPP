@@ -9,7 +9,7 @@ export class HtmlDisplay{
   /**
    * Variable that contains everything that will be added to the DOM in HTML format
    */
-  content = "";
+  public content = "";
 
 
   /**

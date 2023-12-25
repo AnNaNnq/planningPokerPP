@@ -1,8 +1,16 @@
 import {ModeDecorator} from "./ModeDecorator";
 import {HtmlBalise} from "../singleton/htmlBalise";
 
-export class StrictDecorator extends ModeDecorator{
+/**
+ * Class containing the specific features of the strict mode
+ * @extends ModeDecorator
+ */
+export class StrictDecorator extends ModeDecorator {
 
+  /**
+   * Function which, if all players fail to select the same note, asks the two extremes to provide their
+   * justification, and recomment the round
+   */
   override notSameMind() {
     super.notSameMind();
     const balise = HtmlBalise.getInstance();
@@ -14,11 +22,11 @@ export class StrictDecorator extends ModeDecorator{
     let minPlayer = "";
 
     Object.keys(this.getNotes()).forEach(key => {
-      if(parseInt(this.getNote(key)) > max){
+      if (parseInt(this.getNote(key)) > max) {
         max = parseInt(this.getNote(key));
         maxPlayer = key;
       }
-      if(parseInt(this.getNote(key)) < min){
+      if (parseInt(this.getNote(key)) < min) {
         min = parseInt(this.getNote(key));
         minPlayer = key;
       }
@@ -41,6 +49,10 @@ export class StrictDecorator extends ModeDecorator{
     balise.validateButton.name = "Try again";
   }
 
+  /**
+   * Function that saves a save JSON to resume the game, adds the game mode to the JSON
+   * @return {{ [p: string]: any }} JSON backup
+   */
   override creatAndDownloadJSON(): { [p: string]: any } {
     let jsonOutput = super.creatAndDownloadJSON();
 
@@ -49,9 +61,9 @@ export class StrictDecorator extends ModeDecorator{
       ...jsonOutput
     };
 
-    const filename = 'output.json';
+    const filename = 'save.json';
     const json = JSON.stringify(jsonWithMode, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
+    const blob = new Blob([json], {type: 'application/json'});
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');

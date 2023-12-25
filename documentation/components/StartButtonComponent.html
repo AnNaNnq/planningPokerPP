@@ -141,6 +141,12 @@ is the link, the color of the background and the text.</p>
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
 
 
 <section data-compodoc="block-metadata">
@@ -202,6 +208,9 @@ is the link, the color of the background and the text.</p>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
                             <li>
                                 <a href="#onButtonClick" >onButtonClick</a>
                             </li>
@@ -462,6 +471,45 @@ is the link, the color of the background and the text.</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/components/start-button/start-button.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>A callback method that is invoked immediately after the default change detector has checked the directive&#39;s data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="onButtonClick"></a>
                     <span class="name">
                         <span ><b>onButtonClick</b></span>
@@ -514,7 +562,7 @@ is the link, the color of the background and the text.</p>
   templateUrl: &#x27;./start-button.component.html&#x27;,
   styleUrls: [&#x27;./start-button.component.scss&#x27;]
 })
-export class StartButtonComponent{
+export class StartButtonComponent implements OnInit{
   /**
    * Variable to change the color under a button when it&#x27;s called in another component.
    */
@@ -551,6 +599,13 @@ export class StartButtonComponent{
    */
   onButtonClick() {
     this.buttonClicked.emit();
+  }
+
+  /**
+   * A callback method that is invoked immediately after the default change detector has checked the directive&#x27;s data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.
+   */
+  ngOnInit(): void {
+
   }
 }
 </code></pre>

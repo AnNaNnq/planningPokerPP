@@ -2,31 +2,72 @@ import {Game} from "./Game";
 import {HtmlDisplay} from "../facade/HtmlDisplay";
 import {HtmlBalise} from "../singleton/htmlBalise";
 
+/**
+ * Class that styles the game and its events according to the decorator design pattern
+ * @implements Game
+ */
 export abstract class ModeDecorator implements Game {
 
+  /**
+   * Contains information about the current game
+   * @protected
+   */
   protected game: Game;
+
+  /**
+   * Variable containing the facade for adding HTML elements
+   * @protected
+   */
   protected html: HtmlDisplay;
 
+  /**
+   * ID of the current player
+   */
   actualPlayerTurn: number = 1;
 
+  /**
+   * List of notes
+   */
   notes: string[] = [];
 
+  /**
+   * Do I need to retry the turn
+   */
   retry = false;
+
+  /**
+   * Do I need to download the JSON
+   */
   downloadJson = false;
 
+  /**
+   * class constructor
+   * @param game class constructor
+   */
   constructor(game: Game) {
     this.game = game;
     this.html = new HtmlDisplay();
   }
 
+  /**
+   * Setter for players
+   * @param players List of players
+   */
   setPlayers(players: { [key: number]: string }) {
     this.game.setPlayers(players);
   }
 
+  /**
+   * Setter for backlogData
+   * @param BacklogData All the backlog
+   */
   setBacklogData(BacklogData: { [p: string]: number }): void {
     this.game.setBacklogData(BacklogData);
   }
 
+  /**
+   * Function that prompts players to enter the standard value
+   */
   chooseDefaultValue(): void {
     const balise = HtmlBalise.getInstance();
     this.html.showText(balise.task, "Choose a standard value")
@@ -34,10 +75,18 @@ export abstract class ModeDecorator implements Game {
     this.html.displayHTML(balise.stValue)
   }
 
+  /**
+   * Defines whether to setup the standard value
+   * @return
+   */
   setupDefaultValue(): boolean {
     return this.game.setupDefaultValue();
   }
 
+  /**
+   * Setter for the standard value
+   * @param value {string} value for the standard value
+   */
   setDefaultValue(value: string): void {
     this.game.setDefaultValue(value);
     const balise = HtmlBalise.getInstance();
@@ -46,6 +95,10 @@ export abstract class ModeDecorator implements Game {
     this.nextStage();
   }
 
+  /**
+   * Game function, during this phase the players, each in turn, give the score they would give to the current task
+   * using the <b>Planing Poker</b> card.
+   */
   lunchStage() {
     this.notes = []
     const balise = HtmlBalise.getInstance();
@@ -91,6 +144,9 @@ export abstract class ModeDecorator implements Game {
     this.html.displayHTML(balise.task);
   }
 
+  /**
+   * Function that reveals the scores of each player during this phase
+   */
   reavelNote() {
     const balise = HtmlBalise.getInstance();
     this.html.clearHTML(balise.stValue)
@@ -154,6 +210,11 @@ export abstract class ModeDecorator implements Game {
     }
   }
 
+  /**
+   * Fonction qui ce déclanche si un joueur à selectioner la carte <b><i>?</i></b>
+   * @param playerName {string} nom du joueur qui a selectioner la carte <b><i>?</i></b>
+   * @constructor
+   */
   QuestionSelected(playerName: string) {
     const balise = HtmlBalise.getInstance();
     this.html.clearHTML(balise.stValue)
@@ -173,6 +234,11 @@ export abstract class ModeDecorator implements Game {
     balise.validateButton.name = "Try again";
   }
 
+  /**
+   * Fonction qui ce déclanche si un joueur à selectioner la carte <b><i>Café</i></b>
+   * @param playerName nom du joueur qui a selectioner la carte <b><i>Café</i></b>
+   * @constructor
+   */
   CoffeeSelected(playerName: string) {
     const balise = HtmlBalise.getInstance();
     this.html.clearHTML(balise.stValue)
@@ -193,31 +259,55 @@ export abstract class ModeDecorator implements Game {
     balise.validateButton.name = "Download the JSON of your session to start again later";
   }
 
+  /**
+   * Next step function
+   */
   nextStage() {
     this.game.nextStage();
     this.lunchStage();
   }
 
+  /**
+   * Return to current number of courses
+   */
   getActualStage(): number {
     return this.game.getActualStage();
   }
 
+
+  /**
+   * Returns the number of players
+   */
   getPlayerNumber(): number {
     return this.game.getPlayerNumber();
   }
 
+  /**
+   * Return a player's name
+   * @param key {number} id of the player to be returned
+   */
   getPlayer(key: number): string {
     return this.game.getPlayer(key);
   }
 
+  /**
+   * Returning the standard value
+   */
   getDefaultValue(): string {
     return this.game.getDefaultValue();
   }
 
+  /**
+   * Return BacklogData
+   */
   getBacklogData(): { [p: string]: number } {
     return this.game.getBacklogData();
   }
 
+  /**
+   * Function triggered when a player selects a card. This function marks the function in the Backlog
+   * @param id {string} rating given by player
+   */
   playerPushButton(id: string): void {
     let value = 0;
     Object.keys(this.getPlayers()).forEach(key => {
@@ -230,22 +320,41 @@ export abstract class ModeDecorator implements Game {
     this.lunchStage();
   }
 
+  /**
+   * Return to player list
+   */
   getPlayers(): { [p: number]: string } {
     return this.game.getPlayers();
   }
 
+  /**
+   * Adding a note to a Backlog function
+   * @param value {string} note to add
+   * @param key {string} Function which is noted
+   */
   addNote(value: string, key: string): void {
     this.game.addNote(value, key);
   }
 
+  /**
+   * Return to note list
+   */
   getNotes(): { [key: string]: string } {
     return this.game.getNotes();
   }
 
+  /**
+   * Recover a note
+   * @param key {string} Id of note to be returned
+   */
   getNote(key: string): string {
     return this.game.getNote(key);
   }
 
+  /**
+   * If all the players have set the same score, we add the score to the function
+   * @param note {string} note to add
+   */
   sameMind(note: string) {
     this.retry = false;
     const balise = HtmlBalise.getInstance();
@@ -268,6 +377,9 @@ export abstract class ModeDecorator implements Game {
     balise.validateButton.name = "block";
   }
 
+  /**
+   * If everyone disagrees, we do nothing.
+   */
   notSameMind() {
     const balise = HtmlBalise.getInstance();
 
@@ -275,18 +387,33 @@ export abstract class ModeDecorator implements Game {
     this.html.displayHTML(balise.endMessage);
   }
 
+  /**
+   * Change the note of a function in the backlog
+   * @param key {string} Id of the function
+   * @param value {number} Function note
+   */
   modifyBacklogData(key: string, value: number): void {
     this.game.modifyBacklogData(key, value);
   }
 
+  /**
+   * Should we replay the round
+   */
   isRetry(): boolean {
     return this.retry;
   }
 
+  /**
+   * Set the player who must play
+   * @param n {number} Id of the player who is to play
+   */
   setActualPlayerTurn(n: number): void {
     this.actualPlayerTurn = n;
   }
 
+  /**
+   * Function that launches at the end, with a summary of each note and the ability to download the Backlog JSON
+   */
   end(): void {
     const balise = HtmlBalise.getInstance();
 
@@ -307,19 +434,55 @@ export abstract class ModeDecorator implements Game {
     this.html.addHtmlElement("ul", "id", undefined, true);
     this.html.displayHTML(balise.stValue);
 
+    let data = this.getBacklogData();
+    const jsonOutput: { [key: string]: any } = {
+      default: this.getDefaultValue(),
+      Backlog: {}
+    };
+
+    Object.keys(data).forEach((key, index) => {
+      const entry: { [key: string]: any } = {};
+
+      entry[key] = data[key];
+
+      jsonOutput['Backlog'][(index + 1).toString().padStart(2, '0')] = entry;
+    });
+
+    const filename = 'result.json';
+    const json = JSON.stringify(jsonOutput, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+
     balise.validateButton.style.display = 'none';
     balise.playerButton.style.display = 'none';
     balise.finishButton.style.display = 'block';
   }
 
+  /**
+   * Retrieve a note from the backlog
+   * @param key {string} Function to which the note belongs
+   */
   getBacklogDataNote(key: string): number {
     return this.game.getBacklogDataNote(key);
   }
 
+  /**
+   * Do we need to download a backup
+   */
   isDownload(): boolean {
     return this.downloadJson;
   }
 
+  /**
+   * Create and download a backup JSON file
+   */
   creatAndDownloadJSON(): { [p: string]: any } {
     let data = this.getBacklogData();
     let players = this.getPlayers();
@@ -346,12 +509,21 @@ export abstract class ModeDecorator implements Game {
     return jsonOutput;
   }
 
+  /**
+   * Function that sets all values useful for resuming the game
+   * @param defaultValue {string} Standard game value
+   * @param actualLog {number} id of function to note
+   */
   continueGame(defaultValue: string, actualLog: number): void {
     this.setStage(actualLog);
     this.game.setDefaultValue(defaultValue);
     this.lunchStage();
   }
 
+  /**
+   * Set function to note
+   * @param nb id of function to note
+   */
   setStage(nb: number): void {
     this.game.setStage(nb);
   }

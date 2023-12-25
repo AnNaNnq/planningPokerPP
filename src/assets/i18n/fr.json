@@ -1,0 +1,16 @@
+{
+  "PLAY": "JOUER",
+  "CONTINUE": "CONTINUE",
+  "JSON_file": "Choisir un fichier JSON",
+  "GameRules": "Règles du jeu",
+  "GameRules1": "Choisissez d'abord la valeur par défaut, cette tâche aura un poids de 1 et vous l'utiliserez pour définir les autres tâches du carnet de commandes.",
+  "GameRules2": "Chaque fois que c'est votre tour, vous choisissez une note (un poids) pour la tâche que vous devez noter.",
+  "GameRules3": "Si tout le monde est d'accord, le score sera attribué, sinon les règles du mode que vous avez choisi s'appliqueront.",
+  "GameRules4": "Si l'un d'entre vous choisit le point d'interogation, le jeu s'interrompt et vous devez expliquer la tâche au joueur qui a choisi le point d'interogation. Vous devrez ensuite recommencer le tour.",
+  "GameRules5": "Si l'un d'entre vous pose la carte café, le jeu s'arrête, télécharge une sauvegarde que vous pouvez utiliser pour reprendre le jeu. Et vous pouvez en discuter autour d'une tasse de café.",
+  "GameRules6": "Une fois que toutes les notes ont été saisies, vous téléchargez un JSON contenant les notes que vous avez attribuées.",
+
+  "NbPlayer": "Nombre de joueurs",
+  "name": "nom",
+  "player": "Joueur"
+}

@@ -1,5 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgModule, OnInit} from '@angular/core';
 import {GameOptionServiceService} from "../../services/gameOptionService/game-option-service.service";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {setUpLocationSync} from "@angular/router/upgrade";
+import {NgModelGroup} from "@angular/forms";
+import {BrowserModule} from "@angular/platform-browser";
+import {MatIcon, MatIconModule} from "@angular/material/icon";
+import {AppComponent} from "../../app.component";
 
 /**
  * Component that create page for the main menu of the website. We can choose here if we want to start a
@@ -13,16 +19,32 @@ import {GameOptionServiceService} from "../../services/gameOptionService/game-op
 export class MainMenuComponent implements OnInit{
 
   /**
-   * @ignore
+   * Component that create page for the main menu of the website. We can choose here if we want to start a
+   * new game or load a game from a json file.
    */
-  constructor(private dataService: GameOptionServiceService) {}
+  constructor(private dataService: GameOptionServiceService, private translateService:TranslateService) {
+  }
 
   /**
-   * @ignore
+   * Defines whether the popup is already displayed or not
+   */
+  popupIsOpen = false
+
+  /**
+   * Site language
+   */
+  lang = ""
+
+  /**
+   * A callback method that is invoked immediately after the default change detector has checked the directive's data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.
    */
   ngOnInit(): void {
       const button = document.getElementById("contniue-button") as HTMLButtonElement
-      button.style.display = "none"
+      button.style.display = "none";
+      const popup = document.getElementById("popup") as HTMLDivElement;
+      popup.style.display = "none";
+
+      this.lang = localStorage.getItem('lang') || 'en';
   }
 
   /**
@@ -126,5 +148,26 @@ export class MainMenuComponent implements OnInit{
 
     console.log("data", this.Data);
     this.dataService.setData(this.Data);
+  }
+
+  /**
+   * Opens or closes popup window when information button is clicked
+   */
+  openInformation(){
+    const popup = document.getElementById("popup") as HTMLDivElement;
+    if(this.popupIsOpen) popup.style.display = "none";
+    else popup.style.display = "block";
+    this.popupIsOpen = !this.popupIsOpen;
+  }
+
+  /**
+   * Language change function
+   * @param lang translation language
+   */
+  changLang(lang:any){
+    const selectedLanguage = lang.target.value;
+
+    localStorage.setItem('lang', selectedLanguage);
+    this.translateService.use(selectedLanguage);
   }
 }

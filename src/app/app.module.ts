@@ -16,7 +16,18 @@ import { PlayerCardComponent } from './components/player-card/player-card.compon
 import {NgIf} from "@angular/common";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
+/**
+ * @ignore
+ * @param http
+ * @constructor
+ */
+export function HttpLoaderFactory(http:HttpClient){
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -30,16 +41,25 @@ import {MatButtonModule} from "@angular/material/button";
     PlayerCardComponent,
   ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatIconModule,
-        NoopAnimationsModule,
-        NgIf,
-        MatSidenavModule,
-        MatButtonModule
+      BrowserModule,
+      AppRoutingModule,
+      MatIconModule,
+      NoopAnimationsModule,
+      NgIf,
+      MatSidenavModule,
+      MatButtonModule,
+      HttpClientModule,
+      TranslateModule.forRoot({
+        loader:{
+          provide:TranslateLoader,
+          useFactory:HttpLoaderFactory,
+          deps:[HttpClient]
+        }
+      }
+      )
     ],
   providers:
-    [],
+    [HttpClient],
   bootstrap:
     [AppComponent]
 })

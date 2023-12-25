@@ -9,6 +9,11 @@ import {Router} from "@angular/router";
 import {AverageDecorator} from "../../classes/decorateur/AverageDecorator";
 import {MajabsDecorator} from "../../classes/decorateur/MajabsDecorator";
 
+/**
+ * Class that manages game display
+ * @implements AfterViewInit
+ * @implements OnInit
+ */
 @Component({
   selector: 'game-component',
   templateUrl: './game-component.component.html',
@@ -16,22 +21,57 @@ import {MajabsDecorator} from "../../classes/decorateur/MajabsDecorator";
 })
 export class GameComponentComponent implements AfterViewInit, OnInit {
 
+  /**
+   * Class constructor
+   * @param dataService {GameOptionServiceService} Contains data to start the game
+   * @param router {Router} site router
+   */
   constructor(private dataService: GameOptionServiceService, private router: Router) {
   }
 
+  /**
+   * Game data
+   */
   game: Game | undefined;
 
+  /**
+   * Class to display elements on the page
+   */
   htmlDisplay: HtmlDisplay | undefined;
 
+  /**
+   * List of available notes
+   */
   listValue = ["0", "1", "2", "3", "5", "8", "20", "40", "100", "?", "cafe"]
 
+  /**
+   * Singleton containing andlocations for HTML elements
+   */
   balise: HtmlBalise | undefined;
 
+  /**
+   * If the bare is open
+   */
   opened = false;
 
+  /**
+   * Standar value
+   */
+  standarValue: string = ""
+  /**
+   * Backlog
+   */
+  backlogValue: string = ""
+
+  /**
+   * @ignore
+   */
   ngOnInit(): void {
   }
 
+  /**
+   * Function that starts the game after the page has loaded
+   */
   ngAfterViewInit(): void {
     this.balise = HtmlBalise.getInstance();
     this.balise.playerButton.style.display = 'none';
@@ -53,6 +93,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     }
   }
 
+  /**
+   * Get Game Mode
+   */
   getMode(): string {
     let mode = "strict"
     this.dataService.data$.subscribe(data => {
@@ -67,6 +110,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return mode
   }
 
+  /**
+   * Are we back in the game
+   */
   isContinue(): boolean {
     let cont = false;
     this.dataService.data$.subscribe(data => {
@@ -81,6 +127,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return cont;
   }
 
+  /**
+   * Set Player in game
+   */
   setPlayers() {
     let players: { [key: number]: string } = {}
     this.dataService.data$.subscribe(data => {
@@ -99,6 +148,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     this.game?.setPlayers(players)
   }
 
+  /**
+   * Set Backlog Data
+   */
   setBacklog() {
     let backlogData: { [key: string]: number } = {};
     this.dataService.data$.subscribe(data => {
@@ -109,13 +161,17 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
           }
         });
       } else {
-        backlogData["Boutton Start"] = 1;
-        backlogData["Boutton Quiter"] = 1;
+        backlogData["Boutton Start"] = -1;
+        backlogData["Boutton Quiter"] = -1;
       }
     });
     this.game?.setBacklogData(backlogData)
   }
 
+  /**
+   * Get Note
+   * @param id Id of the player who set the note
+   */
   getNote(id: number): number {
     let n = 0
 
@@ -130,6 +186,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return n
   }
 
+  /**
+   * retrieves the function currently noted
+   */
   getActuelLog(): number {
     let n = 0;
     this.dataService.data$.subscribe(data => {
@@ -142,6 +201,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return n;
   }
 
+  /**
+   * Get default value
+   */
   getDefaultValue(): string {
     let n = "";
     this.dataService.data$.subscribe(data => {
@@ -154,6 +216,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     return n;
   }
 
+  /**
+   * Add a not to the Backlog
+   */
   setBacklogNote() {
     let backlogData: { [key: string]: number } = {};
     this.dataService.data$.subscribe(data => {
@@ -171,10 +236,17 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     this.game?.setBacklogData(backlogData)
   }
 
+  /**
+   * Function that starts when a button is pressed
+   * @param id function identifier
+   */
   selectButton(id: string) {
     this.game?.playerPushButton(id)
   }
 
+  /**
+   * Function that starts when the player presses the button continue
+   */
   valideStage() {
     if (this.game?.setupDefaultValue()) {
       const valueElement = document.getElementById("stage1") as HTMLInputElement;
@@ -202,5 +274,21 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
         }
       }
     }
+
+    if (this.game != null) {
+      this.backlogValue = ""
+      this.standarValue = this.game.getDefaultValue()
+      console.log(this.game.getDefaultValue())
+      const max = this.game.getActualStage();
+      let n = 0
+      Object.keys(this.game.getBacklogData()).forEach(key => {
+        if(n < max && this.game?.getBacklogData()[key] != -1){
+          this.backlogValue += key + " : ";
+          this.backlogValue += this.game?.getBacklogData()[key] + "\n";
+        }
+        n++
+      })
+    }
+
   }
 }

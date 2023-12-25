@@ -9,7 +9,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   templateUrl: './start-button.component.html',
   styleUrls: ['./start-button.component.scss']
 })
-export class StartButtonComponent{
+export class StartButtonComponent implements OnInit{
   /**
    * Variable to change the color under a button when it's called in another component.
    */
@@ -46,5 +46,12 @@ export class StartButtonComponent{
    */
   onButtonClick() {
     this.buttonClicked.emit();
+  }
+
+  /**
+   * A callback method that is invoked immediately after the default change detector has checked the directive's data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated.
+   */
+  ngOnInit(): void {
+
   }
 }

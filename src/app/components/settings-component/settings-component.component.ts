@@ -106,7 +106,6 @@ export class SettingsComponentComponent {
     };
     reader.readAsText(selectedFile);
   }
-
   /**
    * Sends data to the game
    */
@@ -127,5 +126,9 @@ export class SettingsComponentComponent {
     this.dataService.setData(this.Data);
   }
 
+  /**
+   * @ignore
+   * @protected
+   */
   protected readonly console = console;
 }

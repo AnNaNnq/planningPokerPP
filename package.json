@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "jasmine",
-    "compodoc": "compodoc -p tsconfig.doc.json -w -s",
+    "test": "ng test",
+    "compodoc": "npx compodoc -p tsconfig.doc.json -w -s",
     "compodoc:build": "compodoc -p tsconfig.doc.json",
     "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
     "compodoc:serve": "compodoc -s"
@@ -24,6 +24,9 @@
     "@angular/platform-browser": "^17.0.7",
     "@angular/platform-browser-dynamic": "^17.0.7",
     "@angular/router": "^17.0.7",
+    "@angular/upgrade": "^17.0.7",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "typeface-press-start-2p": "^1.1.13",
@@ -40,8 +43,12 @@
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
+    "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-requirejs": "^1.1.0",
+    "karma-typescript-preprocessor": "^0.4.0",
     "typescript": "~5.2.2"
   }
 }
