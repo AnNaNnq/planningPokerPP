@@ -1,11 +1,11 @@
-.container_button {
+.container_middle {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 40%;
 }
 
-.container_info-button {
+.container_header {
   height: 25%;
   padding: 80px 15px 0 35px;
   display: flex;
@@ -52,7 +52,15 @@ input[type="file"] {
   z-index: -1;
 }
 
-.container_bottom{
+.header_right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-between;
+  gap: 15px;
+}
+
+.container_bottom {
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -65,7 +73,44 @@ input[type="file"] {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
+  background-color: #151515;
+  padding: 20px 50px 20px 15px;
+  font-size: 12px;
+  border: 1.2px solid #949494;
+  text-align: justify;
+  font-family: 'Press Start 2P', serif;
+  color: #949494;
+  width: 70em;
+  box-shadow: 0 0 2px #fff, 0 0 7px #fff, 0 0 10px #d000ff, 0 0 25px #d000ff;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Press Start 2P', serif;
+  text-decoration: underline;
+  color: #00b2ff;
+}
+
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.info-button_language {
+  background: #cbcbcb;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 12px;
+
+  &:hover {
+    background-color: #3146d3;
+  }
 }

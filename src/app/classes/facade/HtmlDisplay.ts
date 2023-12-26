@@ -63,7 +63,6 @@ export class HtmlDisplay{
   addClass(id: string, classe: string){
     const element = document.getElementById(id);
     if(element == null) return
-    console.log("aa")
     element.classList.add(classe);
   }
 

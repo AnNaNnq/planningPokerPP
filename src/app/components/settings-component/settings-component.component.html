@@ -14,23 +14,23 @@
 
     <div class="top_right">
       <div class="right_style-game">
-        <h3> Game mode</h3>
+        <h3> {{'Game mode' | translate }}</h3>
         <ul>
           <li>
             <input type="radio" name="mod" value="strict" (change)="changeMod($event)">
-            <label class="style-game_label">Strict</label>
+            <label class="style-game_label"> {{"Strict" | translate}}</label>
             <div class="circle">
             </div>
           </li>
           <li>
             <input type="radio" name="mod" value="majabs" (change)="changeMod($event)">
-            <label class="style-game_label">Absolute Majority </label>
+            <label class="style-game_label">{{"Absolute Majority" | translate}} </label>
             <div class="circle">
             </div>
           </li>
           <li>
             <input type="radio" name="mod" value="moyenne" (change)="changeMod($event)">
-            <label class="style-game_label">Average</label>
+            <label class="style-game_label">{{"Average" | translate}}</label>
             <div class="circle">
             </div>
           </li>
@@ -42,20 +42,20 @@
   <div class="form_bottom">
     <div class="bottom_input-json">
       <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
-      <label for="fileInput">Chose a json file</label>
+      <label for="fileInput">{{'JSON_file' | translate}}</label>
     </div>
     <start-button
                   [pushableBackground]="'hsl(354, 91%, 26%)'"
                   [captionBackground]="'linear-gradient(#c00c1e, #810612)'"
                   [captionColor]="'white'"
-                  [name]="'BACK'"
+                  [name]="'BACK' | translate"
                   [link]="'/'">
     </start-button>
     <start-button (buttonClicked)="sendData()"
                   [pushableBackground]="'hsl(111, 100%, 35%)'"
                   [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
                   [captionColor]="'white'"
-                  [name]="'START'"
+                  [name]="'START' | translate"
                   [link]="'/game'">
     </start-button>
   </div>

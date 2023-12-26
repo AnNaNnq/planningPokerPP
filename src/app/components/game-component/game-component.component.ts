@@ -8,6 +8,8 @@ import {HtmlBalise} from "../../classes/singleton/htmlBalise";
 import {Router} from "@angular/router";
 import {AverageDecorator} from "../../classes/decorateur/AverageDecorator";
 import {MajabsDecorator} from "../../classes/decorateur/MajabsDecorator";
+import {translateType} from "@angular/compiler-cli/src/ngtsc/translator";
+import {TranslateService} from "@ngx-translate/core";
 
 /**
  * Class that manages game display
@@ -25,8 +27,9 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
    * Class constructor
    * @param dataService {GameOptionServiceService} Contains data to start the game
    * @param router {Router} site router
+   * @param translate
    */
-  constructor(private dataService: GameOptionServiceService, private router: Router) {
+  constructor(private dataService: GameOptionServiceService, private router: Router, public translate: TranslateService) {
   }
 
   /**
@@ -77,10 +80,10 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
     this.balise.playerButton.style.display = 'none';
     this.htmlDisplay = new HtmlDisplay();
     this.game = new GameConcret();
-    if (this.getMode() == "strict") this.game = new StrictDecorator(this.game);
-    else if (this.getMode() == "moyenne") this.game = new AverageDecorator(this.game);
-    else if (this.getMode() == "majabs") this.game = new MajabsDecorator(this.game);
-    else this.game = new StrictDecorator(this.game)
+    if (this.getMode() == "strict") this.game = new StrictDecorator(this.game, this.translate);
+    else if (this.getMode() == "moyenne") this.game = new AverageDecorator(this.game, this.translate);
+    else if (this.getMode() == "majabs") this.game = new MajabsDecorator(this.game, this.translate);
+    else this.game = new StrictDecorator(this.game, this.translate)
     this.setPlayers()
 
     if (this.isContinue()) {
@@ -282,7 +285,7 @@ export class GameComponentComponent implements AfterViewInit, OnInit {
       const max = this.game.getActualStage();
       let n = 0
       Object.keys(this.game.getBacklogData()).forEach(key => {
-        if(n < max && this.game?.getBacklogData()[key] != -1){
+        if (n < max && this.game?.getBacklogData()[key] != -1) {
           this.backlogValue += key + " : ";
           this.backlogValue += this.game?.getBacklogData()[key] + "\n";
         }

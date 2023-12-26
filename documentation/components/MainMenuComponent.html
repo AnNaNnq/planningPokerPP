@@ -303,27 +303,27 @@ new game or load a game from a json file.</p>
                                         <tbody>
                                                 <tr>
                                                         <td>dataService</td>
-                                                  
+
                                                         <td>
                                                                         <code><a href="../injectables/GameOptionServiceService.html" target="_self" >GameOptionServiceService</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                                 <tr>
                                                         <td>translateService</td>
-                                                  
+
                                                         <td>
                                                                     <code>TranslateService</code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -339,7 +339,7 @@ new game or load a game from a json file.</p>
 
 
     <section data-compodoc="block-methods">
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -376,7 +376,7 @@ new game or load a game from a json file.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -411,7 +411,7 @@ new game or load a game from a json file.</p>
 
                         </div>
                             <div class="io-description">
-                                
+
                             </div>
                 </td>
             </tr>
@@ -489,7 +489,7 @@ new game or load a game from a json file.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -528,7 +528,7 @@ new game or load a game from a json file.</p>
 
                         </div>
                             <div class="io-description">
-                                
+
                             </div>
                 </td>
             </tr>
@@ -614,7 +614,7 @@ new game or load a game from a json file.</p>
     </table>
 </section>
     <section data-compodoc="block-properties">
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -1227,14 +1227,14 @@ input[type&#x3D;&quot;file&quot;] {
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container_info-button">  <pp-title></pp-title>  <information-button (buttonClicked)="openInformation()"></information-button>  <select class="form-select" (change)="changLang($event)">    <option [selected]="lang===\'en\'" value="en">English</option>    <option [selected]="lang===\'fr\'" value="fr">Français</option>  </select></div><div class="container_button">  <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                [captionColor]="\'white\'"                [name]="\'PLAY\' | translate"                [link]="\'/lobby\'">  </start-button>  <start-button [pushableBackground]="\'hsl(251, 67%, 27%)\'"                [captionBackground]="\'linear-gradient(#4935b0, #281775)\'"                [captionColor]="\'white\'"                [name]="\'CONTINUE\' | translate"                [link]="\'/game\'" id="contniue-button"                (buttonClicked)="sendData()">  </start-button></div><div class="container_bottom">  <div class="bottom_input-json">    <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">    <label for="fileInput">{{\'JSON_file\' | translate}}</label>  </div></div><div id="popup">  <h2>{{\'GameRules\' | translate}}</h2>  <ul>    <li>{{\'GameRules1\' | translate}}</li>    <li>{{\'GameRules2\' | translate}}</li>    <li>{{\'GameRules3\' | translate}}</li>    <li>{{\'GameRules4\' | translate}}</li>    <li>{{\'GameRules5\' | translate}}</li>    <li>{{\'GameRules6\' | translate}}</li>  </ul></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container_header">  <pp-title></pp-title>  <information-button (buttonClicked)="openInformation()"></information-button>  <select class="form-select" (change)="changLang($event)">    <option [selected]="lang===\'en\'" value="en">English</option>    <option [selected]="lang===\'fr\'" value="fr">Français</option>  </select></div><div class="container_middle">  <start-button [pushableBackground]="\'hsl(111, 100%, 35%)\'"                [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                [captionColor]="\'white\'"                [name]="\'PLAY\' | translate"                [link]="\'/lobby\'">  </start-button>  <start-button [pushableBackground]="\'hsl(251, 67%, 27%)\'"                [captionBackground]="\'linear-gradient(#4935b0, #281775)\'"                [captionColor]="\'white\'"                [name]="\'CONTINUE\' | translate"                [link]="\'/game\'" id="contniue-button"                (buttonClicked)="sendData()">  </start-button></div><div class="container_bottom">  <div class="bottom_input-json">    <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">    <label for="fileInput">{{\'JSON_file\' | translate}}</label>  </div></div><div id="popup">  <h2>{{\'GameRules\' | translate}}</h2>  <ul>    <li>{{\'GameRules1\' | translate}}</li>    <li>{{\'GameRules2\' | translate}}</li>    <li>{{\'GameRules3\' | translate}}</li>    <li>{{\'GameRules4\' | translate}}</li>    <li>{{\'GameRules5\' | translate}}</li>    <li>{{\'GameRules6\' | translate}}</li>  </ul></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'MainMenuComponent'};

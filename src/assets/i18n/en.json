@@ -12,5 +12,24 @@
 
   "NbPlayer": "Numbers of Players",
   "name": "name",
-  "player": "Player"
+  "player": "Player",
+  "Resume" : "Resume",
+
+  "Choose a standard value": "Choose a standard value",
+  "DefineValue" : "Define the value of ",
+  "Standard value is " : "Standard value is ",
+  "Reavel of Notation" : "Reavel of Notation",
+  "notUnderstand" : " didn't understand the function, explain it to him.",
+  "Questioning" : "Questioning",
+  "tooComplicated" : " says it's too complicated and that we should talk about it over a good cup of coffee.",
+  "Timeout" : "Timeout",
+  "Download" : "Download the JSON of your session to start again later.",
+  "sameOpinion" : "Everyone is of the same opinion we can pass to the next function.",
+  "notAgree" : "You don't agree with each other. That's all right.",
+
+  "useAverage" : "We can use the average of all your notation for the final notation :",
+  "absWin" : "The absolute majority has to win. The note is : ",
+  "highestNote" : " has the highest rating they will explain his choice then ",
+  "lowestNote" : " with the lowest score will explain too.",
+  "Try again" : "Try again"
 }

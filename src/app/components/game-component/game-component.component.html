@@ -4,9 +4,9 @@
       <mat-icon>clear</mat-icon>
     </button>
     <div>
-      <h2> Résumé </h2>
-      <p><b>Standard value</b> : {{standarValue}}</p>
-      <p style="white-space: pre-line;">{{backlogValue}}</p>
+      <h2> {{ 'Resume' | translate }} </h2>
+      <p><b> {{ 'Standard value'| translate }}</b> : {{ standarValue }}</p>
+      <p style="white-space: pre-line;">{{ backlogValue }}</p>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -28,7 +28,7 @@
       <div id="gameModeMessage"></div>
 
       <div class="input-group">
-        <input id="stage1" type="text" class="input-group__input" placeholder="your task">
+        <input id="stage1" type="text" class="input-group__input" placeholder="{{'your task' | translate}}">
       </div>
 
 
@@ -43,7 +43,7 @@
                     [pushableBackground]="'hsl(111, 100%, 35%)'"
                     [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
                     [captionColor]="'white'"
-                    [name]="'Next'"
+                    [name]="'NEXT' | translate"
                     [link]="'/game'" id="validateButton">
       </start-button>
 
@@ -51,7 +51,7 @@
       <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
                     [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
                     [captionColor]="'white'"
-                    [name]="'BACk TO MAIN MENU'"
+                    [name]="'MAiN MENU' | translate"
                     [link]="'/'" id="finishButton" style="display: none">
       </start-button>
     </div>
