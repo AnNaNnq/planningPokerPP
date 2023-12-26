@@ -19,6 +19,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {ShopComponentComponent} from "./components/shop-component/shop-component.component";
 
 /**
  * @ignore
@@ -40,24 +41,25 @@ export function HttpLoaderFactory(http:HttpClient){
     TitleComponent,
     PlayerCardComponent,
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      MatIconModule,
-      NoopAnimationsModule,
-      NgIf,
-      MatSidenavModule,
-      MatButtonModule,
-      HttpClientModule,
-      TranslateModule.forRoot({
-        loader:{
-          provide:TranslateLoader,
-          useFactory:HttpLoaderFactory,
-          deps:[HttpClient]
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
+    NoopAnimationsModule,
+    NgIf,
+    MatSidenavModule,
+    MatButtonModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
         }
       }
-      )
-    ],
+    ),
+    ShopComponentComponent
+  ],
   providers:
     [HttpClient],
   bootstrap:
