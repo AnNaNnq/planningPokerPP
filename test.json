@@ -1,11 +1,26 @@
 {
   "01": {
-    "name": "Boutton start"
+    "name": "Construire les fondation"
   },
   "02": {
-    "name": "Boutton quiter"
+    "name": "Construire les murs"
   },
   "03": {
-    "name": "Boutton lancer"
+    "name": "Poser le sol"
+  },
+  "04": {
+    "name": "Placer le fenêtre"
+  },
+  "05": {
+    "name": "Poser l'étage"
+  },
+  "06": {
+    "name": "Poser les tuilles"
+  },
+  "07": {
+    "name": "Mettre l'isolation"
+  },
+  "03": {
+    "name": "Emenager"
   }
 }

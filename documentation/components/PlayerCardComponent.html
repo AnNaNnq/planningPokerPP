@@ -285,8 +285,8 @@ export class PlayerCardComponent {
 
     <div class="tab-pane fade " id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card&quot;&gt;
-  &lt;h1&gt; Player {{i}} &lt;/h1&gt;
-  &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;name {{i}}&quot;/&gt;
+  &lt;h1&gt; {{&#x27;player&#x27; | translate}} {{i}} &lt;/h1&gt;
+  &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;{{&#x27;name&#x27; | translate}} {{i}}&quot;/&gt;
 &lt;/div&gt;
 </code></pre>
     </div>
@@ -368,8 +368,8 @@ input {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="card">  <h1> Player {{i}} </h1>  <input type="text" placeholder="name {{i}}"/></div></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
+        var COMPONENT_TEMPLATE = '<div><div class="card">  <h1> {{\'player\' | translate}} {{i}} </h1>  <input type="text" placeholder="{{\'name\' | translate}} {{i}}"/></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'ShopComponentComponent', 'selector': 'shop-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PlayerCardComponent'};
 </script>

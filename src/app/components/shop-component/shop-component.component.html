@@ -1,2 +1,7 @@
-<button class="common" (click)="selectSkin('../../../assets/images/card.jpg')"><img src="../../../assets/images/card.jpg" alt="base"/> <p>Base</p><b>Free</b></button>
-<button class="rare" (click)="selectSkin('../../../assets/images/skin/fireworks.png')"><img src="../../../assets/images/skin/fireworks.png" alt="base"/> <p>Fire Works</p><b>10$</b></button>
+<button id="0" class="common skinbutton" image="../../../assets/images/card.jpg" select="false" (click)="selectSkin($event)"></button>
+<button id="1" class="common skinbutton" image="../../../assets/images/skin/fireworks.png" select="false" (click)="selectSkin($event)"></button>
+<br>
+<br>
+<button class="pushable_button" routerLink="/">
+    <span class="caption_button"> {{"home" | translate}} </span>
+</button>

@@ -141,12 +141,14 @@ import {RouterModule, Routes} from &#x27;@angular/router&#x27;;
 import {SettingsComponentComponent} from &quot;./components/settings-component/settings-component.component&quot;;
 import {MainMenuComponent} from &quot;./components/main-menu/main-menu.component&quot;;
 import {GameComponentComponent} from &quot;./components/game-component/game-component.component&quot;;
+import {ShopComponentComponent} from &quot;./components/shop-component/shop-component.component&quot;;
 
 const routes: Routes &#x3D; [
   {path: &#x27;&#x27;, redirectTo: &#x27;/home&#x27;, pathMatch: &#x27;full&#x27;},
   {path: &#x27;home&#x27;, component: MainMenuComponent},
   {path: &#x27;lobby&#x27;, component: SettingsComponentComponent},
-  {path: &#x27;game&#x27;, component: GameComponentComponent}
+  {path: &#x27;game&#x27;, component: GameComponentComponent},
+  {path: &#x27;shop&#x27;, component: ShopComponentComponent}
 ]
 
 @NgModule({

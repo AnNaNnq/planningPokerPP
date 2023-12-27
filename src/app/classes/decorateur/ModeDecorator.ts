@@ -138,6 +138,12 @@ export abstract class ModeDecorator implements Game {
         this.html.addHtmlElement("div", undefined, undefined, true);
 
         balise.playerButton.style.display = "flex"
+        let cards = document.getElementsByClassName("card-button") as HTMLCollectionOf<HTMLDivElement>;
+        if(cards != null) {
+          for (let i = 0; i < cards.length; i++) {
+            cards[i].style.backgroundImage = localStorage.getItem("image") || "url(../../../assets/images/skin/fireworks.png)"
+          }
+        }
       }
     });
 

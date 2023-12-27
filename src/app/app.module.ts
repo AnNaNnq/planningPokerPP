@@ -39,7 +39,7 @@ export function HttpLoaderFactory(http:HttpClient){
     SettingsComponentComponent,
     GameComponentComponent,
     TitleComponent,
-    PlayerCardComponent,
+    PlayerCardComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +58,12 @@ export function HttpLoaderFactory(http:HttpClient){
         }
       }
     ),
-    ShopComponentComponent
   ],
   providers:
     [HttpClient],
+  exports: [
+    StartButtonComponent
+  ],
   bootstrap:
     [AppComponent]
 })
