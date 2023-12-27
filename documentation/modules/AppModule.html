@@ -124,6 +124,10 @@
 <title>cluster_AppModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-70 8,-268 1596,-268 1596,-70 8,-70"/>
 </g>
+<g id="clust12" class="cluster">
+<title>cluster_AppModule_exports</title>
+<polygon fill="none" stroke="black" points="690,-208 690,-260 856,-260 856,-208 690,-208"/>
+</g>
 <g id="clust13" class="cluster">
 <title>cluster_AppModule_bootstrap</title>
 <polygon fill="none" stroke="black" points="864,-208 864,-260 988,-260 988,-208 864,-208"/>
@@ -131,10 +135,6 @@
 <g id="clust11" class="cluster">
 <title>cluster_AppModule_imports</title>
 <polygon fill="none" stroke="black" points="1372,-78 1372,-130 1588,-130 1588,-78 1372,-78"/>
-</g>
-<g id="clust12" class="cluster">
-<title>cluster_AppModule_exports</title>
-<polygon fill="none" stroke="black" points="690,-208 690,-260 856,-260 856,-208 690,-208"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_AppModule_declarations</title>
@@ -426,7 +426,8 @@ import {MatButtonModule} from &quot;@angular/material/button&quot;;
 import {HttpClient, HttpClientModule} from &quot;@angular/common/http&quot;;
 import {TranslateLoader, TranslateModule} from &quot;@ngx-translate/core&quot;;
 import {TranslateHttpLoader} from &quot;@ngx-translate/http-loader&quot;;
-import {ShopComponentComponent} from &quot;./components/shop-component/shop-component.component&quot;;
+import {MatInputModule} from &quot;@angular/material/input&quot;;
+import {MatSelectModule} from &quot;@angular/material/select&quot;;
 
 /**
  * @ignore
@@ -465,6 +466,8 @@ export function HttpLoaderFactory(http:HttpClient){
         }
       }
     ),
+    MatInputModule,
+    MatSelectModule
   ],
   providers:
     [HttpClient],

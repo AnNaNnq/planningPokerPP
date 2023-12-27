@@ -1006,23 +1006,23 @@ export class SettingsComponentComponent {
 
     &lt;div class&#x3D;&quot;top_right&quot;&gt;
       &lt;div class&#x3D;&quot;right_style-game&quot;&gt;
-        &lt;h3&gt; Game mode&lt;/h3&gt;
+        &lt;h3&gt; {{&#x27;Game mode&#x27; | translate }}&lt;/h3&gt;
         &lt;ul&gt;
           &lt;li&gt;
             &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;mod&quot; value&#x3D;&quot;strict&quot; (change)&#x3D;&quot;changeMod($event)&quot;&gt;
-            &lt;label class&#x3D;&quot;style-game_label&quot;&gt;Strict&lt;/label&gt;
+            &lt;label class&#x3D;&quot;style-game_label&quot;&gt; {{&quot;Strict&quot; | translate}}&lt;/label&gt;
             &lt;div class&#x3D;&quot;circle&quot;&gt;
             &lt;/div&gt;
           &lt;/li&gt;
           &lt;li&gt;
             &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;mod&quot; value&#x3D;&quot;majabs&quot; (change)&#x3D;&quot;changeMod($event)&quot;&gt;
-            &lt;label class&#x3D;&quot;style-game_label&quot;&gt;Absolute Majority &lt;/label&gt;
+            &lt;label class&#x3D;&quot;style-game_label&quot;&gt;{{&quot;Absolute Majority&quot; | translate}} &lt;/label&gt;
             &lt;div class&#x3D;&quot;circle&quot;&gt;
             &lt;/div&gt;
           &lt;/li&gt;
           &lt;li&gt;
             &lt;input type&#x3D;&quot;radio&quot; name&#x3D;&quot;mod&quot; value&#x3D;&quot;moyenne&quot; (change)&#x3D;&quot;changeMod($event)&quot;&gt;
-            &lt;label class&#x3D;&quot;style-game_label&quot;&gt;Average&lt;/label&gt;
+            &lt;label class&#x3D;&quot;style-game_label&quot;&gt;{{&quot;Average&quot; | translate}}&lt;/label&gt;
             &lt;div class&#x3D;&quot;circle&quot;&gt;
             &lt;/div&gt;
           &lt;/li&gt;
@@ -1034,20 +1034,20 @@ export class SettingsComponentComponent {
   &lt;div class&#x3D;&quot;form_bottom&quot;&gt;
     &lt;div class&#x3D;&quot;bottom_input-json&quot;&gt;
       &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;fileInput&quot; accept&#x3D;&quot;.json&quot; (change)&#x3D;&quot;onFileSelected($event)&quot;&gt;
-      &lt;label for&#x3D;&quot;fileInput&quot;&gt;Chose a json file&lt;/label&gt;
+      &lt;label for&#x3D;&quot;fileInput&quot;&gt;{{&#x27;JSON_file&#x27; | translate}}&lt;/label&gt;
     &lt;/div&gt;
     &lt;start-button
                   [pushableBackground]&#x3D;&quot;&#x27;hsl(354, 91%, 26%)&#x27;&quot;
                   [captionBackground]&#x3D;&quot;&#x27;linear-gradient(#c00c1e, #810612)&#x27;&quot;
                   [captionColor]&#x3D;&quot;&#x27;white&#x27;&quot;
-                  [name]&#x3D;&quot;&#x27;BACK&#x27;&quot;
+                  [name]&#x3D;&quot;&#x27;BACK&#x27; | translate&quot;
                   [link]&#x3D;&quot;&#x27;/&#x27;&quot;&gt;
     &lt;/start-button&gt;
     &lt;start-button (buttonClicked)&#x3D;&quot;sendData()&quot;
                   [pushableBackground]&#x3D;&quot;&#x27;hsl(111, 100%, 35%)&#x27;&quot;
                   [captionBackground]&#x3D;&quot;&#x27;linear-gradient(#00ff05, #19b000)&#x27;&quot;
                   [captionColor]&#x3D;&quot;&#x27;white&#x27;&quot;
-                  [name]&#x3D;&quot;&#x27;START&#x27;&quot;
+                  [name]&#x3D;&quot;&#x27;START&#x27; | translate&quot;
                   [link]&#x3D;&quot;&#x27;/game&#x27;&quot;&gt;
     &lt;/start-button&gt;
   &lt;/div&gt;
@@ -1287,7 +1287,7 @@ input[type&#x3D;&quot;file&quot;] {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form>  <div class="form_top">    <div class="top_left">      <div class="left_number-players">        <label> {{\'NbPlayer\' | translate}}</label>        <input type="range" min="2" max="{{playerMax}}" value="2" (change)="getSliderValue($event)">        <span>{{ playerNumber }}</span>      </div>      <div class="left_players">        <player-card (change)="addPlayerName($event)" [i]="i" *ngFor="let i of playersNb"></player-card>      </div>    </div>    <div class="top_right">      <div class="right_style-game">        <h3> Game mode</h3>        <ul>          <li>            <input type="radio" name="mod" value="strict" (change)="changeMod($event)">            <label class="style-game_label">Strict</label>            <div class="circle">            </div>          </li>          <li>            <input type="radio" name="mod" value="majabs" (change)="changeMod($event)">            <label class="style-game_label">Absolute Majority </label>            <div class="circle">            </div>          </li>          <li>            <input type="radio" name="mod" value="moyenne" (change)="changeMod($event)">            <label class="style-game_label">Average</label>            <div class="circle">            </div>          </li>        </ul>      </div>    </div>  </div>  <div class="form_bottom">    <div class="bottom_input-json">      <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">      <label for="fileInput">Chose a json file</label>    </div>    <start-button                  [pushableBackground]="\'hsl(354, 91%, 26%)\'"                  [captionBackground]="\'linear-gradient(#c00c1e, #810612)\'"                  [captionColor]="\'white\'"                  [name]="\'BACK\'"                  [link]="\'/\'">    </start-button>    <start-button (buttonClicked)="sendData()"                  [pushableBackground]="\'hsl(111, 100%, 35%)\'"                  [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                  [captionColor]="\'white\'"                  [name]="\'START\'"                  [link]="\'/game\'">    </start-button>  </div></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form>  <div class="form_top">    <div class="top_left">      <div class="left_number-players">        <label> {{\'NbPlayer\' | translate}}</label>        <input type="range" min="2" max="{{playerMax}}" value="2" (change)="getSliderValue($event)">        <span>{{ playerNumber }}</span>      </div>      <div class="left_players">        <player-card (change)="addPlayerName($event)" [i]="i" *ngFor="let i of playersNb"></player-card>      </div>    </div>    <div class="top_right">      <div class="right_style-game">        <h3> {{\'Game mode\' | translate }}</h3>        <ul>          <li>            <input type="radio" name="mod" value="strict" (change)="changeMod($event)">            <label class="style-game_label"> {{"Strict" | translate}}</label>            <div class="circle">            </div>          </li>          <li>            <input type="radio" name="mod" value="majabs" (change)="changeMod($event)">            <label class="style-game_label">{{"Absolute Majority" | translate}} </label>            <div class="circle">            </div>          </li>          <li>            <input type="radio" name="mod" value="moyenne" (change)="changeMod($event)">            <label class="style-game_label">{{"Average" | translate}}</label>            <div class="circle">            </div>          </li>        </ul>      </div>    </div>  </div>  <div class="form_bottom">    <div class="bottom_input-json">      <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">      <label for="fileInput">{{\'JSON_file\' | translate}}</label>    </div>    <start-button                  [pushableBackground]="\'hsl(354, 91%, 26%)\'"                  [captionBackground]="\'linear-gradient(#c00c1e, #810612)\'"                  [captionColor]="\'white\'"                  [name]="\'BACK\' | translate"                  [link]="\'/\'">    </start-button>    <start-button (buttonClicked)="sendData()"                  [pushableBackground]="\'hsl(111, 100%, 35%)\'"                  [captionBackground]="\'linear-gradient(#00ff05, #19b000)\'"                  [captionColor]="\'white\'"                  [name]="\'START\' | translate"                  [link]="\'/game\'">    </start-button>  </div></form></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'GameComponentComponent', 'selector': 'game-component'},{'name': 'InformationButtonComponent', 'selector': 'information-button'},{'name': 'MainMenuComponent', 'selector': 'app-main-menu'},{'name': 'PlayerCardComponent', 'selector': 'player-card'},{'name': 'SettingsComponentComponent', 'selector': 'settings-component'},{'name': 'ShopComponentComponent', 'selector': 'shop-component'},{'name': 'StartButtonComponent', 'selector': 'start-button'},{'name': 'TitleComponent', 'selector': 'pp-title'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsComponentComponent'};
