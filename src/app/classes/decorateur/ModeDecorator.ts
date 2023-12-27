@@ -1,6 +1,8 @@
 import {Game} from "./Game";
 import {HtmlDisplay} from "../facade/HtmlDisplay";
 import {HtmlBalise} from "../singleton/htmlBalise";
+import {TranslateService} from "@ngx-translate/core";
+
 
 /**
  * Class that styles the game and its events according to the decorator design pattern
@@ -40,11 +42,13 @@ export abstract class ModeDecorator implements Game {
    */
   downloadJson = false;
 
+
   /**
    * class constructor
    * @param game class constructor
+   * @param translate
    */
-  constructor(game: Game) {
+  constructor(game: Game, public translate: TranslateService) {
     this.game = game;
     this.html = new HtmlDisplay();
   }
@@ -70,7 +74,8 @@ export abstract class ModeDecorator implements Game {
    */
   chooseDefaultValue(): void {
     const balise = HtmlBalise.getInstance();
-    this.html.showText(balise.task, "Choose a standard value")
+
+    this.html.showText(balise.task, this.translate.instant('Choose a standard value'));
     balise.inputValue.style.display = "block"
     this.html.displayHTML(balise.stValue)
   }
@@ -124,7 +129,7 @@ export abstract class ModeDecorator implements Game {
     this.html.showText(balise.title, this.getPlayer(this.actualPlayerTurn));
 
     this.html.addHtmlElement("label");
-    this.html.addText("Standard value is <label style='color: #10ABFFFF;'> " + this.getDefaultValue() + "</label>");
+    this.html.addText(this.translate.instant("Standard value is ") + "<label style='color: #10ABFFFF;'> " + this.getDefaultValue() + "</label>");
     this.html.addHtmlElement("label", undefined, undefined, true)
     this.html.displayHTML(balise.stValue)
 
@@ -134,7 +139,7 @@ export abstract class ModeDecorator implements Game {
       value++;
       if (value == actualStage) {
         this.html.addHtmlElement("div");
-        this.html.addText("Define the value of " + key);
+        this.html.addText(this.translate.instant('DefineValue') + key);
         this.html.addHtmlElement("div", undefined, undefined, true);
 
         balise.playerButton.style.display = "flex"
@@ -161,7 +166,7 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.gameModeMessage)
     this.html.clearHTML(balise.title)
 
-    this.html.showText(balise.task, "Reavel of Notation");
+    this.html.showText(balise.task, this.translate.instant('Reavel of Notation'));
 
     let evryboddySameMind = true;
 
@@ -228,10 +233,10 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.task)
     this.html.clearHTML(balise.gameModeMessage)
 
-    this.html.addText(playerName + " didn't understand the function, explain it to him")
+    this.html.addText(playerName + this.translate.instant('notUnderstand'))
     this.html.displayHTML(balise.stValue);
 
-    this.html.addText("Questioning")
+    this.html.addText(this.translate.instant('Questioning'))
     this.html.displayHTML(balise.task)
 
     this.retry = true;
@@ -252,17 +257,17 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.task)
     this.html.clearHTML(balise.gameModeMessage)
 
-    this.html.addText(playerName + " says it's too complicated and that we should talk about it over a good cup of coffee.")
+    this.html.addText(playerName + this.translate.instant('tooComplicated'))
     this.html.displayHTML(balise.stValue);
 
-    this.html.addText("Timeout")
+    this.html.addText(this.translate.instant('Timeout'))
     this.html.displayHTML(balise.task)
 
     this.retry = false;
     this.downloadJson = true;
 
     balise.validateButton.style.display = 'block';
-    balise.validateButton.name = "Download the JSON of your session to start again later";
+    balise.validateButton.name = this.translate.instant('Download');
   }
 
   /**
@@ -366,7 +371,7 @@ export abstract class ModeDecorator implements Game {
     const balise = HtmlBalise.getInstance();
 
     this.html.addHtmlElement("label");
-    this.html.addText("Everyone is of the same opinion we can pass to the next function");
+    this.html.addText(this.translate.instant('sameOpinion'));
     this.html.addHtmlElement("label", undefined, undefined, true);
     this.html.displayHTML(balise.endMessage);
 
@@ -389,7 +394,7 @@ export abstract class ModeDecorator implements Game {
   notSameMind() {
     const balise = HtmlBalise.getInstance();
 
-    this.html.addText("You don't agree with each other. That's all right.")
+    this.html.addText(this.translate.instant('notAgree'))
     this.html.displayHTML(balise.endMessage);
   }
 
@@ -427,7 +432,7 @@ export abstract class ModeDecorator implements Game {
     this.html.clearHTML(balise.endMessage)
     this.html.clearHTML(balise.gameModeMessage)
 
-    this.html.showText(balise.task, "Summary");
+    this.html.showText(balise.task, this.translate.instant('Resume'));
 
     this.html.addHtmlElement("ul");
 
@@ -456,7 +461,7 @@ export abstract class ModeDecorator implements Game {
 
     const filename = 'result.json';
     const json = JSON.stringify(jsonOutput, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
+    const blob = new Blob([json], {type: 'application/json'});
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');

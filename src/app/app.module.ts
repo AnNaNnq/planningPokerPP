@@ -19,7 +19,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {ShopComponentComponent} from "./components/shop-component/shop-component.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 /**
  * @ignore
@@ -58,6 +59,8 @@ export function HttpLoaderFactory(http:HttpClient){
         }
       }
     ),
+    MatInputModule,
+    MatSelectModule
   ],
   providers:
     [HttpClient],

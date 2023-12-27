@@ -1,12 +1,19 @@
-<div class="container_info-button">
-  <pp-title></pp-title>
-  <information-button (buttonClicked)="openInformation()"></information-button>
-  <select class="form-select" (change)="changLang($event)">
-    <option [selected]="lang==='en'" value="en">English</option>
-    <option [selected]="lang==='fr'" value="fr">Français</option>
-  </select>
+<div class="container_header">
+  <div class="header_left">
+    <pp-title></pp-title>
+  </div>
+  <div class="header_right">
+    <information-button (buttonClicked)="openInformation()"></information-button>
+    <div class="info-button_language">
+      <mat-icon>language</mat-icon>
+      <select class="form-select" (change)="changLang($event)">
+        <option [selected]="lang==='en'" value="en">English</option>
+        <option [selected]="lang==='fr'" value="fr">Français</option>
+      </select>
+    </div>
+  </div>
 </div>
-<div class="container_button">
+<div class="container_middle">
   <start-button [pushableBackground]="'hsl(111, 100%, 35%)'"
                 [captionBackground]="'linear-gradient(#00ff05, #19b000)'"
                 [captionColor]="'white'"
@@ -30,17 +37,17 @@
 <div class="container_bottom">
   <div class="bottom_input-json">
     <input type="file" id="fileInput" accept=".json" (change)="onFileSelected($event)">
-    <label for="fileInput">{{'JSON_file' | translate}}</label>
+    <label for="fileInput">{{ 'JSON_file' | translate }}</label>
   </div>
 </div>
 <div id="popup">
-  <h2>{{'GameRules' | translate}}</h2>
+  <h2>{{ 'GameRules' | translate }}</h2>
   <ul>
-    <li>{{'GameRules1' | translate}}</li>
-    <li>{{'GameRules2' | translate}}</li>
-    <li>{{'GameRules3' | translate}}</li>
-    <li>{{'GameRules4' | translate}}</li>
-    <li>{{'GameRules5' | translate}}</li>
-    <li>{{'GameRules6' | translate}}</li>
+    <li>{{ 'GameRules1' | translate }}</li>
+    <li>{{ 'GameRules2' | translate }}</li>
+    <li>{{ 'GameRules3' | translate }}</li>
+    <li>{{ 'GameRules4' | translate }}</li>
+    <li>{{ 'GameRules5' | translate }}</li>
+    <li>{{ 'GameRules6' | translate }}</li>
   </ul>
 </div>

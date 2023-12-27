@@ -1,11 +1,12 @@
 import {ModeDecorator} from "./ModeDecorator";
 import {HtmlBalise} from "../singleton/htmlBalise";
 
+
 /**
  * Class containing the specific features of the Average mode
  * @extends ModeDecorator
  */
-export class AverageDecorator extends ModeDecorator{
+export class AverageDecorator extends ModeDecorator {
 
   /**
    * List of notes used
@@ -23,7 +24,7 @@ export class AverageDecorator extends ModeDecorator{
 
     let n = 0
 
-    for(let i = 0; i < this.notes.length; i++){
+    for (let i = 0; i < this.notes.length; i++) {
       n += parseInt(this.notes[i]);
       console.log("n", n)
     }
@@ -34,17 +35,17 @@ export class AverageDecorator extends ModeDecorator{
     let value = 0;
 
     let distance = 1000;
-    for(let i = this.notesList.length; i >= 0; i--){
-      if (distance > Math.abs(this.notesList[i] - n)){
-        distance =  Math.abs(n - this.notesList[i]);
+    for (let i = this.notesList.length; i >= 0; i--) {
+      if (distance > Math.abs(this.notesList[i] - n)) {
+        distance = Math.abs(n - this.notesList[i]);
         value = this.notesList[i]
-        console.log("distance",  distance, "n", n, "value", value)
+        console.log("distance", distance, "n", n, "value", value)
       }
     }
 
-    let nb =0;
+    let nb = 0;
 
-    this.html.addText("We can use the average of all your notation for the final notation : ");
+    this.html.addText(this.translate.instant('useAverage'));
     Object.keys(this.getBacklogData()).forEach(key => {
       nb++;
       if (nb == this.getActualStage()) {
@@ -73,7 +74,7 @@ export class AverageDecorator extends ModeDecorator{
 
     const filename = 'save.json';
     const json = JSON.stringify(jsonWithMode, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
+    const blob = new Blob([json], {type: 'application/json'});
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');

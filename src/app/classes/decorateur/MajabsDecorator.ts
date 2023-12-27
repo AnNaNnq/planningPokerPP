@@ -5,7 +5,7 @@ import {HtmlBalise} from "../singleton/htmlBalise";
  * Class containing the specific features of the absolute majority mode
  * @extends ModeDecorator
  */
-export class MajabsDecorator extends ModeDecorator{
+export class MajabsDecorator extends ModeDecorator {
 
   /**
    * Function which, if not all players choose the same note, checks whether the absoul majority is present <br>
@@ -36,7 +36,7 @@ export class MajabsDecorator extends ModeDecorator{
     });
     let value = 0;
     Object.keys(notesCount).forEach(key => {
-      if(notesCount[parseInt(key)] > (this.getPlayerNumber()/2)){
+      if (notesCount[parseInt(key)] > (this.getPlayerNumber() / 2)) {
         absMaj = true
         value = parseInt(key);
       }
@@ -44,8 +44,8 @@ export class MajabsDecorator extends ModeDecorator{
 
     const balise = HtmlBalise.getInstance();
     let nb = 0;
-    if(absMaj){
-      this.html.addText("The absolute majority has to win. The note : ")
+    if (absMaj) {
+      this.html.addText(this.translate.instant('absWin'))
 
       Object.keys(this.getBacklogData()).forEach(key => {
         nb++;
@@ -57,7 +57,7 @@ export class MajabsDecorator extends ModeDecorator{
 
       this.html.displayHTML(balise.gameModeMessage);
       this.retry = false;
-    }else{
+    } else {
       let max = 0;
       let maxPlayer = "";
 
@@ -65,11 +65,11 @@ export class MajabsDecorator extends ModeDecorator{
       let minPlayer = "";
 
       Object.keys(this.getNotes()).forEach(key => {
-        if(parseInt(this.getNote(key)) > max){
+        if (parseInt(this.getNote(key)) > max) {
           max = parseInt(this.getNote(key));
           maxPlayer = key;
         }
-        if(parseInt(this.getNote(key)) < min){
+        if (parseInt(this.getNote(key)) < min) {
           min = parseInt(this.getNote(key));
           minPlayer = key;
         }
@@ -78,11 +78,11 @@ export class MajabsDecorator extends ModeDecorator{
       this.html.addHtmlElement("b");
       this.html.addText(maxPlayer);
       this.html.addHtmlElement("b", undefined, undefined, true);
-      this.html.addText(" has the highest rating they will explain his choice then ");
+      this.html.addText(this.translate.instant('highestNote'));
       this.html.addHtmlElement("b");
       this.html.addText(minPlayer);
       this.html.addHtmlElement("b", undefined, undefined, true);
-      this.html.addText(" with the lowest score will be explained");
+      this.html.addText(this.translate.instant('lowestNote'));
 
       this.html.displayHTML(balise.gameModeMessage);
 
@@ -107,7 +107,7 @@ export class MajabsDecorator extends ModeDecorator{
 
     const filename = 'save.json';
     const json = JSON.stringify(jsonWithMode, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
+    const blob = new Blob([json], {type: 'application/json'});
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');

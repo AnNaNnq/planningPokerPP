@@ -1,6 +1,6 @@
 {
   "PLAY": "JOUER",
-  "CONTINUE": "CONTINUE",
+  "CONTINUE": "CONTINUER",
   "JSON_file": "Choisir un fichier JSON",
   "GameRules": "Règles du jeu",
   "GameRules1": "Choisissez d'abord la valeur par défaut, cette tâche aura un poids de 1 et vous l'utiliserez pour définir les autres tâches du carnet de commandes.",
@@ -12,5 +12,36 @@
 
   "NbPlayer": "Nombre de joueurs",
   "name": "nom",
-  "player": "Joueur"
+  "player": "Joueur",
+  "START": "COMMENCER",
+  "BACK": "RETOUR",
+  "Strict": "Stricte",
+  "Absolute Majority": "Majorité Asbolue",
+  "Average": "Moyenne",
+  "Game mode": "Mode de Jeu",
+  "PLANNING": "PLANIFIER",
+  "POKER": "Le Poker",
+  "MAiN MENU": "MENu PRINCIPAL",
+  "NEXT": "SUIVANT",
+  "your task": "votre tâche",
+  "Standard value": "Valeur étalon",
+  "Resume": "Résumé",
+
+  "Choose a standard value": "Choisissez une valeur étalon",
+  "DefineValue" : "Définir la valeur de ",
+  "Standard value is " : "La valeur étalon est ",
+  "Reavel of Notation" : "Voici les notes choisie",
+  "notUnderstand" : " n'a pas compris la question, expliquez lui.",
+  "Questioning" : "En questionnement",
+  "tooComplicated" : " dit que c'est trop compliqué et qu'ils devraient en discuter autour d'une bonne tasse de café.",
+  "Timeout" : "Temps-mort",
+  "Download" : "Télécharge le JSON de ta session pour reprendre plus tard.",
+  "sameOpinion" : "Tout le monde est du même avis, nous pouvons passer à la question suivante.",
+  "notAgree" : "Vous n'êtes pas d'accord, ce n'est pas grave.",
+
+  "useAverage" : "On peut utiliser la moyenne de toutes vos notations pour la note finale.",
+  "absWin" : "La majorité absolue gagne. La note est : ",
+  "highestNote" : " a la note la plus haute, iel va expliquer son choix et ",
+  "lowestNote" : " avec la note la plus basse va s'expliquer aussi.",
+  "Try again" : "Encore"
 }
