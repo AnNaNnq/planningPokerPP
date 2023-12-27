@@ -75,7 +75,9 @@ export abstract class ModeDecorator implements Game {
   chooseDefaultValue(): void {
     const balise = HtmlBalise.getInstance();
 
-    this.html.showText(balise.task, this.translate.instant('Choose a standard value'));
+    this.translate.get('Choose a standard value').subscribe((translation: string) => {
+      this.html.showText(balise.task, translation);
+    });
     balise.inputValue.style.display = "block"
     this.html.displayHTML(balise.stValue)
   }
