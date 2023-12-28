@@ -7,8 +7,15 @@
     <div class="info-button_language">
       <mat-icon>language</mat-icon>
       <select class="form-select" (change)="changLang($event)">
-        <option [selected]="lang==='en'" value="en">English</option>
-        <option [selected]="lang==='fr'" value="fr">Français</option>
+        <option [selected]="lang==='en'" value="en">{{'English' | translate}}</option>
+        <option [selected]="lang==='fr'" value="fr">{{'French' | translate}}</option>
+        <option [selected]="lang==='su'" value="su">{{'Swedish' | translate}}</option>
+        <option [selected]="lang==='al'" value="al">{{'German' | translate}}</option>
+        <option [selected]="lang==='es'" value="es">{{'Spanish' | translate}}</option>
+        <option [selected]="lang==='ch'" value="es">{{'Chinese' | translate}}</option>
+        <option [selected]="lang==='gr'" value="es">{{'Greek' | translate}}</option>
+        <option [selected]="lang==='po'" value="es">{{'Polish' | translate}}</option>
+        <option [selected]="lang==='it'" value="es">{{'Italian' | translate}}</option>
       </select>
     </div>
   </div>

@@ -1,4 +1,10 @@
 {
+  "English" : "English",
+  "French" : "French",
+  "Swedish" : "Swedish",
+  "German" : "German",
+  "Spanish" : "Spanish",
+
   "PLAY": "PLAY",
   "CONTINUE": "CONTINUE",
   "JSON_file": "Chose a json file",
@@ -6,19 +12,19 @@
   "GameRules1": "First choose the default value, this task will have the weight of 1 and you will use it to define the other tasks in the backlog.",
   "GameRules2": "Each time it's your turn, you'll choose a grade (a weight) for the task you need to grade.",
   "GameRules3": "If everyone agrees, the score will be awarded, otherwise the rules of the mode you've chosen will apply.",
-  "GameRules4": "If one of you chooses the interogation point, the game will pause and you will have to explain the task to the player who set the interogation point. Then you'll have to go around again.",
+  "GameRules4": "If one of you chooses the interrogation point, the game will pause and you will have to explain the task to the player who set the interogation point. Then you'll have to go around again.",
   "GameRules5": "If one of you puts down the coffee card, then the game stops, downloads a save game that you can use to resume the game. And you can discuss this over a cup of coffee.",
   "GameRules6": "Once all the notes have been entered, you will download a JSON containing the notes you have assigned.",
 
   "NbPlayer": "Numbers of Players",
   "name": "name",
   "player": "Player",
-  "Resume" : "Resume",
+  "Resume" : "Summary",
 
   "Choose a standard value": "Choose a standard value",
   "DefineValue" : "Define the value of ",
   "Standard value is " : "Standard value is ",
-  "Reavel of Notation" : "Reavel of Notation",
+  "Reavel of Notation" : "Reveal of Notation",
   "notUnderstand" : " didn't understand the function, explain it to him.",
   "Questioning" : "Questioning",
   "tooComplicated" : " says it's too complicated and that we should talk about it over a good cup of coffee.",
@@ -31,5 +37,7 @@
   "absWin" : "The absolute majority has to win. The note is : ",
   "highestNote" : " has the highest rating they will explain his choice then ",
   "lowestNote" : " with the lowest score will explain too.",
-  "Try again" : "Try again"
+  "Try again" : "Try again",
+
+  "HOME" : "HOME"
 }
