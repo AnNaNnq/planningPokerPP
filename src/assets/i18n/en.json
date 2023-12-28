@@ -1,9 +1,13 @@
 {
   "English" : "English",
   "French" : "French",
-  "Swedish" : "Swedish",
+  "Swedish" : "Svedese",
   "German" : "German",
   "Spanish" : "Spanish",
+  "Chinese" : "Chinese",
+  "Greek" : "Greek",
+  "Polish" : "Polish",
+  "Italian" : "Italian",
 
   "PLAY": "PLAY",
   "CONTINUE": "CONTINUE",

@@ -114,3 +114,13 @@ select {
     background-color: #3146d3;
   }
 }
+
+.shop_button {
+  padding : 7px 8px 5px 7px;
+  cursor: pointer;
+  border: transparent;
+  border-radius: 4px;
+  &:hover {
+    background-color: #3146d3;
+  }
+}
