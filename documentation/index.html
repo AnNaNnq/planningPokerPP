@@ -103,38 +103,6 @@
 <p>Run <code>ng e2e</code> to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.</p>
 <h2>Further help</h2>
 <p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
-<h1>Raport</h1>
-<h2>Design Pattern</h2>
-<h3>Decorator</h3>
-<p>Afin de faire fonctioner notre projet nous avons utiliser le Design Pattern du decorateur
-pour géré les différents mods de jeux. Ainsi nous avons une classe abstraite
-qui contient toutes les fonctions utils au bon déroulement du jeu, classe
-qui est dérivé en Jeu concret qui contient les variables utils au jeu
-et en Mode qui contient les fonctions pour le déroulement du jeu
-ce Mode est la classe mère de tous les Modes que nous avons implèmentés.</p>
-<p>Pour simplifier l&#39;implèmentation de balise HTML via le TypeScript nous avons
-utiliser le Design Pattern de la Facade.</p>
-<h3>Facade</h3>
-<p>Ce Design Pattern nous permet d&#39;implémenter facilement des balise HTML directement
-depuis le TypeScript. Ainsi en une ligne nous pouvons implémenter une balise Input
-avec des classes un identifiant ou d&#39;autre variable intégrer et pour les insérer
-facilement dans le code nous avons utiliser le Design Patterne Singleton</p>
-<h3>Singleton</h3>
-<p>Ce Design Pattern n&#39;ayant qu&#39;une seule implémentation dans tous le code nous
-permet de récupérer facilement divers emplacement HTML de la page afin d&#39;y
-placer du code facilement.</p>
-<h2>Unit Test</h2>
-<p>Pour les tests unitaires nous avons utiliser la bibliotèque Karma modifier
-par Jasmine, qui nous permet de faire des tests sur Angular.
-Chaque Page est correctement tester afin de verifier que l&#39;on peut l&#39;importer
-et nous testons les diférentes fonction de notre jeu prinipalement les Setters
-et Getters afin de verifier leurs bons fonctionnements.
-Vous pouves lancer les tests en lancant la commande <code>ng test</code> assurez
-vous d&#39;avoir Chrome d&#39;installer avant de lancer la commande</p>
-<h2>Documentation</h2>
-<p>Pour la doc nous utilisons Compodoc, que nous pouvons utiliser en lancant
-la commande <code>npm run compodoc</code> qui vous généreras la documentation et
-vou ouvrera un serveur sur lequel est présent toutes la doc.</p>
 
 
 
