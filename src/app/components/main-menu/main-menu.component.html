@@ -3,19 +3,22 @@
     <pp-title></pp-title>
   </div>
   <div class="header_right">
+    <button class="shop_button" routerLink="/shop">
+      <mat-icon>shopping_basket</mat-icon>
+    </button>
     <information-button (buttonClicked)="openInformation()"></information-button>
     <div class="info-button_language">
       <mat-icon>language</mat-icon>
       <select class="form-select" (change)="changLang($event)">
-        <option [selected]="lang==='en'" value="en">{{'English' | translate}}</option>
-        <option [selected]="lang==='fr'" value="fr">{{'French' | translate}}</option>
-        <option [selected]="lang==='su'" value="su">{{'Swedish' | translate}}</option>
-        <option [selected]="lang==='al'" value="al">{{'German' | translate}}</option>
-        <option [selected]="lang==='es'" value="es">{{'Spanish' | translate}}</option>
-        <option [selected]="lang==='ch'" value="es">{{'Chinese' | translate}}</option>
-        <option [selected]="lang==='gr'" value="es">{{'Greek' | translate}}</option>
-        <option [selected]="lang==='po'" value="es">{{'Polish' | translate}}</option>
-        <option [selected]="lang==='it'" value="es">{{'Italian' | translate}}</option>
+        <option [selected]="lang==='en'" value="en">{{ 'English' | translate }}</option>
+        <option [selected]="lang==='fr'" value="fr">{{ 'French' | translate }}</option>
+        <option [selected]="lang==='su'" value="su">{{ 'Swedish' | translate }}</option>
+        <option [selected]="lang==='al'" value="al">{{ 'German' | translate }}</option>
+        <option [selected]="lang==='es'" value="es">{{ 'Spanish' | translate }}</option>
+        <option [selected]="lang==='ch'" value="ch">{{ 'Chinese' | translate }}</option>
+        <option [selected]="lang==='gr'" value="gr">{{ 'Greek' | translate }}</option>
+        <option [selected]="lang==='po'" value="po">{{ 'Polish' | translate }}</option>
+        <option [selected]="lang==='it'" value="it">{{ 'Italian' | translate }}</option>
       </select>
     </div>
   </div>
@@ -33,12 +36,6 @@
                 [name]="'CONTINUE' | translate"
                 [link]="'/game'" id="contniue-button"
                 (buttonClicked)="sendData()">
-  </start-button>
-  <start-button [pushableBackground]="'hsl(251, 67%, 27%)'"
-                [captionBackground]="'linear-gradient(#4935b0, #281775)'"
-                [captionColor]="'white'"
-                [name]="'SHOP' | translate"
-                [link]="'/shop'">
   </start-button>
 </div>
 <div class="container_bottom">
