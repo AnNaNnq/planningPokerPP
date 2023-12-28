@@ -20,7 +20,13 @@
   "07": {
     "name": "Mettre l'isolation"
   },
-  "03": {
+  "08": {
     "name": "Emenager"
+  },
+  "09": {
+    "name": "Tout brûler"
+  },
+  "10": {
+    "name": "S'enfuir"
   }
 }
